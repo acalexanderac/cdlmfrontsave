@@ -36,34 +36,37 @@ function PacientesFormPage() {
 
 
     const getPaciente = async () => {
-        try {
-            const res = await fetch(`http://localhost:3001/api/v1/patients/${params['id']}`,
-            {
-                method: 'GET',
-                    headers: {
-                'Content-Type': 'application/json',
-                    Authorization: `Bearer ${session?.user?.token}`,
-            },
-            });
+  // Check if params['id'] is defined
+  if (params['id']) {
+    try {
+      const res = await fetch(`http://localhost:3001/api/v1/patients/${params['id']}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${session?.user?.token}`,
+        },
+      });
 
-            if (!res.ok) {
-                throw new Error(`Failed to fetch data, status: ${res.status}`);
-            }
-            const dataUpdate = await res.json();
-            setNewPaciente({
-                nombrePaciente: dataUpdate.nombrePaciente,
-                docIdentificacion: dataUpdate.docIdentificacion,
-                edadPaciente: dataUpdate.edadPaciente,
-                estadoCivil: dataUpdate.estadoCivil,
-                noIggs: dataUpdate.noIggs,
-                telefono: dataUpdate.telefono, // Cambiado a string
-                religion: dataUpdate.religion,
-                fechaNacimiento: dataUpdate.fechaNacimiento,
-            });
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
+      if (!res.ok) {
+        throw new Error(`Failed to fetch data, status: ${res.status}`);
+      }
+
+      const dataUpdate = await res.json();
+      setNewPaciente({
+        nombrePaciente: dataUpdate.nombrePaciente,
+        docIdentificacion: dataUpdate.docIdentificacion,
+        edadPaciente: dataUpdate.edadPaciente,
+        estadoCivil: dataUpdate.estadoCivil,
+        noIggs: dataUpdate.noIggs,
+        telefono: dataUpdate.telefono, // Cambiado a string
+        religion: dataUpdate.religion,
+        fechaNacimiento: dataUpdate.fechaNacimiento,
+      });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+};
 
     useEffect(() => {
         if (session?.user?.token) {
@@ -131,8 +134,17 @@ const updateTask = async () => {
                 // Convierte el valor del teléfono a número aquí
                 const telefonoNumber = parseInt(data.telefono, 10);
 
-
-                await axios.post('http://localhost:3001/api/v1/patients', { ...data, telefono: telefonoNumber });
+ await axios.post(
+        'http://localhost:3001/api/v1/patients',
+        { ...data, telefono: telefonoNumber },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${session?.user?.token}`,
+          },
+        }
+      );
+              
                 console.log('Formulario enviado con éxito');
                 toast.success('Paciente Creado',
                     { duration: 3000, });
@@ -218,7 +230,7 @@ const updateTask = async () => {
                                     type="text"
 
                                     id="nombrePaciente"
-                                    className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-1/4"
                                     placeholder="John Doe"
                                     {...register("nombrePaciente", { required: false})}
                                     onChange={handleChange}
@@ -255,6 +267,30 @@ const updateTask = async () => {
 
                         </div>
 
+                        
+  <div className='px-5 pt-5'>
+                            <label htmlFor="estadoCivil" className="block text-ls font-medium leading-6 text-gray-900">
+                                Estado Civil
+                            </label>
+                            <div className="relative mt-2 rounded-md shadow-sm">
+
+                                <input
+                                    type="text"
+
+                                    id="estadoCivil"
+                                    className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-950 sm:text-sm sm:leading-6"
+                                    placeholder="Estado Civil (Soltero, Casado, Viudo (a) )"
+                                    {...register("estadoCivil", { required: false })}
+                                    onChange={handleChange}
+                                    value={newPaciente.estadoCivil}
+                                />
+
+                            </div>
+
+                        </div>
+
+
+
                         <div className='px-5 pt-5'>
                             <label htmlFor="noIggs" className="block text-ls font-medium leading-6 text-gray-900">
                                 Número de IGSS
@@ -280,47 +316,10 @@ const updateTask = async () => {
 
 
 
-                        <div className='px-5 pt-5'>
-                            <label htmlFor="estadoCivil" className="block text-ls font-medium leading-6 text-gray-900">
-                                Estado Civil
-                            </label>
-                            <div className="relative mt-2 rounded-md shadow-sm">
-
-                                <input
-                                    type="text"
-
-                                    id="estadoCivil"
-                                    className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-950 sm:text-sm sm:leading-6"
-                                    placeholder="Estado Civil (Soltero, Casado, Viudo (a) )"
-                                    {...register("estadoCivil", { required: false })}
-                                    onChange={handleChange}
-                                    value={newPaciente.estadoCivil}
-                                />
-
-                            </div>
-
-                        </div>
+                      
                     </div>
 
-                    <div className='px-5 pt-5'>
-                        <label htmlFor="religion" className="block text-ls font-medium leading-6 text-gray-900">
-                            Religión
-                        </label>
-                        <div className="relative mt-2 rounded-md shadow-sm">
-
-                            <input
-                                type="text"
-
-                                id="religion"
-                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                placeholder="Religión"
-                                {...register("religion", { required: false })}
-                                onChange={handleChange}
-                                value={newPaciente.religion}
-                            />
-
-                        </div>
-                    </div>
+                   
 
                     <div className='px-5 pt-5'>
                         <label htmlFor="telefono" className="block text-ls font-medium leading-6 text-gray-900">
@@ -337,6 +336,27 @@ const updateTask = async () => {
           onChange={handleChange}
           value={newPaciente.telefono}
         />
+
+                        </div>
+                    </div>
+
+
+                     <div className='px-5 pt-5'>
+                        <label htmlFor="religion" className="block text-ls font-medium leading-6 text-gray-900">
+                            Religión
+                        </label>
+                        <div className="relative mt-2 rounded-md shadow-sm">
+
+                            <input
+                                type="text"
+
+                                id="religion"
+                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                placeholder="Religión"
+                                {...register("religion", { required: false })}
+                                onChange={handleChange}
+                                value={newPaciente.religion}
+                            />
 
                         </div>
                     </div>
@@ -366,8 +386,8 @@ const updateTask = async () => {
                     </div>
 
                     <div className='pl-5 py-5'>
-                        <button className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg
-    " type='submit'>
+                        <button className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500
+                        rounded text-lg" type='submit'>
                             {!params.id ? "Guardar Paciente" : "Modificar Paciente"}
                             
                         </button>

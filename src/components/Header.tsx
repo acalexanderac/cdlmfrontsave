@@ -10,16 +10,16 @@ export default function Header() {
             {session?.user ? (
                     <>
                 <>
-                    <header className="text-gray-600  sticky top-0 bg-rose-100 z-10 ">
+                    <header className="text-gray-600  sticky top-0 bg-white z-10 ">
                         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center sticky top-0">
-                            <a className="flex  font-medium items-center text-gray-900 mb-4 md:mb-0 ">
+                            <div className="flex  font-medium items-center text-gray-900 mb-4 md:mb-0 ">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="red" className="w-6 h-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                                 </svg>
 <Link href="/sys">
                                         <span className="ml-3 text-xl  text-rose-900">Clínica de la Mujer</span>
                                         </Link>
-                            </a>
+                            </div>
                             <nav
                                 className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400  text-rose-900 flex flex-wrap items-center text-base justify-center">
                                 <Link className="mr-5 hover:text-pink-rose-950 hover:bg-rose-300 px-4 py-2.5 flex

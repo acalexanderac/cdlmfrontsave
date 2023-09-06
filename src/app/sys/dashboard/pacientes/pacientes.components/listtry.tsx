@@ -65,25 +65,25 @@ const handlePageChange = (newPage: number) => {
 };
 
     return (
-        <div className=" shadow  align-middle ">
+        <div className=" align-middle ">
             {/* Controles de ordenamiento */}
             <div>
                 <button onClick={() => handleSortOrderChange('ASC')}>Ordenar ASC</button>
                 <button onClick={() => handleSortOrderChange('DESC')}>Ordenar DESC</button>
             </div>
 
-            <div className='pt-5'>
+            <div className='pt-5 pb-5'>
                 <input
     type="text"
     value={searchTerm}
     onChange={handleSearchTermChange}
     placeholder="Buscar paciente"
                 />
-                <button onClick={() => handleSearch()}>Buscar</button>
+                <button onClick={() => handleSearch()} className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg">Buscar</button>
 
 
         </div>
-            <table className="w-max py-10 rounded-full">
+            <table className="w-max py-10 rounded-full pt-5 pb-10">
             <thead className="bg-rose-300 border-b-2 border-gray-200 rounded-full">
                 <tr className='rounded-full'>
                     <th className="p-3 text-sm font-semibold tracking-wide text-left">No ID.</th>
@@ -95,7 +95,7 @@ const handlePageChange = (newPage: number) => {
                     <th className="p-3 text-sm font-semibold tracking-wide text-left">Acciones</th>
                 </tr>
             </thead>
-            <tbody className="text-sm divide-y divide-gray-100">
+            <tbody className="text-sm divide-y divide-gray-100 pb-5 pt-10">
                 {patients.map((paciente) => (
                     <tr key={paciente['id']}>
                         <td className="p-1 whitespace-nowrap">
@@ -133,11 +133,13 @@ const handlePageChange = (newPage: number) => {
             </tbody>
             </table>
             <div>
-    <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+    <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} className=
+        "text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg">
         Anterior
     </button>
     <span>Página {currentPage} de {totalPages}</span>
-    <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+    <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}
+    className="pl-5 text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg">
         Siguiente
     </button>
 </div>
