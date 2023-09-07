@@ -1,6 +1,6 @@
 import ButtonAuth from "@/componentsAuth/ButtonAuth";
 import Image from 'next/image';
-import { Logo } from "@/app/services/imports";
+import { Logo } from "@/styles/imports";
 
 const HomePage = () => {
   return (

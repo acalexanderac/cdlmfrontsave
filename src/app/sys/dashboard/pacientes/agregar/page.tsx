@@ -50,7 +50,9 @@ function PacientesFormPage() {
       });
 
       if (!res.ok) {
-        throw new Error(`Failed to fetch data, status: ${res.status}`);
+          toast.error("This didn't work.")
+          throw new Error(`Failed to fetch data, status: ${res.status}`);
+
       }
 
       const dataUpdate = await res.json();
@@ -117,6 +119,8 @@ const updateTask = async () => {
     router.refresh();
   } catch (error) {
     console.error(error);
+      toast.error("This didn't work.")
+
   }
 };
 

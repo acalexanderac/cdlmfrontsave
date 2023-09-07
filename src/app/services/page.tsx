@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import {services1, services2,services3,services4,services5, services6, services7, services8} from './imports'
+import {services1, services2,services3,services4,services5, services6, services7, services8} from '../../styles/imports'
 
 export default function Services() {
     return (

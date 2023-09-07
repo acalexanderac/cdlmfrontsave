@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import Image from 'next/image';
-import { patients } from "@/app/services/imports";
+import {patients, Tratamientos} from "@/styles/imports";
 import Link from "next/link";
 const Dashboard = () => {
     const { data: session, status } = useSession();
@@ -34,10 +34,10 @@ const Dashboard = () => {
           <Image className="tracking-widest align-middle flex-auto mx-auto"
                src={patients}
                alt="Pacientes Clínica"
-               width={400}
-               height={400}
+
                blurDataURL="data:..."
                placeholder="blur"
+                 style={{ maxWidth: '100%', maxHeight: '100%' }}
         />
         </div>
         <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Pacientes</h2>
@@ -48,11 +48,21 @@ const Dashboard = () => {
                             </div>
       <div className="sm:w-1/2 mb-10 px-4">
         <div className="rounded-lg h-64 overflow-hidden">
-          <img alt="content" className="object-cover object-center h-full w-full" src="https://dummyimage.com/1202x502"/>
+            <Image className="tracking-widest align-middle flex-auto mx-auto"
+                   src={Tratamientos}
+                   alt="Pacientes Clínica"
+
+                   blurDataURL="data:..."
+                   placeholder="blur"
+                   style={{ maxWidth: '100%', maxHeight: '100%' }}
+            />
         </div>
-        <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Lorem Ipsum</h2>
-        <p className="leading-relaxed text-base">Lorem Ipsum deo Vitas Neot dotem urus</p>
-        <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">Lorem Ipsum</button>
+        <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Tratamientos</h2>
+        <p className="leading-relaxed text-base">Tratamientos y Tipo Tratamiento</p>
+          <Link href="/sys/dashboard/tratamientos">
+        <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
+            Ir a Tratamientos</button>
+              </Link>
       </div>
     </div>
   </div>
