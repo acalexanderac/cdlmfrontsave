@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link";
 //import PacientesFormPage from "./pacientes.components/PacientesFormPage";
-import PacientesList from "./pacientes.components/PacientesList";
 import React from 'react'
 import PatientList2 from "./pacientes.components/listtry";
 
@@ -33,8 +32,9 @@ function PacientesCrud() {
           </Link>
         </div>
              
-      
-    <PatientList2/>    
+      <div className="pb-10">
+    <PatientList2/>
+      </div>
         </div>
      
      
