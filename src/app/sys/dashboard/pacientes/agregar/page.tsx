@@ -5,6 +5,8 @@ import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 import { Toaster, toast } from 'react-hot-toast';
 import {useSession} from "next-auth/react";
+//import { Logo} from "@/app/services/imports";
+
 
 type FormData = {
     nombrePaciente: string;
@@ -19,7 +21,7 @@ type FormData = {
 
 function PacientesFormPage() {
     const params = useParams();
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
 
     const router = useRouter();
 
@@ -151,39 +153,9 @@ const updateTask = async () => {
                 router.push('/sys/dashboard/pacientes');
             } catch (error) {
                 console.error('Error al enviar el formulario:', error);
-                toast.custom((t) => (
-                    <div
-                        className={`${t.visible ? 'animate-enter' : 'animate-leave'
-                        } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
-                    >
-                        <div className="flex-1 w-0 p-4">
-                            <div className="flex items-start">
-                                <div className="flex-shrink-0 pt-0.5">
-                                    <img
-                                        className="h-10 w-10 rounded-full"
-                                        src="https://icon-library.com/images/error-icon-4_19035.png"
-                                        alt=""
-                                    />
-                                </div>
-                                <div className="ml-3 flex-1">
-                                    <p className="text-sm font-medium text-gray-900">
-                                        ERROR AL CREAR PACIENTE
-                                    </p>
-                                    <p className="mt-1 text-sm text-gray-500">
-                                        Verifique los Datos!!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex border-l border-gray-200">
-                            <button
-                                onClick={() => toast.dismiss(t.id)}
-                                className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-rose-900 hover:text-rose-950 focus:outline-none focus:ring-2 focus:ring-rose-500"
-                            >
-                                Cerrar
-                            </button>
-                        </div>
-                    </div>))
+                toast.error("This didn't work.")
+
+
             }
 
         } else {
@@ -195,7 +167,7 @@ const updateTask = async () => {
 
     };
     return (
-        <div>
+        <div className="flex flex-col justify-center items-center ">
             <Toaster/>
 
             <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900 pb-5">
@@ -210,9 +182,15 @@ const updateTask = async () => {
               </span>
             </a>
 
-            <button className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg"
-                    onClick={handleDelete}>
-                Eliminar</button>
+            {params.id ? (
+                <button className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg" onClick={handleDelete}>
+                    Eliminar Paciente ID. {params.id}
+                </button>
+            ) : (
+                <button className="text-white bg-rose-300 border-0 py-2 px-6 rounded text-lg cursor-not-allowed" disabled>
+                    Añadiendo Paciente
+                </button>
+            )}
             <div>
 
 
@@ -230,7 +208,9 @@ const updateTask = async () => {
                                     type="text"
 
                                     id="nombrePaciente"
-                                    className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-1/4"
+                                    className="block rounded-md border-0 py-1.5 pl-7
+                                    pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+                                    focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"
                                     placeholder="John Doe"
                                     {...register("nombrePaciente", { required: false})}
                                     onChange={handleChange}
@@ -244,7 +224,7 @@ const updateTask = async () => {
                         </div>
 
                         <div className='px-5 '>
-                            <label htmlFor="docIdentificacion" className="block text-ls font-medium leading-6 text-gray-900">
+                            <label htmlFor="docIdentificacion" className="block text-ls font-medium text-gray-900">
                                 Documento de Identificación DPI
                             </label>
                             <div className="relative mt-2 rounded-md shadow-sm">
@@ -253,7 +233,9 @@ const updateTask = async () => {
                                     type="text"
 
                                     id="docIdentificacion"
-                                    className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block rounded-md border-0 py-1.5 pl-7 pr-20
+                                    text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+                                    focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-1/2"
                                     placeholder="DPI Paciente"
 
                                     {...register("docIdentificacion", { required: false })}
@@ -267,97 +249,83 @@ const updateTask = async () => {
 
                         </div>
 
-                        
-  <div className='px-5 pt-5'>
-                            <label htmlFor="estadoCivil" className="block text-ls font-medium leading-6 text-gray-900">
-                                Estado Civil
-                            </label>
-                            <div className="relative mt-2 rounded-md shadow-sm">
 
-                                <input
-                                    type="text"
-
-                                    id="estadoCivil"
-                                    className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-950 sm:text-sm sm:leading-6"
-                                    placeholder="Estado Civil (Soltero, Casado, Viudo (a) )"
-                                    {...register("estadoCivil", { required: false })}
-                                    onChange={handleChange}
-                                    value={newPaciente.estadoCivil}
-                                />
-
+                        <div className='px-5 pt-5 flex flex-wrap'>
+                            <div className="w-full md:w-1/2 pr-4">
+                                <label htmlFor="estadoCivil" className="block text-ls font-medium text-gray-900">
+                                    Estado Civil
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="estadoCivil"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-rose-950 sm:text-sm sm:leading-6"
+                                        placeholder="Estado Civil Paciente"
+                                        {...register("estadoCivil", { required: false })}
+                                        onChange={handleChange}
+                                        value={newPaciente.estadoCivil}
+                                    />
+                                </div>
                             </div>
 
-                        </div>
-
-
-
-                        <div className='px-5 pt-5'>
-                            <label htmlFor="noIggs" className="block text-ls font-medium leading-6 text-gray-900">
-                                Número de IGSS
-                            </label>
-                            <div className="relative mt-2 rounded-md shadow-sm">
-
-                                <input
-                                    type="text"
-
-                                    id="noIggs"
-                                    className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    placeholder="Número de Igss"
-
-                                    {...register("noIggs", { required: false })}
-                                    onChange={handleChange}
-                                    value={newPaciente.noIggs}
-                                />
-
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="noIggs" className="block text-ls font-medium text-gray-900">
+                                    Número de IGSS
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="noIggs"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Número de IGSS"
+                                        {...register("noIggs", { required: false })}
+                                        onChange={handleChange}
+                                        value={newPaciente.noIggs}
+                                    />
+                                </div>
                             </div>
                         </div>
 
-
-
-
-
-                      
                     </div>
 
-                   
 
-                    <div className='px-5 pt-5'>
-                        <label htmlFor="telefono" className="block text-ls font-medium leading-6 text-gray-900">
-                            Teléfono de Contacto
-                        </label>
-                        <div className="relative mt-2 rounded-md shadow-sm">
-
-        <input
-          type='number'
-          id='telefono'
-          className='block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
-          placeholder='Teléfono de Contacto'
-          {...register('telefono', { required: false })}
-          onChange={handleChange}
-          value={newPaciente.telefono}
-        />
-
+                    <div className='px-5 pt-5 flex flex-wrap'>
+                        <div className="w-full md:w-1/2 pr-4">
+                            <div className=''>
+                                <label htmlFor="telefono" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Teléfono de Contacto
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type='number'
+                                        id='telefono'
+                                        className='block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                                        placeholder='Teléfono de Contacto'
+                                        {...register('telefono', { required: false })}
+                                        onChange={handleChange}
+                                        value={newPaciente.telefono}
+                                    />
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-
-                     <div className='px-5 pt-5'>
-                        <label htmlFor="religion" className="block text-ls font-medium leading-6 text-gray-900">
-                            Religión
-                        </label>
-                        <div className="relative mt-2 rounded-md shadow-sm">
-
-                            <input
-                                type="text"
-
-                                id="religion"
-                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                placeholder="Religión"
-                                {...register("religion", { required: false })}
-                                onChange={handleChange}
-                                value={newPaciente.religion}
-                            />
-
+                        <div className="w-full md:w-1/2 pl-4">
+                            <div className=''>
+                                <label htmlFor="religion" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Religión
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="religion"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Religión"
+                                        {...register("religion", { required: false })}
+                                        onChange={handleChange}
+                                        value={newPaciente.religion}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -385,7 +353,8 @@ const updateTask = async () => {
                         </div>
                     </div>
 
-                    <div className='pl-5 py-5'>
+                    <div className="flex flex-col items-center">
+                        <div className='pl-5 py-5 flex'>
                         <button className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500
                         rounded text-lg" type='submit'>
                             {!params.id ? "Guardar Paciente" : "Modificar Paciente"}
@@ -393,12 +362,15 @@ const updateTask = async () => {
                         </button>
                         
                     </div>
+                    </div>
 
 
                 </form>
 
             </div>
-        </div> //final primary element
+        </div>
+
+
     )
 }
 
