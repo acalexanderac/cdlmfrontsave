@@ -43,7 +43,7 @@ export default function Sidebar() {
                                                     
                                                     <span>Mantenimientos Pacientes</span>
                                                 </a>
-                                                <a href="#" className="font-medium text-sm items-center rounded-lg text-rose-900 px-4 py-2.5 block
+                                                <a href="/sys/dashboard/pacientes" className="font-medium text-sm items-center rounded-lg text-rose-900 px-4 py-2.5 block
                       transition-all duration-200 hover:bg-rose-300 group cursor-pointer" >
                             
                                                     <span>Añadir Paciente</span>

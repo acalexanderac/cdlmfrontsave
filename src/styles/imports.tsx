@@ -10,5 +10,7 @@ export {default as patients} from 'public/pat1.svg'
 export {default as Logo} from 'public/logo.jpg'
 export {default as Tratamientos} from 'public/Tratamiento.svg'
 export {default as TipoTratamiento} from 'public/TipoTratamiento.svg'
+export {default as TipoProd1} from 'public/TipoProd1.svg'
+export {default as TipoProd2} from 'public/TipoProd2.svg'
 
 

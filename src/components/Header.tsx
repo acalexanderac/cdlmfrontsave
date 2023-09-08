@@ -26,6 +26,8 @@ export default function Header() {
                     transition-all duration-200 rounded-lg" href="/sys/dashboard">Dashboard</Link>
                                 <Link className="mr-5 hover:text-pink-950  hover:bg-rose-300 px-4 py-2.5 flex
                     transition-all duration-200 rounded-lg" href="/sys/dashboard/pacientes">Pacientes</Link>
+                                <Link className="mr-5 hover:text-pink-950  hover:bg-rose-300 px-4 py-2.5 flex
+                    transition-all duration-200 rounded-lg" href="/sys/dashboard/procedimientos">Procedimientos</Link>
                             </nav>
                             <button
                                 onClick={() => signOut()}
