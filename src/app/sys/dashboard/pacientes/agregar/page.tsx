@@ -98,14 +98,9 @@ function PacientesFormPage() {
 
 const updateTask = async () => {
   try {
-    // Verifica si docIdentificacion está en blanco y asigna un valor provisional si es así
-    if (!newPaciente.docIdentificacion) {
-      const uniqueId = `PROVISIONAL${Math.floor(Math.random() * 100000)}`;
-      setNewPaciente({ ...newPaciente, docIdentificacion: uniqueId });
-    }
 
-    // Parse the "telefono" field to an integer
     const telefonoNumber = parseInt(newPaciente.telefono, 10);
+      console.log('Datos que se envían al actualizar paciente:', { ...newPaciente, telefono: telefonoNumber });
 
     await fetch(`http://localhost:3001/api/v1/patients/${params['id']}`, {
       method: "PATCH",
@@ -114,12 +109,15 @@ const updateTask = async () => {
         Authorization: `Bearer ${session?.user?.token}`,
       },
       body: JSON.stringify({ ...newPaciente, telefono: telefonoNumber }), // Include the parsed telefono
+
     });
     router.push("/sys/dashboard/pacientes");
     router.refresh();
   } catch (error) {
     console.error(error);
       toast.error("This didn't work.")
+      console.error(error);
+      toast.error("Hubo un error al actualizar el paciente ");
 
   }
 };
