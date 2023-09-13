@@ -14,3 +14,4 @@ export {default as TipoProd1} from 'public/TipoProd1.svg'
 export {default as TipoProd2} from 'public/TipoProd2.svg'
 
 
+

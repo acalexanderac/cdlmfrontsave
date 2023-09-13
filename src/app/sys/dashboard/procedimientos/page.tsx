@@ -1,5 +1,6 @@
 import Image from "next/image";
-import {TipoProd1, TipoTratamiento} from "@/styles/imports";
+import React from 'react'
+import {TipoProd1, TipoProd2, TipoTratamiento} from "@/styles/imports";
 import Link from "next/link";
 
 const Procedimientos = () => {
@@ -38,14 +39,21 @@ const Procedimientos = () => {
                     </div>
                     <div className="p-4 lg:w-1/4 md:w-1/2">
                         <div className="h-full flex flex-col items-center text-center">
-                            <img alt="team" className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" src="https://dummyimage.com/201x201"/>
-                                <div className="w-full">
-                                    <h2 className="title-font font-medium text-lg text-gray-900">Holden Caulfield</h2>
-                                    <h3 className="text-gray-500 mb-3">UI Developer</h3>
-                                    <p className="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
-                                    <span className="inline-flex">
+                            <Image className="tracking-widest align-middle flex-auto "
+                                   src={TipoProd2}
+                                   alt="Tratamientos Clínica"
 
-            </span>
+                                   blurDataURL="data:..."
+                                   placeholder="blur"
+                                   style={{ maxWidth: '100%', maxHeight: '100%' }}
+                            />
+                                <div className="w-full">
+                                    <h2 className="title-font font-medium text-lg text-gray-900">Procedimientos Específicos</h2>
+                                    <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Procedimientos Generales</h3>
+                                    <Link href="/sys/dashboard/procedimientos/procedespecificos">
+                                        <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
+                                            Ir a Procedimientos Generales</button>
+                                    </Link>
                                 </div>
                         </div>
                     </div>
