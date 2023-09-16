@@ -13,7 +13,7 @@ interface Treatment {
     tipoAnestesia: string;
     anestesia: boolean;
     observaciones: string;
-    paciente: {
+    patient: {
         id: number;
         docIdentificacion: string;
         nombrePaciente: string;
@@ -134,7 +134,7 @@ const ProdList1: React.FC = () => {
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Tipo Anestesia</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Anestesia</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Observaciones</th>
-                        <th className="p-3 text-sm font-semibold tracking-wide text-left">DPI Paciente</th>
+
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Paciente</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Tipo Tratamiento</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Acciones</th>
@@ -160,11 +160,9 @@ const ProdList1: React.FC = () => {
                             <td className="p-1 whitespace-nowrap">
                                 <div className="text-left text-rose-900">{tratamiento.observaciones}</div>
                             </td>
+
                             <td className="p-1 whitespace-nowrap">
-                                <div className="text-left text-black">{tratamiento.paciente?.docIdentificacion || 'ID no disponible'}</div>
-                            </td>
-                            <td className="p-1 whitespace-nowrap">
-                                <div className="text-left text-black">{tratamiento.paciente?.nombrePaciente || 'ID no disponible'}</div>
+                                <div className="text-left text-black">{tratamiento.patient?.nombrePaciente || 'ID no disponible'}</div>
                             </td>
                             <td className="p-1 whitespace-nowrap">{tratamiento.treatmentype?.name || 'Tipo no disponible'}</td>
                             <td className="p-1 whitespace-nowrap">
