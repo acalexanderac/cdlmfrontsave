@@ -62,8 +62,8 @@ function TreatmentFormPage() {
                     tipoAnestesia: String(dataUpdate.tipoAnestesia || ''),
                     anestesia: dataUpdate.anestesia || false,
                     observaciones: String(dataUpdate.observaciones || ''),
-                    patient: String(pacienteName || ''),            // Ensure it's a string
-                    treatmentype: String(treatmentTypeName || ''),  // Ensure it's a string
+                    patient: String(pacienteName.toString() || ''),            // Ensure it's a string
+                    treatmentype: String(treatmentTypeName.toString() || ''),  // Ensure it's a string
                 }));
                 // Update form values using setValue
                 Object.keys(dataUpdate).forEach((key) => {
@@ -103,7 +103,17 @@ function TreatmentFormPage() {
             router.refresh();
             console.log('Datos que se envían al actualizar paciente:', { ...data });
 
-            await axios.patch(`http://localhost:3001/api/v1/treatments/${params.id}`, { ...data }, {
+            // Convert patient and treatmentype objects to strings
+            const updateData = {
+                fechaTratamiento: data.fechaTratamiento,
+                tipoAnestesia: data.tipoAnestesia,
+                anestesia: data.anestesia,
+                observaciones: data.observaciones,
+                patient: data.patient.toString(), // Convert patient object to string
+                treatmentype: data.treatmentype.toString(), // Convert treatmentype object to string
+            };
+
+            await axios.patch(`http://localhost:3001/api/v1/treatments/${params.id}`, { ...updateData }, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${session?.user?.token}`,
@@ -118,6 +128,7 @@ function TreatmentFormPage() {
             toast.error('Hubo un error al actualizar el procedimiento');
         }
     };
+
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -282,7 +293,7 @@ function TreatmentFormPage() {
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="ID Pacientes"
                                         {...register('patient', { required: false })}
-                                        value={newProcedimiento.patient}
+                                        value={newProcedimiento.patient.toString()}
                                         onChange={handleChange}
                                     />
 
@@ -301,7 +312,7 @@ function TreatmentFormPage() {
                                     className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     placeholder="ID Tipo Tratamiento"
                                     {...register('treatmentype', { required: false })}
-                                    value={newProcedimiento.treatmentype}
+                                    value={newProcedimiento.treatmentype.toString()}
                                     onChange={handleChange}
                                 />
                             </div>
