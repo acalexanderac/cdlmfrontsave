@@ -115,7 +115,7 @@ const updateTask = async () => {
 
 
  await axios.post(
-        'http://localhost:3001/api/v1/treatments',
+        'http://localhost:3001/api/v1/treatmentypes',
         { ...data},
         {
           headers: {

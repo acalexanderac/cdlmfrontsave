@@ -118,9 +118,7 @@ const handlePageChange = (newPage: number) => {
                     <th className="p-3 text-sm font-semibold tracking-wide text-left">No ID.</th>
                     <th className="p-3 text-sm font-semibold tracking-wide text-left">Nombre</th>
                     <th className="p-3 text-sm font-semibold tracking-wide text-left">Doc. Identificación</th>
-                    <th className="p-3 text-sm font-semibold tracking-wide text-left">Fecha de Nacimiento</th>
                     <th className="p-3 text-sm font-semibold tracking-wide text-left">Edad</th>
-                    <th className="p-3 text-sm font-semibold tracking-wide text-left">Teléfono Contacto</th>
                     <th className="p-3 text-sm font-semibold tracking-wide text-left">Acciones</th>
                 </tr>
             </thead>
@@ -138,15 +136,11 @@ const handlePageChange = (newPage: number) => {
                         <td className="p-1 whitespace-nowrap">
                             <div className="text-left font-medium text-rose-900">{paciente['docIdentificacion']}</div>
                         </td>
-                        <td className="p-1 whitespace-nowrap">
-                            <div className="text-left text-black">{paciente['fechaNacimiento']}</div>
-                        </td>
+
                         <td className="p-1 whitespace-nowrap">
                             <div className="text-left text-rose-900">{paciente['edadPaciente']}</div>
                         </td>
-                        <td className="p-1 whitespace-nowrap">
-                            <div className="text-left text-black">{paciente['telefono']}</div>
-                        </td>
+
                         <td className="p-1 whitespace-nowrap">
                             <div className='pr-5 pl-5'>
                                 <Link href={`/sys/dashboard/pacientes/${paciente['id']}`}>
