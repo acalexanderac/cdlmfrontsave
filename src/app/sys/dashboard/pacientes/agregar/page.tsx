@@ -12,12 +12,18 @@ import {useSession} from "next-auth/react";
 type FormData = {
     nombrePaciente: string;
     docIdentificacion: string;
-    edadPaciente: number;
-    estadoCivil: string;
-    noIggs: string;
-    telefono: string; // Cambiado a string
+    edadPaciente: string;
+    direccion:string    | null;
+    estadoCivil: string | null;
+    noIggs: string | null;
+    aseguradora: string | null;
+    telefonoContacto: string; // Cambiado a string
     religion: string;
     fechaNacimiento: string;
+    contacto1: string | null;
+    contacto2: string | null;
+    telContacto1: string | null;
+    telContacto2: string | null;
 };
 
 function PacientesFormPage() {
@@ -29,12 +35,18 @@ function PacientesFormPage() {
     const [newPaciente, setNewPaciente] = useState<FormData>({
         nombrePaciente: "",
         docIdentificacion: "",
-        edadPaciente: 0,
+        edadPaciente: "",
+        direccion: "",
         estadoCivil: "",
         noIggs: "",
-        telefono: "", // Cambiado a string
+        aseguradora: "",
+        telefonoContacto: "", // Cambiado a string
         religion: "",
-        fechaNacimiento: ""
+        fechaNacimiento: "",
+        contacto1: "",
+        contacto2: "",
+        telContacto1: "",
+        telContacto2: "",
     });
 
 
@@ -42,7 +54,7 @@ function PacientesFormPage() {
   // Check if params['id'] is defined
   if (params['id']) {
     try {
-      const res = await fetch(`http://localhost:3001/api/v1/patients/${params['id']}`, {
+      const res = await fetch(`http://localhost:3001/api/v1/pacientes/${params['id']}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -58,14 +70,20 @@ function PacientesFormPage() {
 
       const dataUpdate = await res.json();
       setNewPaciente({
-        nombrePaciente: dataUpdate.nombrePaciente,
-        docIdentificacion: dataUpdate.docIdentificacion,
-        edadPaciente: dataUpdate.edadPaciente,
-        estadoCivil: dataUpdate.estadoCivil,
-        noIggs: dataUpdate.noIggs,
-        telefono: dataUpdate.telefono, // Cambiado a string
-        religion: dataUpdate.religion,
-        fechaNacimiento: dataUpdate.fechaNacimiento,
+          nombrePaciente: dataUpdate.nombrePaciente,
+          docIdentificacion: dataUpdate.docIdentificacion,
+          edadPaciente: dataUpdate.edadPaciente,
+          direccion: dataUpdate.direccion,
+          estadoCivil: dataUpdate.estadoCivil,
+          noIggs: dataUpdate.noIggs,
+          aseguradora: dataUpdate.aseguradora,
+          telefonoContacto: dataUpdate.telefonoContacto, // Cambiado a string
+          religion: dataUpdate.religion,
+          fechaNacimiento: dataUpdate.fechaNacimiento,
+          contacto1: dataUpdate.contacto1,
+          contacto2: dataUpdate.contacto2,
+          telContacto1: dataUpdate.telContacto1,
+          telContacto2: dataUpdate.telContacto2,
       });
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -85,34 +103,32 @@ function PacientesFormPage() {
     const handleDelete = async () => {
 
         if (window.confirm('Are you sure you want to delete?')) {
-           await fetch(`http://localhost:3001/api/v1/patients/${params['id']}`, {
+           await fetch(`http://localhost:3001/api/v1/pacientes/${params['id']}`, {
                 method: 'DELETE',
                headers: {
                    'Content-Type': 'application/json',
                    Authorization: `Bearer ${session?.user?.token}`,
                },
             })
-            router.push('/sys/dashboard/pacientes')
+            router.push('/sys/dashboard/patients')
             router.refresh();
         }
     }
 
 const updateTask = async () => {
   try {
+      const edadPac: number = parseInt(newPaciente.edadPaciente, 10);
 
-    const telefonoNumber = parseInt(newPaciente.telefono, 10);
-      console.log('Datos que se envían al actualizar paciente:', { ...newPaciente, telefono: telefonoNumber });
-
-    await fetch(`http://localhost:3001/api/v1/patients/${params['id']}`, {
+    await fetch(`http://localhost:3001/api/v1/pacientes/${params['id']}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${session?.user?.token}`,
       },
-      body: JSON.stringify({ ...newPaciente, telefono: telefonoNumber }), // Include the parsed telefono
+      body: JSON.stringify({ ...newPaciente, edadPaciente : edadPac }), // Include the parsed telefono
 
     });
-    router.push("/sys/dashboard/pacientes");
+    router.push("/sys/dashboard/patients");
     router.refresh();
   } catch (error) {
     console.error(error);
@@ -137,11 +153,10 @@ const updateTask = async () => {
         if (!params.id) {
             try {
                 // Convierte el valor del teléfono a número aquí
-                const telefonoNumber = parseInt(data.telefono, 10);
 
  await axios.post(
-        'http://localhost:3001/api/v1/patients',
-        { ...data, telefono: telefonoNumber },
+        'http://localhost:3001/api/v1/pacientes',
+        { ...data},
         {
           headers: {
             'Content-Type': 'application/json',
@@ -162,7 +177,7 @@ const updateTask = async () => {
             }
 
         } else {
-               const telefonoNumber = parseInt(data.telefono, 10);
+
             await updateTask();
 
         }
@@ -226,7 +241,7 @@ const updateTask = async () => {
 
                         </div>
 
-                        <div className='px-5 '>
+                        <div className='px-5 c '>
                             <label htmlFor="docIdentificacion" className="block text-ls font-medium text-gray-900">
                                 Documento de Identificación DPI
                             </label>
@@ -251,7 +266,31 @@ const updateTask = async () => {
 
 
                         </div>
+                        <div className='px-5 pt-5'>
+                            <label htmlFor="direccion" className="block text-ls font-medium text-gray-900">
+                                Dirección del Paciente
+                            </label>
+                            <div className="relative mt-2 rounded-md shadow-sm">
 
+                                <input
+                                    type="text"
+
+                                    id="direccion"
+                                    className="block rounded-md border-0 py-1.5 pl-7 pr-20
+                                    text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+                                    focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"
+                                    placeholder="Dirección Paciente"
+
+                                    {...register("direccion",{ required: false })}
+                                    onChange={handleChange}
+                                    value={newPaciente.direccion || ""}
+                                />
+
+                            </div>
+
+
+
+                        </div>
 
                         <div className='px-5 pt-5 flex flex-wrap'>
                             <div className="w-full md:w-1/2 pr-4">
@@ -266,7 +305,7 @@ const updateTask = async () => {
                                         placeholder="Estado Civil Paciente"
                                         {...register("estadoCivil", { required: false })}
                                         onChange={handleChange}
-                                        value={newPaciente.estadoCivil}
+                                        value={newPaciente.estadoCivil || ""}
                                     />
                                 </div>
                             </div>
@@ -283,7 +322,7 @@ const updateTask = async () => {
                                         placeholder="Número de IGSS"
                                         {...register("noIggs", { required: false })}
                                         onChange={handleChange}
-                                        value={newPaciente.noIggs}
+                                        value={newPaciente.noIggs || ""}
                                     />
                                 </div>
                             </div>
@@ -300,13 +339,13 @@ const updateTask = async () => {
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
-                                        type='number'
+                                        type='text'
                                         id='telefono'
                                         className='block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                                         placeholder='Teléfono de Contacto'
-                                        {...register('telefono', { required: false })}
+                                        {...register('telefonoContacto', { required: false })}
                                         onChange={handleChange}
-                                        value={newPaciente.telefono}
+                                        value={newPaciente.telefonoContacto}
                                     />
                                 </div>
                             </div>
@@ -325,11 +364,141 @@ const updateTask = async () => {
                                         placeholder="Religión"
                                         {...register("religion", { required: false })}
                                         onChange={handleChange}
-                                        value={newPaciente.religion}
+                                        value={newPaciente.religion || ""}
                                     />
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div className="w-full md:w-1/2 pl-4 pt-5">
+                        <div className=''>
+                            <label htmlFor="aseguradora" className="block text-ls font-medium leading-6 text-gray-900">
+                                Aseguradora
+                            </label>
+                            <div className="relative mt-2 rounded-md shadow-sm">
+                                <input
+                                    type="text"
+                                    id="aseguradora"
+                                    className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    placeholder="Aseguradora"
+                                    {...register("aseguradora", { required: false })}
+                                    onChange={handleChange}
+                                    value={newPaciente.aseguradora || ""}
+                                />
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    {params.id ? (
+                        <div className="w-full md:w-1/2 pl-4 pt-5">
+                            <div className=''>
+                                <label htmlFor="aseguradora" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Edad Paciente
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="edadPaciente"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Edad Paciente"
+                                        {...register("edadPaciente", { required: false })}
+                                        onChange={handleChange}
+                                        value={newPaciente.edadPaciente || ""}
+                                    />
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    ) : (
+                       <></>
+                    )}
+
+
+                    <div className='px-5 pt-5 flex flex-wrap'>
+                        <div className="w-full md:w-1/2 pr-4">
+                            <div className=''>
+                                <label htmlFor="contacto1" className="block text-ls font-medium leading-6 text-gray-900">
+        Nombre Contacto de Emergencia #1
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type='text'
+                                        id='contacto1'
+                                        className='block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                                        placeholder='Contacto de Emergencia 1'
+                                        {...register('contacto1', { required: false })}
+                                        onChange={handleChange}
+                                        value={newPaciente.contacto1 || ""}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="w-full md:w-1/2 pl-4">
+                            <div className=''>
+                                <label htmlFor="telContacto1" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Telefono Contacto  de Emergencia #1
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="telContacto1"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Telefono Contacto 1"
+                                        {...register("telContacto1", { required: false })}
+                                        onChange={handleChange}
+                                        value={newPaciente.telContacto1 || ""}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div className='px-5 pt-5 flex flex-wrap'>
+                        <div className="w-full md:w-1/2 pr-4">
+                            <div className=''>
+                                <label htmlFor="contacto2" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Nombre Contacto de Emergencia #2
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type='text'
+                                        id='contacto2'
+                                        className='block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                                        placeholder='Contacto de Emergencia 2'
+                                        {...register('contacto2', { required: false })}
+                                        onChange={handleChange}
+                                        value={newPaciente.contacto2 || ""}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="w-full md:w-1/2 pl-4">
+                            <div className=''>
+                                <label htmlFor="telContacto1" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Telefono Contacto  de Emergencia #2
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="telContacto2"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Telefono Contacto 2"
+                                        {...register("telContacto2", { required: false })}
+                                        onChange={handleChange}
+                                        value={newPaciente.telContacto2 || ""}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div className='px-5 pt-5'>

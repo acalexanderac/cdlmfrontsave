@@ -3,55 +3,55 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 
-const PatientList2: React.FC = () => {
+const CrioterapiaList: React.FC = () => {
     const { data: session } = useSession();
     const [patients, setPatients] = useState([]);
     const [sortOrder, setSortOrder] = useState<'ASC' | 'DESC'>('ASC'); // Estado para el ordenamiento
-const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [searchTerm, setSearchTerm] = useState('');
 
-const handleSearchTermChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-};
+    const handleSearchTermChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
+    };
 
-  useEffect(() => {
-    if (session?.user?.token) {
-        fetchPacientes(currentPage);
-    }
-}, [session, currentPage, sortOrder]);
-
-  const fetchPacientes = async (page: number) => {
-       try {
-        const response = await fetch(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/pacientes/sort?s=${searchTerm}&sort=${sortOrder}&page=${page}`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${session?.user?.token}`,
-                },
-            }
-        );
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+    useEffect(() => {
+        if (session?.user?.token) {
+            fetchPacientes(currentPage);
         }
+    }, [session, currentPage, sortOrder]);
 
-        const data = await response.json();
-        setPatients(data.data);
-        setTotalPages(data.last_page);
-    } catch (error) {
-        console.error('Error fetching patients:', error);
-    }
-};
+    const fetchPacientes = async (page: number) => {
+        try {
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/crioterapias/sort?s=${searchTerm}&sort=${sortOrder}&page=${page}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${session?.user?.token}`,
+                    },
+                }
+            );
 
-const handlePageChange = (newPage: number) => {
-    if (newPage >= 1 && newPage <= totalPages) {
-        setCurrentPage(newPage);
-        fetchPacientes(newPage);
-    }
-};
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            setPatients(data.data);
+            setTotalPages(data.last_page);
+        } catch (error) {
+            console.error('Error fetching patients:', error);
+        }
+    };
+
+    const handlePageChange = (newPage: number) => {
+        if (newPage >= 1 && newPage <= totalPages) {
+            setCurrentPage(newPage);
+            fetchPacientes(newPage);
+        }
+    };
 
     // Función para cambiar el ordenamiento cuando el usuario hace clic en un botón
     const handleSortOrderChange = (newOrder: 'ASC' | 'DESC') => {
@@ -59,10 +59,10 @@ const handlePageChange = (newPage: number) => {
     };
 
     const handleSearch = () => {
-    // Reiniciar la página a la primera página al realizar una nueva búsqueda
-    setCurrentPage(1);
-    fetchPacientes(1); // Inicia la búsqueda en la primera página
-};
+        // Reiniciar la página a la primera página al realizar una nueva búsqueda
+        setCurrentPage(1);
+        fetchPacientes(1); // Inicia la búsqueda en la primera página
+    };
 
     return (
         <div className=" align-middle flex items-center flex-col ">
@@ -70,11 +70,11 @@ const handlePageChange = (newPage: number) => {
 
             <div className=' pb-5 flex space-x-4'>
                 <input
-    type="text"
-    value={searchTerm}
-    onChange={handleSearchTermChange}
-    placeholder="Buscar Paciente CDLM"
-    className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300
+                    type="text"
+                    value={searchTerm}
+                    onChange={handleSearchTermChange}
+                    placeholder="Buscar Paciente CDLM"
+                    className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300
     laceholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6 w-full"
                 />
                 <button onClick={() => handleSearch()}
@@ -82,7 +82,7 @@ const handlePageChange = (newPage: number) => {
                     Buscar</button>
 
 
-        </div>
+            </div>
             {/* Controles de ordenamiento */}
             <div className="pb-2 flex space-x-4 items-center">
                 <button
@@ -113,49 +113,49 @@ const handlePageChange = (newPage: number) => {
             </div>
             <div className="align-middle flex items-center flex-col pb-5">
                 <table className="py-10 rounded-full pt-5 pb-10 w-1/2 ">
-            <thead className="bg-rose-300 border-b-2 border-gray-200 rounded-full pt-5 pb-10">
-                <tr className='rounded-full pb-5'>
-                    <th className="p-3 text-sm font-semibold tracking-wide text-left">No ID.</th>
-                    <th className="p-3 text-sm font-semibold tracking-wide text-left">Nombre</th>
-                    <th className="p-3 text-sm font-semibold tracking-wide text-left">Doc. Identificación</th>
-                    <th className="p-3 text-sm font-semibold tracking-wide text-left">Edad</th>
-                    <th className="p-3 text-sm font-semibold tracking-wide text-left">Acciones</th>
-                </tr>
-            </thead>
-            <tbody className="text-sm divide-y divide-gray-100 pb-5 pt-10">
-                {patients.map((paciente) => (
-                    <tr key={paciente['id']}>
-                        <td className="p-1 whitespace-nowrap">
-                            <div className="flex items-center">
-                                <div className="font-medium text-black">{paciente['id']}</div>
-                            </div>
-                        </td>
-                        <td className="p-1 whitespace-nowrap">
-                            <div className="text-left text-black">{paciente['nombrePaciente']}</div>
-                        </td>
-                        <td className="p-1 whitespace-nowrap">
-                            <div className="text-left font-medium text-rose-900">{paciente['docIdentificacion']}</div>
-                        </td>
-
-                        <td className="p-1 whitespace-nowrap">
-                            <div className="text-left text-rose-900">{paciente['edadPaciente']}</div>
-                        </td>
-
-                        <td className="p-1 whitespace-nowrap">
-                            <div className='pr-5 pl-5'>
-                                <Link href={`/sys/dashboard/pacientes/${paciente['id']}`}>
-                                    <button
-                                        className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-300  hover:text-black rounded text-lg">
-                                        Editar
-                                    </button>
-                                </Link>
-                            </div>
-                        </td>
+                    <thead className="bg-rose-300 border-b-2 border-gray-200 rounded-full pt-5 pb-10">
+                    <tr className='rounded-full pb-5'>
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left">No ID.</th>
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Fecha Crioterapia</th>
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Paciente</th>
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Observaciones</th>
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Acciones</th>
                     </tr>
-                ))}
-            </tbody>
-            </table>
-</div>
+                    </thead>
+                    <tbody className="text-sm divide-y divide-gray-100 pb-5 pt-10">
+                    {patients.map((paciente) => (
+                        <tr key={paciente['id']}>
+                            <td className="p-1 whitespace-nowrap">
+                                <div className="flex items-center">
+                                    <div className="font-medium text-black">{paciente['id']}</div>
+                                </div>
+                            </td>
+                            <td className="p-1 whitespace-nowrap">
+                                <div className="text-left text-black">{paciente['fechaCrioterapia']}</div>
+                            </td>
+                            <td className="p-1 whitespace-nowrap">
+                                <div className="text-left font-medium text-rose-900">{paciente['paciente']}</div>
+                            </td>
+
+                            <td className="p-1 whitespace-nowrap">
+                                <div className="text-left text-rose-900">{paciente['observaciones']}</div>
+                            </td>
+
+                            <td className="p-1 whitespace-nowrap">
+                                <div className='pr-5 pl-5'>
+                                    <Link href={`/sys/dashboard/procedimientos/crioterapia/${paciente['id']}`}>
+                                        <button
+                                            className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-300  hover:text-black rounded text-lg">
+                                            Editar
+                                        </button>
+                                    </Link>
+                                </div>
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
             <div className="flex items-center justify-between w-full">
                 <button
                     onClick={() => handlePageChange(currentPage - 1)}
@@ -201,4 +201,4 @@ const handlePageChange = (newPage: number) => {
     );
 };
 
-export default PatientList2;
+export default CrioterapiaList;
