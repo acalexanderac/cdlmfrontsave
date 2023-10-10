@@ -309,7 +309,7 @@ function CrioterapiaFormPage() {
 
                             <div className="w-full md:w-1/2 pl-4">
                                 <label htmlFor="notasCrioterapia" className="block text-ls font-medium leading-6 text-gray-900">
-                                    Notas Crioterapia
+                                    DPI
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input

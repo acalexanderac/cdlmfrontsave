@@ -3,6 +3,20 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 
+
+interface Treatment {
+
+    id: number;
+    fechaCrioterapia: string;
+    observaciones: string;
+    notasCrioterapia: string;
+    paciente: {
+        id: number;
+        docIdentificacion: string;
+        nombrePaciente: string;
+    };
+
+}
 const CrioterapiaList: React.FC = () => {
     const { data: session } = useSession();
     const [patients, setPatients] = useState([]);
@@ -117,14 +131,14 @@ const CrioterapiaList: React.FC = () => {
                     <tr className='rounded-full pb-5'>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">No ID.</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Fecha Crioterapia</th>
-                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Paciente</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Observaciones</th>
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Paciente</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Acciones</th>
                     </tr>
                     </thead>
                     <tbody className="text-sm divide-y divide-gray-100 pb-5 pt-10">
-                    {patients.map((paciente) => (
-                        <tr key={paciente['id']}>
+                    {patients.map((paciente: Treatment) => (
+                        <tr key={paciente.id}>
                             <td className="p-1 whitespace-nowrap">
                                 <div className="flex items-center">
                                     <div className="font-medium text-black">{paciente['id']}</div>
@@ -133,14 +147,14 @@ const CrioterapiaList: React.FC = () => {
                             <td className="p-1 whitespace-nowrap">
                                 <div className="text-left text-black">{paciente['fechaCrioterapia']}</div>
                             </td>
-                            <td className="p-1 whitespace-nowrap">
-                                <div className="text-left font-medium text-rose-900">{paciente['paciente']}</div>
-                            </td>
 
                             <td className="p-1 whitespace-nowrap">
                                 <div className="text-left text-rose-900">{paciente['observaciones']}</div>
                             </td>
 
+                            <td className="p-1 whitespace-nowrap">
+                                <div className="text-left text-rose-900">{paciente['notasCrioterapia']}</div>
+                            </td>
                             <td className="p-1 whitespace-nowrap">
                                 <div className='pr-5 pl-5'>
                                     <Link href={`/sys/dashboard/procedimientos/crioterapia/${paciente['id']}`}>
