@@ -5,8 +5,7 @@ import { useParams, useRouter } from 'next/navigation'; // Updated import
 import axios from 'axios';
 import { Toaster, toast } from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
-import PatientList2 from "@/app/sys/dashboard/pacientes/pacientes.components/listtry";
-
+import PatientListSearch from '../../../pacientes/pacientes.components/search';
 interface FormData {
     fechaCrioterapia: string;
     tipoAnestesia: string;
@@ -176,11 +175,11 @@ function CrioterapiaFormPage() {
 
 
     return (
-        <div className="flex flex-col md:flex-row ">
-            <div className="flex flex-col justify-center items-center ">
+       <div className="flex justify-center items-center w-full ">
+  <div className="flex flex-col gap-5 justify-center items-center">
                 <Toaster />
 
-                <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900 pb-5">
+                <a className="flex title-font font-medium justify-center items-center text-gray-900 pb-5">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -195,26 +194,27 @@ function CrioterapiaFormPage() {
                         />
                     </svg>
 
-                    <span className="ml-3 text-2xl font-serif">
+                    <span className=" text-2xl font-serif justify-center items-center">
           {!params.id ? 'Añadir Procedimiento' : 'Editar Procedimiento'}
         </span>
                 </a>
-
+<div className='justify-center items-center'>
                 {params.id ? (
                     <button
-                        className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg"
+                        className="text-white bg-rose-900 border-0 justify-center items-center py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg"
                         onClick={handleDelete}
                     >
                         Eliminar Crioterapia ID. {params.id}
                     </button>
                 ) : (
                     <button
-                        className="text-white bg-rose-300 border-0 py-2 px-6 rounded text-lg cursor-not-allowed"
+                        className="text-white bg-rose-300 border-0 py-2 px-6 rounded text-lg cursor-not-allowed "
                         disabled
                     >
                         Añadiendo Crioterapia
                     </button>
-                )}
+                    )}
+                    </div>
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div>
@@ -333,16 +333,19 @@ function CrioterapiaFormPage() {
                                 >
                                     {!params.id ? 'Guardar Crioterapia' : 'Modificar Crioterapia'}
                                 </button>
+                              
                             </div>
                         </div>
+                        
                     </form>
+                       <div className="flex justify-center">
+            <div className="text-neutral-400 items-center">Recuerda hacer Click sobre el campo de Paciente y DPI para ser válidos</div>
+        </div>
                 </div>
             </div>
+       
             <div className="">
-
-            </div>
-            <div className="">
-                <PatientList2/>
+                <PatientListSearch/>
             </div>
         </div>
 

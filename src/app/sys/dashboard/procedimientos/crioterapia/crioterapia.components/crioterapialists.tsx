@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-
-
+import PatientListSearch from '../../../pacientes/pacientes.components/search';
 interface Treatment {
 
     id: number;
@@ -79,7 +78,8 @@ const CrioterapiaList: React.FC = () => {
     };
 
     return (
-        <div className=" align-middle flex items-center flex-col ">
+     <div className="flex justify-center items-center w-full">
+  <div className="flex flex-col gap-5">
 
 
             <div className=' pb-5 flex space-x-4'>
@@ -98,7 +98,7 @@ const CrioterapiaList: React.FC = () => {
 
             </div>
             {/* Controles de ordenamiento */}
-            <div className="pb-2 flex space-x-4 items-center">
+            <div className="pb-2 space-x-4 items-center flex justify-center">
                 <button
                     onClick={() => handleSortOrderChange('ASC')}
                     className="flex items-center text-rose-900 bg-white border-0 py-2 px-6 focus:outline-none rounded"
@@ -212,6 +212,12 @@ const CrioterapiaList: React.FC = () => {
 
 
         </div>
+            <div >
+                <PatientListSearch/>
+    </div>
+</div>
+        
+       
     );
 };
 
