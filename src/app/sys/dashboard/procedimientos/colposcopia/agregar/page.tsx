@@ -5,19 +5,16 @@ import { useParams, useRouter } from 'next/navigation'; // Updated import
 import axios from 'axios';
 import { Toaster, toast } from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
-import TipoProdList2 from "@/app/sys/dashboard/procedimientos/tipoprocedgeneral/tipoprodgeneral.components/listtry";
-import PatientList2 from "@/app/sys/dashboard/pacientes/pacientes.components/listtry";
-
+import PatientListSearch from '../../../pacientes/pacientes.components/search';
 interface FormData {
-    fechaTratamiento: string;
-    tipoAnestesia: string;
-    anestesia: boolean;
+    fechaColposcopia: string;
+    resultadoBiopsiacervix: string;
     observaciones: string;
-    patient: string;
-    treatmentype: string;
+    paciente: string;
+    dpi: string;
 }
 
-function TreatmentFormPage() {
+function ColposcopiaFormPage() {
     const params = useParams();
     const { data: session } = useSession();
 
@@ -26,17 +23,16 @@ function TreatmentFormPage() {
     const { register, handleSubmit, setValue } = useForm<FormData>();
 
     const [newProcedimiento, setNewProcedimiento] = useState<FormData>({ // Initialize with an empty FormData object
-        fechaTratamiento: '',
-        tipoAnestesia: '',
-        anestesia: false,
+        fechaColposcopia: '',
         observaciones: '',
-        patient: '',
-        treatmentype: '',
+        paciente: '',
+        dpi: '',
+        resultadoBiopsiacervix: '',
     });
     const getTreatment = async () => {
         if (params.id) {
             try {
-                const res = await axios.get(`http://localhost:3001/api/v1/treatments/${params.id}`, {
+                const res = await axios.get(`http://localhost:3001/api/v1/colposcopias/${params.id}`, {
                     // headers...
                 });
 
@@ -51,8 +47,8 @@ function TreatmentFormPage() {
                 console.log('Data from API:', dataUpdate);
 
                 // Extract the relevant properties from the objects
-                const pacienteName = dataUpdate.patient?.docIdentificacion || '';
-                const treatmentTypeName = dataUpdate.treatmentype?.name || '';
+                const pacienteName = dataUpdate.paciente?.docIdentificacion || '';
+
 
                 // Debugging: Log the extracted values
 
@@ -60,12 +56,11 @@ function TreatmentFormPage() {
                 // Update the local state with the extracted data
                 setNewProcedimiento((prevState) => ({
                     ...prevState || {},
-                    fechaTratamiento: String(dataUpdate.fechaTratamiento || ''),
-                    tipoAnestesia: String(dataUpdate.tipoAnestesia || ''),
-                    anestesia: dataUpdate.anestesia || false,
+                    fechaColposcopia: String(dataUpdate.fechaTratamiento || ''),
+                    resultadoBiopsiacervix: String(dataUpdate.resultadoBiopsiacervix || ''),
                     observaciones: String(dataUpdate.observaciones || ''),
-                    patient: pacienteName || '', // Ensure it's a string
-                    treatmentype: treatmentTypeName || '', // Ensure it's a string
+                    paciente: pacienteName || '', // Ensure it's a string
+                    dpi: String(dataUpdate.dpi || ''),
                 }));
 
                 // Update form values using setValue
@@ -108,21 +103,20 @@ function TreatmentFormPage() {
 
             // Convert patient and treatmentype objects to strings
             const updateData = {
-                fechaTratamiento: data.fechaTratamiento,
-                tipoAnestesia: data.tipoAnestesia,
-                anestesia: data.anestesia,
+                fechaColposcopia: data.fechaColposcopia,
+                resultadoBiopsiacervix: data.resultadoBiopsiacervix,
                 observaciones: data.observaciones,
-                patient: data.patient.toString(), // Convert patient object to string
-                treatmentype: data.treatmentype.toString(), // Convert treatmentype object to stringmentype object to string
+                paciente: data.paciente.toString(), // Convert patient object to string
+                dpi: data.dpi,
             };
 
-            await axios.patch(`http://localhost:3001/api/v1/treatments/${params.id}`, { ...updateData }, {
+            await axios.patch(`http://localhost:3001/api/v1/colposcopias/${params.id}`, { ...updateData }, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${session?.user?.token}`,
                 },
             });
-            router.push('/sys/dashboard/procedimientos/procedespecificos');
+            router.push('/sys/dashboard/procedimientos/colposcopia');
             router.refresh();
         } catch (error) {
             console.error(error);
@@ -149,7 +143,7 @@ function TreatmentFormPage() {
         if (!params.id) {
             try {
                 const response = await axios.post(
-                    'http://localhost:3001/api/v1/treatments',
+                    'http://localhost:3001/api/v1/colposcopias',
                     { ...data }, // Use "paciente" for the field name
                     {
                         headers: {
@@ -165,7 +159,7 @@ function TreatmentFormPage() {
 
                 console.log('Formulario enviado con éxito');
                 toast.success('Treatments creado', { duration: 3000 });
-                router.push('/sys/dashboard/procedimientos/procedespecificos');
+                router.push('/sys/dashboard/procedimientos/colposcopia');
             } catch (error) {
                 console.error('Error al enviar el formulario:', error);
                 toast.error("This didn't work.");
@@ -177,11 +171,11 @@ function TreatmentFormPage() {
 
 
     return (
-        <div className="flex flex-col md:flex-row ">
-            <div className="flex flex-col justify-center items-center ">
+       <div className="flex justify-center items-center w-full ">
+  <div className="flex flex-col gap-5 justify-center items-center">
                 <Toaster />
 
-                <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900 pb-5">
+                <a className="flex title-font font-medium justify-center items-center text-gray-900 pb-5">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -196,32 +190,33 @@ function TreatmentFormPage() {
                         />
                     </svg>
 
-                    <span className="ml-3 text-2xl font-serif">
-          {!params.id ? 'Añadir Procedimiento' : 'Editar Procedimiento'}
+                    <span className=" text-2xl font-serif justify-center items-center">
+          {!params.id ? 'Añadir Colposcopia' : 'Editar Colposcopia'}
         </span>
                 </a>
-
+<div className='justify-center items-center'>
                 {params.id ? (
                     <button
-                        className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg"
+                        className="text-white bg-rose-900 border-0 justify-center items-center py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg"
                         onClick={handleDelete}
                     >
-                        Eliminar Procedimiento ID. {params.id}
+                        Eliminar Colposcopia ID. {params.id}
                     </button>
                 ) : (
                     <button
-                        className="text-white bg-rose-300 border-0 py-2 px-6 rounded text-lg cursor-not-allowed"
+                        className="text-white bg-rose-300 border-0 py-2 px-6 rounded text-lg cursor-not-allowed "
                         disabled
                     >
-                        Añadiendo Procedimiento
+                        Añadiendo Colposcopia
                     </button>
-                )}
+                    )}
+                    </div>
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div>
                             <div className="px-5 pt-5">
                                 <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-gray-900">
-                                    Fecha de Tratamiento
+                                    Fecha de Colposcopia
                                 </label>
                                 <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-rose-500">
                                     Año-Mes-Día
@@ -232,41 +227,23 @@ function TreatmentFormPage() {
                                         id="fechaTratamiento"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="Fecha de Tratamiento"
-                                        {...register('fechaTratamiento', { required: false })}
+                                        {...register('fechaColposcopia', { required: false })}
                                     />
                                 </div>
                             </div>
 
-                            <div className="px-5">
-                                <label htmlFor="tipoAnestesia" className="block text-ls font-medium text-gray-900">
-                                    Tipo Anestesia
+                            <div className="px-5 pt-5">
+                                <label htmlFor="resultadoBiopsiacervix" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Resultado Biopsia Cervix
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
                                         type="text"
-                                        id="tipoAnestesia"
-                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20
-                  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
-                  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-1/2"
-                                        placeholder="Local, No, Intravenosa"
-                                        {...register('tipoAnestesia', { required: false })}
+                                        id="resultadoBiopsiacervix"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Resultado Biopsia Cervix"
+                                        {...register('resultadoBiopsiacervix', { required: false })}
                                     />
-                                </div>
-                            </div>
-
-                            <div className="px-5 pt-5 flex flex-wrap">
-                                <div className="w-full md:w-1/2 pr-4">
-                                    <label htmlFor="anestesia" className="block text-ls font-medium text-gray-900">
-                                        Anestesia
-                                    </label>
-                                    <div className="relative mt-2 rounded-md shadow-sm">
-                                        <input
-                                            type="checkbox"
-                                            id="anestesia"
-                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
-                                            {...register('anestesia')}
-                                        />
-                                    </div>
                                 </div>
 
                                 <div className="w-full md:w-1/2 pl-4">
@@ -287,38 +264,38 @@ function TreatmentFormPage() {
                         </div>
 
                         <div className="px-5 pt-5 flex flex-wrap">
-                            <div className="w-full md:w-1/2 pr-4">
-                                <div>
-                                    <label htmlFor="patient" className="block text-ls font-medium leading-6 text-gray-900">
-                                        Pacientes
-                                    </label>
-                                    <div className="relative mt-2 rounded-md shadow-sm">
-                                        <input
-                                            type="text"
-                                            id="patient" // Use 'patient' here if it's the field name in your form
-                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder="DPI Pacientes"
-                                            {...register('patient', { required: false })}
-                                            value={newProcedimiento.patient.toString()}
-                                            onChange={handleChange}
-                                        />
 
+                                <div className="w-full md:w-1/2 pr-4">
+                                    <div>
+                                        <label htmlFor="paciente" className="block text-ls font-medium leading-6 text-gray-900">
+                                            Pacientes
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="paciente" // Use 'patient' here if it's the field name in your form
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="DPI Pacientes"
+                                                {...register('paciente', { required: false })}
+                                                value={newProcedimiento.paciente.toString()}
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="treatmentype" className="block text-ls font-medium leading-6 text-gray-900">
-                                    Tipo Tratamiento
+                                <label htmlFor="notasCrioterapia" className="block text-ls font-medium leading-6 text-gray-900">
+                                    DPI
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
                                         type="text"
-                                        id="treatmentype"
+                                        id="dpi"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        placeholder="Nombre Tipo Tratamiento"
-                                        {...register('treatmentype', { required: false })}
-                                        value={newProcedimiento.treatmentype.toString()}
+                                        placeholder="DPI"
+                                        {...register('dpi', { required: false })}
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -332,22 +309,25 @@ function TreatmentFormPage() {
                         rounded text-lg"
                                     type="submit"
                                 >
-                                    {!params.id ? 'Guardar Procedimiento General' : 'Modificar Procedimiento General'}
+                                    {!params.id ? 'Guardar Colposcopia' : 'Modificar Colposcopia'}
                                 </button>
+                              
                             </div>
                         </div>
+                        
                     </form>
+                       <div className="flex justify-center">
+            <div className="text-neutral-400 items-center">Recuerda hacer Click sobre el campo de Paciente y DPI para ser válidos</div>
+        </div>
                 </div>
             </div>
+       
             <div className="">
-                <TipoProdList2 />
-            </div>
-            <div className="">
-                <PatientList2/>
+                <PatientListSearch/>
             </div>
         </div>
 
     );
 }
 
-export default TreatmentFormPage;
+export default ColposcopiaFormPage;

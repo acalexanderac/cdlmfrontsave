@@ -2,33 +2,27 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
+import PatientListSearch from '../../../pacientes/pacientes.components/search';
+interface Treatment {
 
-const TipoProdList2: React.FC = () => {
-    interface TipoProdc {
+    id: number;
+    fechaColposcopia: string;
+    observaciones: string;
+    dpi: string;
+    paciente: {
         id: number;
-        fechaTratamiento: string;
-        tipoAnestesia: string;
-        anestesia: boolean;
-        observaciones: string;
-        patient: {
-            id: number;
-            docIdentificacion: string;
-            nombrePaciente: string;
-        };
-        treatmentype: {
-            id: number;
-            name: string;
-        };
-    }
+        docIdentificacion: string;
+        nombrePaciente: string;
+    };
 
+}
+const ColposcopiaList: React.FC = () => {
     const { data: session } = useSession();
-    const [tipoprod, setTipoProd] = useState<TipoProdc[]>([]); // Specify the type here
+    const [patients, setPatients] = useState([]);
     const [sortOrder, setSortOrder] = useState<'ASC' | 'DESC'>('ASC'); // Estado para el ordenamiento
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [searchTerm, setSearchTerm] = useState('');
-
-
 
     const handleSearchTermChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
@@ -36,14 +30,14 @@ const TipoProdList2: React.FC = () => {
 
     useEffect(() => {
         if (session?.user?.token) {
-            fetchTipoT(currentPage);
+            fetchPacientes(currentPage);
         }
     }, [session, currentPage, sortOrder]);
 
-    const fetchTipoT = async (page: number) => {
+    const fetchPacientes = async (page: number) => {
         try {
             const response = await fetch(
-                `${process.env.NEXT_PUBLIC_BACKEND_URL}/treatments/sort?s=${searchTerm}&sort=${sortOrder}&page=${page}`,
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/colposcopias/sort?s=${searchTerm}&sort=${sortOrder}&page=${page}`,
                 {
                     method: 'GET',
                     headers: {
@@ -58,24 +52,17 @@ const TipoProdList2: React.FC = () => {
             }
 
             const data = await response.json();
-
-            console.log('Received data:', data);
-
-
-            setTipoProd(data.data);
+            setPatients(data.data);
             setTotalPages(data.last_page);
-
         } catch (error) {
-            console.error('Error fetching tratamientos:', error);
+            console.error('Error fetching patients:', error);
         }
     };
-
-
 
     const handlePageChange = (newPage: number) => {
         if (newPage >= 1 && newPage <= totalPages) {
             setCurrentPage(newPage);
-            fetchTipoT(newPage);
+            fetchPacientes(newPage);
         }
     };
 
@@ -87,11 +74,12 @@ const TipoProdList2: React.FC = () => {
     const handleSearch = () => {
         // Reiniciar la página a la primera página al realizar una nueva búsqueda
         setCurrentPage(1);
-        fetchTipoT(1); // Inicia la búsqueda en la primera página
+        fetchPacientes(1); // Inicia la búsqueda en la primera página
     };
 
     return (
-        <div className=" align-middle flex items-center flex-col ">
+     <div className="flex justify-center items-center w-full">
+  <div className="flex flex-col gap-5">
 
 
             <div className=' pb-5 flex space-x-4'>
@@ -99,7 +87,7 @@ const TipoProdList2: React.FC = () => {
                     type="text"
                     value={searchTerm}
                     onChange={handleSearchTermChange}
-                    placeholder="Buscar Tipo Procedimiento Específico"
+                    placeholder="Buscar Paciente CDLM"
                     className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300
     laceholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6 w-full"
                 />
@@ -110,7 +98,7 @@ const TipoProdList2: React.FC = () => {
 
             </div>
             {/* Controles de ordenamiento */}
-            <div className="pb-2 flex space-x-4 items-center">
+            <div className="pb-2 space-x-4 items-center flex justify-center">
                 <button
                     onClick={() => handleSortOrderChange('ASC')}
                     className="flex items-center text-rose-900 bg-white border-0 py-2 px-6 focus:outline-none rounded"
@@ -138,40 +126,40 @@ const TipoProdList2: React.FC = () => {
                 </button>
             </div>
             <div className="align-middle flex items-center flex-col pb-5">
-                <table className="py-10 rounded-full pt-5 pb-10 w-1/2">
+                <table className="py-10 rounded-full pt-5 pb-10 w-1/2 ">
                     <thead className="bg-rose-300 border-b-2 border-gray-200 rounded-full pt-5 pb-10">
-                    <tr className="rounded-full pb-5">
+                    <tr className='rounded-full pb-5'>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">No ID.</th>
-                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Fecha Tratamiento</th>
-                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Tipo Anestesia</th>
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Fecha Colposcopia</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Observaciones</th>
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Paciente</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Acciones</th>
                     </tr>
                     </thead>
                     <tbody className="text-sm divide-y divide-gray-100 pb-5 pt-10">
-                    {tipoprod.map((tratamiento) => (
-                        <tr key={tratamiento.id}>
+                    {patients.map((paciente: Treatment) => (
+                        <tr key={paciente.id}>
                             <td className="p-1 whitespace-nowrap">
                                 <div className="flex items-center">
-                                    <div className="font-medium text-black">{tratamiento.id}</div>
+                                    <div className="font-medium text-black">{paciente['id']}</div>
                                 </div>
                             </td>
                             <td className="p-1 whitespace-nowrap">
-                                <div className="text-left text-black">{tratamiento.fechaTratamiento}</div>
-                            </td>
-                            <td className="p-1 whitespace-nowrap">
-                                <div className="text-left font-medium text-rose-900">{tratamiento.tipoAnestesia}</div>
+                                <div className="text-left text-black">{paciente['fechaColposcopia']}</div>
                             </td>
 
                             <td className="p-1 whitespace-nowrap">
-                                <div className="text-left text-rose-900">{tratamiento.observaciones}</div>
+                                <div className="text-left text-rose-900">{paciente['observaciones']}</div>
                             </td>
 
-
                             <td className="p-1 whitespace-nowrap">
-                                <div className="pr-5 pl-5">
-                                    <Link href={`/sys/dashboard/procedimientos/procedespecificos/${tratamiento.id}`}>
-                                        <button className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-300 hover:text-black rounded text-lg">
+                                <div className="text-left text-rose-900">{paciente['dpi']}</div>
+                            </td>
+                            <td className="p-1 whitespace-nowrap">
+                                <div className='pr-5 pl-5'>
+                                    <Link href={`/sys/dashboard/procedimientos/colposcopia/${paciente['id']}`}>
+                                        <button
+                                            className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-300  hover:text-black rounded text-lg">
                                             Editar
                                         </button>
                                     </Link>
@@ -224,7 +212,13 @@ const TipoProdList2: React.FC = () => {
 
 
         </div>
+            <div >
+                <PatientListSearch/>
+    </div>
+</div>
+        
+       
     );
 };
 
-export default TipoProdList2;
+export default ColposcopiaList;

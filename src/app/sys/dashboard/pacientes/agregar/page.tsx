@@ -128,7 +128,7 @@ const updateTask = async () => {
       body: JSON.stringify({ ...newPaciente, edadPaciente : edadPac }), // Include the parsed telefono
 
     });
-    router.push("/sys/dashboard/patients");
+    router.push("/sys/dashboard/pacientes");
     router.refresh();
   } catch (error) {
     console.error(error);
