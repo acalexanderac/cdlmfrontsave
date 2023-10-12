@@ -7,15 +7,14 @@ import { Toaster, toast } from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
 import PatientListSearch from '../../../pacientes/pacientes.components/search';
 interface FormData {
-    fechaCrioterapia: string;
-    tipoAnestesia: string;
-    anestesia: boolean;
+    fechaPapanicolaous: string;
+    resultadoPapanicolaous: string;
     observaciones: string;
     paciente: string;
-    notasCrioterapia: string;
+    dpi: string;
 }
 
-function CrioterapiaFormPage() {
+function PapanicolaouFormPage() {
     const params = useParams();
     const { data: session } = useSession();
 
@@ -24,17 +23,16 @@ function CrioterapiaFormPage() {
     const { register, handleSubmit, setValue } = useForm<FormData>();
 
     const [newProcedimiento, setNewProcedimiento] = useState<FormData>({ // Initialize with an empty FormData object
-        fechaCrioterapia: '',
-        tipoAnestesia: '',
-        anestesia: false,
+        fechaPapanicolaous: '',
         observaciones: '',
         paciente: '',
-        notasCrioterapia: '',
+        dpi: '',
+        resultadoPapanicolaous: '',
     });
     const getTreatment = async () => {
         if (params.id) {
             try {
-                const res = await axios.get(`http://localhost:3001/api/v1/crioterapias/${params.id}`, {
+                const res = await axios.get(`http://localhost:3001/api/v1/papanicolaous/${params.id}`, {
                     // headers...
                 });
 
@@ -58,12 +56,11 @@ function CrioterapiaFormPage() {
                 // Update the local state with the extracted data
                 setNewProcedimiento((prevState) => ({
                     ...prevState || {},
-                    fechaCrioterapia: String(dataUpdate.fechaTratamiento || ''),
-                    tipoAnestesia: String(dataUpdate.tipoAnestesia || ''),
-                    anestesia: dataUpdate.anestesia || false,
+                    fechaPapanicolaous: String(dataUpdate.fechaTratamiento || ''),
+                    resultadoPapanicolaous: String(dataUpdate.resultadoPapanicolaous || ''),
                     observaciones: String(dataUpdate.observaciones || ''),
                     paciente: pacienteName || '', // Ensure it's a string
-                    notasCrioterapia: String(dataUpdate.notasCrioterapia || ''),
+                    dpi: String(dataUpdate.dpi || ''),
                 }));
 
                 // Update form values using setValue
@@ -82,13 +79,13 @@ function CrioterapiaFormPage() {
     const handleDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             try {
-                await axios.delete(`http://localhost:3001/api/v1/crioterapias/${params.id}`, {
+                await axios.delete(`http://localhost:3001/api/v1/papanicolaous/${params.id}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${session?.user?.token}`,
                     },
                 });
-                router.push('/sys/dashboard/procedimientos/crioterapia');
+                router.push('/sys/dashboard/procedimientos/papanicolaou');
                 router.refresh(); // Use reload instead of refresh
             } catch (error) {
                 console.error(error);
@@ -106,21 +103,20 @@ function CrioterapiaFormPage() {
 
             // Convert patient and treatmentype objects to strings
             const updateData = {
-                fechaCrioterapia: data.fechaCrioterapia,
-                tipoAnestesia: data.tipoAnestesia,
-                anestesia: data.anestesia,
+                fechaPapanicolaous: data.fechaPapanicolaous,
+                resultadoPapanicolaous: data.resultadoPapanicolaous,
                 observaciones: data.observaciones,
                 paciente: data.paciente.toString(), // Convert patient object to string
-                notasCrioterapia: data.notasCrioterapia,
+                dpi: data.dpi,
             };
 
-            await axios.patch(`http://localhost:3001/api/v1/crioterapias/${params.id}`, { ...updateData }, {
+            await axios.patch(`http://localhost:3001/api/v1/papanicolaous/${params.id}`, { ...updateData }, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${session?.user?.token}`,
                 },
             });
-            router.push('/sys/dashboard/procedimientos/crioterapia');
+            router.push('/sys/dashboard/procedimientos/papanicolaou');
             router.refresh();
         } catch (error) {
             console.error(error);
@@ -147,7 +143,7 @@ function CrioterapiaFormPage() {
         if (!params.id) {
             try {
                 const response = await axios.post(
-                    'http://localhost:3001/api/v1/crioterapias',
+                    'http://localhost:3001/api/v1/papanicolaous',
                     { ...data }, // Use "paciente" for the field name
                     {
                         headers: {
@@ -163,7 +159,7 @@ function CrioterapiaFormPage() {
 
                 console.log('Formulario enviado con éxito');
                 toast.success('Treatments creado', { duration: 3000 });
-                router.push('/sys/dashboard/procedimientos/crioterapia');
+                router.push('/sys/dashboard/procedimientos/papanicolaou');
             } catch (error) {
                 console.error('Error al enviar el formulario:', error);
                 toast.error("This didn't work.");
@@ -195,7 +191,7 @@ function CrioterapiaFormPage() {
                     </svg>
 
                     <span className=" text-2xl font-serif justify-center items-center">
-          {!params.id ? 'Añadir Procedimiento' : 'Editar Procedimiento'}
+          {!params.id ? 'Añadir Papanicolaous' : 'Editar Papanicolaous'}
         </span>
                 </a>
 <div className='justify-center items-center'>
@@ -204,14 +200,14 @@ function CrioterapiaFormPage() {
                         className="text-white bg-rose-900 border-0 justify-center items-center py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg"
                         onClick={handleDelete}
                     >
-                        Eliminar Crioterapia ID. {params.id}
+                        Eliminar Papanicolaous ID. {params.id}
                     </button>
                 ) : (
                     <button
                         className="text-white bg-rose-300 border-0 py-2 px-6 rounded text-lg cursor-not-allowed "
                         disabled
                     >
-                        Añadiendo Crioterapia
+                        Añadiendo Papanicolaous
                     </button>
                     )}
                     </div>
@@ -220,7 +216,7 @@ function CrioterapiaFormPage() {
                         <div>
                             <div className="px-5 pt-5">
                                 <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-gray-900">
-                                    Fecha de Crioterapia
+                                    Fecha de Colposcopia
                                 </label>
                                 <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-rose-500">
                                     Año-Mes-Día
@@ -231,41 +227,23 @@ function CrioterapiaFormPage() {
                                         id="fechaTratamiento"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="Fecha de Tratamiento"
-                                        {...register('fechaCrioterapia', { required: false })}
+                                        {...register('fechaPapanicolaous', { required: false })}
                                     />
                                 </div>
                             </div>
 
-                            <div className="px-5">
-                                <label htmlFor="tipoAnestesia" className="block text-ls font-medium text-gray-900">
-                                    Tipo Anestesia
+                            <div className="px-5 pt-5">
+                                <label htmlFor="resultadoPapanicolaous" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Resultado Papanicolaous
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
                                         type="text"
-                                        id="tipoAnestesia"
-                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20
-                  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
-                  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-1/2"
-                                        placeholder="Local, No, Intravenosa"
-                                        {...register('tipoAnestesia', { required: false })}
+                                        id="resultadoPapanicolaous"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Resultado Papanicolaous"
+                                        {...register('resultadoPapanicolaous', { required: false })}
                                     />
-                                </div>
-                            </div>
-
-                            <div className="px-5 pt-5 flex flex-wrap">
-                                <div className="w-full md:w-1/2 pr-4">
-                                    <label htmlFor="anestesia" className="block text-ls font-medium text-gray-900">
-                                        Anestesia
-                                    </label>
-                                    <div className="relative mt-2 rounded-md shadow-sm">
-                                        <input
-                                            type="checkbox"
-                                            id="anestesia"
-                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
-                                            {...register('anestesia')}
-                                        />
-                                    </div>
                                 </div>
 
                                 <div className="w-full md:w-1/2 pl-4">
@@ -314,10 +292,10 @@ function CrioterapiaFormPage() {
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
                                         type="text"
-                                        id="notasCrioterapia"
+                                        id="dpi"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        placeholder="Notas Crioterapia"
-                                        {...register('notasCrioterapia', { required: false })}
+                                        placeholder="DPI"
+                                        {...register('dpi', { required: false })}
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -331,7 +309,7 @@ function CrioterapiaFormPage() {
                         rounded text-lg"
                                     type="submit"
                                 >
-                                    {!params.id ? 'Guardar Crioterapia' : 'Modificar Crioterapia'}
+                                    {!params.id ? 'Guardar Papanicolaous' : 'Modificar Papanicolaous'}
                                 </button>
                               
                             </div>
@@ -352,4 +330,4 @@ function CrioterapiaFormPage() {
     );
 }
 
-export default CrioterapiaFormPage;
+export default PapanicolaouFormPage;

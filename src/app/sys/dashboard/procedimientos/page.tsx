@@ -68,11 +68,11 @@ const Procedimientos = () => {
                                    style={{ maxWidth: '100%', maxHeight: '100%' }}
                             />
                             <div className="w-full">
-                                <h2 className="title-font font-medium text-lg text-gray-900">Tipo Procedimientos Específicos</h2>
-                                <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Tipos de Procedimientos Específicos</h3>
-                                <Link href="/sys/dashboard/procedimientos/tipoprocedespec">
+                                <h2 className="title-font font-medium text-lg text-gray-900">Papanicolaous</h2>
+                                <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Registros de Papanicolaous</h3>
+                                <Link href="/sys/dashboard/procedimientos/papanicolaou">
                                     <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
-                                        Ir a Tipo Procedimientos Específicos</button>
+                                        Ir a Papanicolaous</button>
                                 </Link>
                             </div>
                         </div>
