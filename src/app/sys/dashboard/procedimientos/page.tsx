@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from 'react'
-import {TipoProd1, TipoProd2, services2} from "@/styles/imports";
+import {TipoProd1, TipoProd2, services2, services8, services1} from "@/styles/imports";
 import Link from "next/link";
 
 const Procedimientos = () => {
@@ -40,7 +40,7 @@ const Procedimientos = () => {
                     <div className="p-4 lg:w-1/4 md:w-1/2">
                         <div className="h-full flex flex-col items-center text-center">
                             <Image className="tracking-widest align-middle flex-auto "
-                                   src={TipoProd2}
+                                   src={services1}
                                    alt="Tratamientos Clínica"
 
                                    blurDataURL="data:..."
@@ -80,7 +80,7 @@ const Procedimientos = () => {
                     <div className="p-4 lg:w-1/4 md:w-1/2">
                         <div className="h-full flex flex-col items-center text-center">
                             <Image className="tracking-widest align-middle flex-auto "
-                                   src={services2}
+                                   src={services8}
                                    alt="Tratamientos Clínica"
 
                                    blurDataURL="data:..."
@@ -88,11 +88,11 @@ const Procedimientos = () => {
                                    style={{ maxWidth: '100%', maxHeight: '100%' }}
                             />
                             <div className="w-full">
-                                <h2 className="title-font font-medium text-lg text-gray-900">Tipo Procedimientos Específicos</h2>
-                                <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Tipos de Procedimientos Específicos</h3>
-                                <Link href="/sys/dashboard/procedimientos/tipoprocedespec">
+                                <h2 className="title-font font-medium text-lg text-gray-900">Pacientes Post Operación</h2>
+                                <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Registros de Pacientes Post Operación</h3>
+                                <Link href="/sys/dashboard/procedimientos/postoperacion">
                                     <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
-                                        Ir a Tipo Procedimientos Específicos</button>
+                                        Ir a Pacientes Post Operación</button>
                                 </Link>
                             </div>
                         </div>
