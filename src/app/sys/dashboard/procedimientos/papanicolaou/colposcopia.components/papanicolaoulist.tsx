@@ -8,6 +8,7 @@ interface Treatment {
     id: number;
     fechaPapanicolaous: string;
     observaciones: string;
+    resultadoPapanicolaous: string;
     dpi: string;
     paciente: {
         id: number;
@@ -131,7 +132,7 @@ const PapanicolaouList: React.FC = () => {
                     <tr className='rounded-full pb-5'>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">No ID.</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Fecha Papanicolaous</th>
-                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Observaciones</th>
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Resultado Papanicolaous</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Paciente</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Acciones</th>
                     </tr>
@@ -149,7 +150,7 @@ const PapanicolaouList: React.FC = () => {
                             </td>
 
                             <td className="p-1 whitespace-nowrap">
-                                <div className="text-left text-rose-900">{paciente['observaciones']}</div>
+                                <div className="text-left text-rose-900">{paciente['resultadoPapanicolaous']}</div>
                             </td>
 
                             <td className="p-1 whitespace-nowrap">

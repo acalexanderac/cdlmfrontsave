@@ -45,19 +45,20 @@ export default function Sidebar() {
                                         <div>
 
 
-                                                <a href="/sys/dashboard/procedimientos" className="px-4 font-semibold text-xs  text-gray uppercase ">Procedimientos Generales</a>
+                                                    <a className="px-4 font-semibold text-xs  text-gray uppercase ">
+                                                        Procedimientos</a>
                                                 <div className="mt-4 bg-top bg-cover space-y-1">
 
-                                                    <a href="/sys/dashboard/procedimientos/procedespecificos" className="font-medium text-sm items-center rounded-lg text-rose-900 px-4 py-2.5 block
+                                                    <a href="/sys/dashboard/procedimientos" className="font-medium text-sm items-center rounded-lg text-rose-900 px-4 py-2.5 block
                       transition-all duration-200 hover:bg-rose-300 group cursor-pointer" >
 
-                                                        <span> Procedimiento General </span>
+                                                        <span> Procedimientos Generales</span>
                                                     </a>
 
-                                                    <a href="/sys/dashboard/procedimientos/tipoprocedgeneral" className="font-medium text-sm items-center rounded-lg text-rose-900 px-4 py-2.5 block
+                                                    <a href="/sys/dashboard/procedimientosespec" className="font-medium text-sm items-center rounded-lg text-rose-900 px-4 py-2.5 block
                       transition-all duration-200 hover:bg-rose-300 group cursor-pointer" >
 
-                                                        <span> Tipo Procedimiento General </span>
+                                                        <span> Procedimientos Específicos </span>
                                                     </a>
 
 

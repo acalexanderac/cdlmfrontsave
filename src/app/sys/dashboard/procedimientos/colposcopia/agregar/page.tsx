@@ -6,9 +6,20 @@ import axios from 'axios';
 import { Toaster, toast } from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
 import PatientListSearch from '../../../pacientes/pacientes.components/search';
+import { colposcopiadiag, crioterapiaimg } from '@/styles/imports';
+import Image from 'next/image';
+
 interface FormData {
     fechaColposcopia: string;
     resultadoBiopsiacervix: string;
+     cuadrantesuperiorizq: boolean;
+    cuadrantesuperiorder: boolean;
+    cuadranteinferiorizq: boolean;
+    cuadranteinferiorder: boolean;
+    notascuadrantesuperiorizq: string;
+    notascuadrantesuperiorder: string;
+    notascuadranteinferiorizq: string;
+    notascuadranteinferiorder: string;
     observaciones: string;
     paciente: string;
     dpi: string;
@@ -24,6 +35,14 @@ function ColposcopiaFormPage() {
 
     const [newProcedimiento, setNewProcedimiento] = useState<FormData>({ // Initialize with an empty FormData object
         fechaColposcopia: '',
+         cuadranteinferiorder: false,
+        cuadranteinferiorizq: false,
+        cuadrantesuperiorder: false,
+        cuadrantesuperiorizq: false,
+        notascuadranteinferiorder: '',
+        notascuadranteinferiorizq: '',
+        notascuadrantesuperiorder: '',
+        notascuadrantesuperiorizq: '',
         observaciones: '',
         paciente: '',
         dpi: '',
@@ -58,6 +77,14 @@ function ColposcopiaFormPage() {
                     ...prevState || {},
                     fechaColposcopia: String(dataUpdate.fechaTratamiento || ''),
                     resultadoBiopsiacervix: String(dataUpdate.resultadoBiopsiacervix || ''),
+                    cuadranteinferiorder: Boolean(dataUpdate.cuadranteinferiorder || false || null),
+                    cuadranteinferiorizq: Boolean(dataUpdate.cuadranteinferiorizq || false || null),
+                    cuadrantesuperiorder: Boolean(dataUpdate.cuadrantesuperiorder || false || null) ,
+                    cuadrantesuperiorizq: Boolean(dataUpdate.cuadrantesuperiorizq || false || null),
+                    notascuadranteinferiorder: String(dataUpdate.notascuadranteinferiorder || ''),
+                    notascuadranteinferiorizq: String(dataUpdate.notascuadranteinferiorizq || ''),
+                    notascuadrantesuperiorder: String(dataUpdate.notascuadrantesuperiorder || ''),
+                    notascuadrantesuperiorizq: String(dataUpdate.notascuadrantesuperiorizq || ''),
                     observaciones: String(dataUpdate.observaciones || ''),
                     paciente: pacienteName || '', // Ensure it's a string
                     dpi: String(dataUpdate.dpi || ''),
@@ -79,13 +106,13 @@ function ColposcopiaFormPage() {
     const handleDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             try {
-                await axios.delete(`http://localhost:3001/api/v1/treatments/${params.id}`, {
+                await axios.delete(`http://localhost:3001/api/v1/colposcopias/${params.id}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${session?.user?.token}`,
                     },
                 });
-                router.push('/sys/dashboard/procedimientos/procedespecificos');
+                router.push('/sys/dashboard/procedimientos/colposcopia');
                 router.refresh(); // Use reload instead of refresh
             } catch (error) {
                 console.error(error);
@@ -105,6 +132,14 @@ function ColposcopiaFormPage() {
             const updateData = {
                 fechaColposcopia: data.fechaColposcopia,
                 resultadoBiopsiacervix: data.resultadoBiopsiacervix,
+                 cuadranteinferiorder: data.cuadranteinferiorder,
+                cuadranteinferiorizq: data.cuadranteinferiorizq,
+                cuadrantesuperiorder: data.cuadrantesuperiorder,
+                cuadrantesuperiorizq: data.cuadrantesuperiorizq,
+                notascuadranteinferiorder: data.notascuadranteinferiorder,
+                notascuadranteinferiorizq: data.notascuadranteinferiorizq,
+                notascuadrantesuperiorder: data.notascuadrantesuperiorder,
+                notascuadrantesuperiorizq: data.notascuadrantesuperiorizq,
                 observaciones: data.observaciones,
                 paciente: data.paciente.toString(), // Convert patient object to string
                 dpi: data.dpi,
@@ -213,56 +248,209 @@ function ColposcopiaFormPage() {
                     </div>
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div>
-                            <div className="px-5 pt-5">
-                                <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-gray-900">
-                                    Fecha de Colposcopia
-                                </label>
-                                <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-rose-500">
-                                    Año-Mes-Día
-                                </label>
-                                <div className="relative mt-2 rounded-md shadow-sm">
-                                    <input
-                                        type="text"
-                                        id="fechaTratamiento"
-                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        placeholder="Fecha de Tratamiento"
-                                        {...register('fechaColposcopia', { required: false })}
-                                    />
-                                </div>
-                            </div>
+                      
+  <div className="px-5 pt-5 flex">
+  <div className="flex-1 mr-5">
+    <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-gray-900">
+      Fecha de Crioterapia
+    </label>
+    <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-rose-500">
+      Año-Mes-Día
+    </label>
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="text"
+        id="fechaTratamiento"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha de Tratamiento"
+        {...register('fechaColposcopia', { required: false })}
+      />
+    </div>
+  </div>
 
-                            <div className="px-5 pt-5">
-                                <label htmlFor="resultadoBiopsiacervix" className="block text-ls font-medium leading-6 text-gray-900">
-                                    Resultado Biopsia Cervix
-                                </label>
-                                <div className="relative mt-2 rounded-md shadow-sm">
-                                    <input
-                                        type="text"
-                                        id="resultadoBiopsiacervix"
-                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        placeholder="Resultado Biopsia Cervix"
-                                        {...register('resultadoBiopsiacervix', { required: false })}
-                                    />
-                                </div>
+  <div className="flex-1">
+    <label htmlFor="resultadoBiopsiacervix" className="block text-ls font-medium text-gray-900">
+      Resultado Biopsia Cérvix
+                                    </label>
+                                    <label htmlFor="noCriot" className="block text-ls font-medium leading-6 text-gray-300">
+ Resultado Biopsia Cérvix
+    </label>
+    <div className="relative mt-2 rounded-md shadow-sm ">
+      <input
+  type="text"
+  id="resultadoBiopsiacervix"
+  className="block rounded-md border-0 py-1.5 pl-7 pr-20
+    text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+    focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"
+  placeholder="Biopsia Cérvix"
+  {...register('resultadoBiopsiacervix')} // Remove { required: false }
+/>
 
-                                <div className="w-full md:w-1/2 pl-4">
+    </div>
+  </div>
+                        </div>
+                            <div className="px-5 pt-5 flex">
+  <div className="flex-1 mr-5">
+  
                                     <label htmlFor="observaciones" className="block text-ls font-medium text-gray-900">
-                                        Observaciones
+                                        Observaciones Generales
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
                                         <input
                                             type="text"
                                             id="observaciones"
                                             className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder="Observaciones"
+                                            placeholder="Observaciones Generales"
                                             {...register('observaciones', { required: false })}
+                                        />
+                                    </div>
+                            
+  </div>
+
+ <div className="flex-1">
+  <div>
+    <div className="flex-1">
+      
+    <Image className=" align-middle flex-auto mx-auto"
+                           src={colposcopiadiag}
+                           alt="Pacientes Clínica"
+                           width={120}
+                           height={120}
+                           blurDataURL="data:..."
+                           placeholder="blur"
+                    />
+                                            
+    </div> 
+  </div>
+</div> 
+
+
+</div>
+
+                        <div className="px-5 pt-5 flex flex-wrap">
+                                <div className="w-full md:w-1/2 pr-4">
+                                    <label htmlFor="anestesia" className="block text-ls font-medium text-gray-900">
+                                        Cuadrante Superior Izquierdo
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="cuadrantesuperiorizq"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('cuadrantesuperiorizq', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full md:w-1/2 pl-4">
+                                    <label htmlFor="notascuadrantesuperiorizq" className="block text-ls font-medium text-gray-900">
+                                        Notas Cuadrante Superior Izquierdo
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="text"
+                                            id="notascuadrantesuperiorizq"
+                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            placeholder="Cuadrante Superior Izq."
+                                            {...register('notascuadrantesuperiorizq', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+                        </div>
+                        
+                        <div className="px-5 pt-5 flex flex-wrap">
+                                <div className="w-full md:w-1/2 pr-4">
+                                    <label htmlFor="cuadrantesuperiorder" className="block text-ls font-medium text-gray-900">
+                                        Cuadrante Superior Derecho
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="cuadrantesuperiorder"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('cuadrantesuperiorder', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full md:w-1/2 pl-4">
+                                    <label htmlFor="notascuadrantesuperiorizq" className="block text-ls font-medium text-gray-900">
+                                        Notas Cuadrante Superior Derecho
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="text"
+                                            id="notascuadrantesuperiorizq"
+                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            placeholder="Cuadrante Superior Izq."
+                                            {...register('notascuadrantesuperiorder', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+                        </div>
+                        
+                                <div className="px-5 pt-5 flex flex-wrap">
+                                <div className="w-full md:w-1/2 pr-4">
+                                    <label htmlFor="cuadranteinferiorder" className="block text-ls font-medium text-gray-900">
+                                        Cuadrante Inferior Derecho
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="cuadranteinferiorder"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('cuadranteinferiorder', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full md:w-1/2 pl-4">
+                                    <label htmlFor="notascuadranteinferiorder" className="block text-ls font-medium text-gray-900">
+                                        Notas Cuadrante Inferior Derecho
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="text"
+                                            id="notascuadranteinferiorder"
+                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            placeholder="Cuadrante Inferior Der."
+                                            {...register('notascuadranteinferiorder', { required: false })}
                                         />
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
+                           <div className="px-5 pt-5 flex flex-wrap">
+                                <div className="w-full md:w-1/2 pr-4">
+                                    <label htmlFor="anestesia" className="block text-ls font-medium text-gray-900">
+                                        Cuadrante Inferior Izquierdo
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="cuadranteinferiorizq"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('cuadranteinferiorizq', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full md:w-1/2 pl-4">
+                                    <label htmlFor="notascuadranteinferiorder" className="block text-ls font-medium text-gray-900">
+                                        Notas Cuadrante Inferior Izquierdo
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="text"
+                                            id="notascuadranteinferiorder"
+                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            placeholder="Cuadrante Inferior Izq."
+                                            {...register('notascuadranteinferiorizq', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+                        </div>
+                        
                         <div className="px-5 pt-5 flex flex-wrap">
 
                                 <div className="w-full md:w-1/2 pr-4">
