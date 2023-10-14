@@ -21,7 +21,7 @@ function PacientesCrud() {
                    
       </div>
       <div className="align-center pl-5 pb-10">
-      <Link href="/sys/dashboard/procedespecificos/clinicadelamujer/agregar">
+      <Link href="/sys/dashboard/procedimientosespec/clinicadelamujer/agregar">
         <button className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg">Agregar Registro</button>
         </Link>
         

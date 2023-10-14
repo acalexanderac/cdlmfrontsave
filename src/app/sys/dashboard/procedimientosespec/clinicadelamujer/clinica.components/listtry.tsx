@@ -159,7 +159,7 @@ const handlePageChange = (newPage: number) => {
                             </td>
                             <td className="p-1 whitespace-nowrap">
                                 <div className='pr-5 pl-5'>
-                                    <Link href={`/sys/dashboard/procedimientos/papanicolaou/${paciente['id']}`}>
+                                    <Link href={`/sys/dashboard/procedimientosespec/clinicadelamujer/${paciente['id']}`}>
                                         <button
                                             className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-300  hover:text-black rounded text-lg">
                                             Editar

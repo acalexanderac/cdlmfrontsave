@@ -1,3 +1,3 @@
-import PacientesFormPage from "@/app/sys/dashboard/pacientes/agregar/page";
+import ClinicaFormPage from "@/app/sys/dashboard/procedimientosespec/clinicadelamujer/agregar/page";
 
-export default PacientesFormPage;
+export default ClinicaFormPage;
