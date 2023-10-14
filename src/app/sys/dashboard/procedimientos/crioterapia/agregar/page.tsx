@@ -6,10 +6,19 @@ import axios from 'axios';
 import { Toaster, toast } from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
 import PatientListSearch from '../../../pacientes/pacientes.components/search';
+import { Logo, crioterapiaimg, proced3 } from '@/styles/imports';
+import Image from 'next/image';
 interface FormData {
     fechaCrioterapia: string;
-    tipoAnestesia: string;
-    anestesia: boolean;
+    cuadrantesuperiorizq: boolean;
+    cuadrantesuperiorder: boolean;
+    cuadranteinferiorizq: boolean;
+    cuadranteinferiorder: boolean;
+    notascuadrantesuperiorizq: string;
+    notascuadrantesuperiorder: string;
+    notascuadranteinferiorizq: string;
+    notascuadranteinferiorder: string;
+    numeroCrioterapia: number;
     observaciones: string;
     paciente: string;
     notasCrioterapia: string;
@@ -25,8 +34,15 @@ function CrioterapiaFormPage() {
 
     const [newProcedimiento, setNewProcedimiento] = useState<FormData>({ // Initialize with an empty FormData object
         fechaCrioterapia: '',
-        tipoAnestesia: '',
-        anestesia: false,
+        cuadranteinferiorder: false,
+        cuadranteinferiorizq: false,
+        cuadrantesuperiorder: false,
+        cuadrantesuperiorizq: false,
+        notascuadranteinferiorder: '',
+        notascuadranteinferiorizq: '',
+        notascuadrantesuperiorder: '',
+        notascuadrantesuperiorizq: '',
+        numeroCrioterapia: 0,
         observaciones: '',
         paciente: '',
         notasCrioterapia: '',
@@ -59,8 +75,15 @@ function CrioterapiaFormPage() {
                 setNewProcedimiento((prevState) => ({
                     ...prevState || {},
                     fechaCrioterapia: String(dataUpdate.fechaTratamiento || ''),
-                    tipoAnestesia: String(dataUpdate.tipoAnestesia || ''),
-                    anestesia: dataUpdate.anestesia || false,
+                    cuadranteinferiorder: Boolean(dataUpdate.cuadranteinferiorder || false || null),
+                    cuadranteinferiorizq: Boolean(dataUpdate.cuadranteinferiorizq || false || null),
+                    cuadrantesuperiorder: Boolean(dataUpdate.cuadrantesuperiorder || false || null) ,
+                    cuadrantesuperiorizq: Boolean(dataUpdate.cuadrantesuperiorizq || false || null),
+                    notascuadranteinferiorder: String(dataUpdate.notascuadranteinferiorder || ''),
+                    notascuadranteinferiorizq: String(dataUpdate.notascuadranteinferiorizq || ''),
+                    notascuadrantesuperiorder: String(dataUpdate.notascuadrantesuperiorder || ''),
+                    notascuadrantesuperiorizq: String(dataUpdate.notascuadrantesuperiorizq || ''),
+                   numeroCrioterapia: Number(dataUpdate.numeroCrioterapia || 0 || null),
                     observaciones: String(dataUpdate.observaciones || ''),
                     paciente: pacienteName || '', // Ensure it's a string
                     notasCrioterapia: String(dataUpdate.notasCrioterapia || ''),
@@ -107,8 +130,15 @@ function CrioterapiaFormPage() {
             // Convert patient and treatmentype objects to strings
             const updateData = {
                 fechaCrioterapia: data.fechaCrioterapia,
-                tipoAnestesia: data.tipoAnestesia,
-                anestesia: data.anestesia,
+                cuadranteinferiorder: data.cuadranteinferiorder,
+                cuadranteinferiorizq: data.cuadranteinferiorizq,
+                cuadrantesuperiorder: data.cuadrantesuperiorder,
+                cuadrantesuperiorizq: data.cuadrantesuperiorizq,
+                notascuadranteinferiorder: data.notascuadranteinferiorder,
+                notascuadranteinferiorizq: data.notascuadranteinferiorizq,
+                notascuadrantesuperiorder: data.notascuadrantesuperiorder,
+                notascuadrantesuperiorizq: data.notascuadrantesuperiorizq,
+                numeroCrioterapia: data.numeroCrioterapia,
                 observaciones: data.observaciones,
                 paciente: data.paciente.toString(), // Convert patient object to string
                 notasCrioterapia: data.notasCrioterapia,
@@ -176,7 +206,7 @@ function CrioterapiaFormPage() {
 
     return (
        <div className="flex justify-center items-center w-full ">
-  <div className="flex flex-col gap-5 justify-center items-center">
+  <div className="flex flex-col justify-center items-center">
                 <Toaster />
 
                 <a className="flex title-font font-medium justify-center items-center text-gray-900 pb-5">
@@ -195,7 +225,7 @@ function CrioterapiaFormPage() {
                     </svg>
 
                     <span className=" text-2xl font-serif justify-center items-center">
-          {!params.id ? 'Añadir Procedimiento' : 'Editar Procedimiento'}
+          {!params.id ? 'Añadir Crioterapia' : 'Editar Crioterapia'}
         </span>
                 </a>
 <div className='justify-center items-center'>
@@ -218,71 +248,216 @@ function CrioterapiaFormPage() {
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div>
-                            <div className="px-5 pt-5">
-                                <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-gray-900">
-                                    Fecha de Crioterapia
-                                </label>
-                                <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-rose-500">
-                                    Año-Mes-Día
-                                </label>
-                                <div className="relative mt-2 rounded-md shadow-sm">
-                                    <input
-                                        type="text"
-                                        id="fechaTratamiento"
-                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        placeholder="Fecha de Tratamiento"
-                                        {...register('fechaCrioterapia', { required: false })}
-                                    />
-                                </div>
-                            </div>
+<div className="px-5 pt-5 flex">
+  <div className="flex-1 mr-5">
+    <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-gray-900">
+      Fecha de Crioterapia
+    </label>
+    <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-rose-500">
+      Año-Mes-Día
+    </label>
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="text"
+        id="fechaTratamiento"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha de Tratamiento"
+        {...register('fechaCrioterapia', { required: false })}
+      />
+    </div>
+  </div>
 
-                            <div className="px-5">
-                                <label htmlFor="tipoAnestesia" className="block text-ls font-medium text-gray-900">
-                                    Tipo Anestesia
-                                </label>
-                                <div className="relative mt-2 rounded-md shadow-sm">
-                                    <input
-                                        type="text"
-                                        id="tipoAnestesia"
-                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20
-                  text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
-                  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-1/2"
-                                        placeholder="Local, No, Intravenosa"
-                                        {...register('tipoAnestesia', { required: false })}
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="px-5 pt-5 flex flex-wrap">
-                                <div className="w-full md:w-1/2 pr-4">
-                                    <label htmlFor="anestesia" className="block text-ls font-medium text-gray-900">
-                                        Anestesia
+  <div className="flex-1">
+    <label htmlFor="numeroCrioterapia" className="block text-ls font-medium text-gray-900">
+      Número de Crioterapia
                                     </label>
-                                    <div className="relative mt-2 rounded-md shadow-sm">
-                                        <input
-                                            type="checkbox"
-                                            id="anestesia"
-                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
-                                            {...register('anestesia')}
-                                        />
-                                    </div>
-                                </div>
+                                    <label htmlFor="noCriot" className="block text-ls font-medium leading-6 text-rose-500">
+      No. 1,2,3 o 4
+    </label>
+    <div className="relative mt-2 rounded-md shadow-sm ">
+      <input
+  type="number"
+  id="numeroCrioterapia"
+  className="block rounded-md border-0 py-1.5 pl-7 pr-20
+    text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+    focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"
+  placeholder="1,2,3,4"
+  {...register('numeroCrioterapia')} // Remove { required: false }
+/>
 
-                                <div className="w-full md:w-1/2 pl-4">
+    </div>
+  </div>
+</div>
+
+                            <div className="px-5 pt-5 flex">
+  <div className="flex-1 mr-5">
+  
                                     <label htmlFor="observaciones" className="block text-ls font-medium text-gray-900">
-                                        Observaciones
+                                        Observaciones Generales
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
                                         <input
                                             type="text"
                                             id="observaciones"
                                             className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder="Observaciones"
+                                            placeholder="Observaciones Generales"
                                             {...register('observaciones', { required: false })}
+                                        />
+                                    </div>
+                            
+  </div>
+
+ <div className="flex-1">
+  <div>
+    <div className="flex-1">
+      
+    <Image className=" align-middle flex-auto mx-auto"
+                           src={crioterapiaimg}
+                           alt="Pacientes Clínica"
+                           width={120}
+                           height={120}
+                           blurDataURL="data:..."
+                           placeholder="blur"
+                    />
+                                            
+    </div>
+  </div>
+</div>
+
+
+</div>
+                            
+         
+                            
+ <div className="px-5 pt-5 flex flex-wrap">
+                                <div className="w-full md:w-1/2 pr-4">
+                                    <label htmlFor="anestesia" className="block text-ls font-medium text-gray-900">
+                                        Cuadrante Superior Izquierdo
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="cuadrantesuperiorizq"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('cuadrantesuperiorizq', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full md:w-1/2 pl-4">
+                                    <label htmlFor="notascuadrantesuperiorizq" className="block text-ls font-medium text-gray-900">
+                                        Notas Cuadrante Superior Izquierdo
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="text"
+                                            id="notascuadrantesuperiorizq"
+                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            placeholder="Cuadrante Superior Izq."
+                                            {...register('notascuadrantesuperiorizq', { required: false })}
                                         />
                                     </div>
                                 </div>
                             </div>
+
+
+                         <div className="px-5 pt-5 flex flex-wrap">
+                                <div className="w-full md:w-1/2 pr-4">
+                                    <label htmlFor="cuadrantesuperiorder" className="block text-ls font-medium text-gray-900">
+                                        Cuadrante Superior Derecho
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="cuadrantesuperiorder"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('cuadrantesuperiorder', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full md:w-1/2 pl-4">
+                                    <label htmlFor="notascuadrantesuperiorizq" className="block text-ls font-medium text-gray-900">
+                                        Notas Cuadrante Superior Derecho
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="text"
+                                            id="notascuadrantesuperiorizq"
+                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            placeholder="Cuadrante Superior Izq."
+                                            {...register('notascuadrantesuperiorder', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div className="px-5 pt-5 flex flex-wrap">
+                                <div className="w-full md:w-1/2 pr-4">
+                                    <label htmlFor="cuadranteinferiorder" className="block text-ls font-medium text-gray-900">
+                                        Cuadrante Inferior Derecho
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="cuadranteinferiorder"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('cuadranteinferiorder', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full md:w-1/2 pl-4">
+                                    <label htmlFor="notascuadranteinferiorder" className="block text-ls font-medium text-gray-900">
+                                        Notas Cuadrante Inferior Derecho
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="text"
+                                            id="notascuadranteinferiorder"
+                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            placeholder="Cuadrante Inferior Der."
+                                            {...register('notascuadranteinferiorder', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="px-5 pt-5 flex flex-wrap">
+                                <div className="w-full md:w-1/2 pr-4">
+                                    <label htmlFor="anestesia" className="block text-ls font-medium text-gray-900">
+                                        Cuadrante Inferior Izquierdo
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="cuadranteinferiorizq"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('cuadranteinferiorizq', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full md:w-1/2 pl-4">
+                                    <label htmlFor="notascuadranteinferiorder" className="block text-ls font-medium text-gray-900">
+                                        Notas Cuadrante Inferior Izquierdo
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="text"
+                                            id="notascuadranteinferiorder"
+                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            placeholder="Cuadrante Inferior Izq."
+                                            {...register('notascuadranteinferiorizq', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                                                     
+
+
                         </div>
 
                         <div className="px-5 pt-5 flex flex-wrap">

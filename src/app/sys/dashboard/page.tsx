@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import Image from 'next/image';
-import {Logo, patients, TipoTratamiento} from "@/styles/imports";
+import {Logo, paciente, patients, proced1, proced2, proced3, TipoTratamiento} from "@/styles/imports";
 import Link from "next/link";
 const Dashboard = () => {
     const { data: session, status } = useSession();
@@ -44,9 +44,9 @@ const Dashboard = () => {
                 </div>
                 <div className="flex flex-wrap -m-4">
                     <div className="xl:w-1/4 md:w-1/2 p-4">
-                        <div className="bg-gray-100 p-6 rounded-lg">
+                        <div className="bg-rose-100 p-6 rounded-lg " >
                             <Image className="tracking-widest align-middle flex-auto "
-                                   src={patients}
+                                   src={paciente}
                                    alt="Pacientes"
 
                                    blurDataURL="data:..."
@@ -58,14 +58,14 @@ const Dashboard = () => {
                                 <p className="leading-relaxed text-base">Formularios de Control de Pacientes</p>
                             <Link href="/sys/dashboard/pacientes">
                                 <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
-                                   Ir a Pacientes</button>
+                                   Ir a Mantenimientos de Pacientes</button>
                             </Link>
                         </div>
                     </div>
                     <div className="xl:w-1/4 md:w-1/2 p-4">
-                        <div className="bg-gray-100 p-6 rounded-lg">
+                        <div className="bg-rose-100 p-6 rounded-lg ">
                             <Image className="tracking-widest align-middle flex-auto "
-                                   src={TipoTratamiento}
+                                   src={proced2}
                                    alt="Tratamientos"
 
                                    blurDataURL="data:..."
@@ -74,24 +74,34 @@ const Dashboard = () => {
                             />
                                 <h3 className="tracking-widest text-rose-500 text-xs font-medium title-font">PROCEDIMIENTOS</h3>
                                 <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Procedimientos Generales</h2>
-                                <p className="leading-relaxed text-base">Formularios y Control de Procedimientos y
-                                    Tipo de Procedimientos</p>
+                                <p className="leading-relaxed text-base">Formularios y Control de Procedimientos a nivel General</p>
                             <Link href="/sys/dashboard/procedimientos">
                                 <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
                                     Ir a Procedimientos Generales</button>
                             </Link>
                         </div>
                     </div>
-                    <div className="xl:w-1/4 md:w-1/2 p-4">
-                        <div className="bg-gray-100 p-6 rounded-lg">
-                            <img className="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/722x402" alt="content"/>
-                                <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-                                <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Great Pyramid of Giza</h2>
-                                <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+                                      <div className="xl:w-1/4 md:w-1/2 p-4">
+                        <div className="bg-rose-100 p-6 rounded-lg ">
+                            <Image className="tracking-widest align-middle flex-auto "
+                                   src={proced3}
+                                   alt="Tratamientos"
+
+                                   blurDataURL="data:..."
+                                   placeholder="blur"
+                                   style={{ maxWidth: '100%', maxHeight: '100%' }}
+                            />
+                                <h3 className="tracking-widest text-rose-500 text-xs font-medium title-font pt-5 mt-8">PROCEDIMIENTOS</h3>
+                                <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Procedimientos Específicos</h2>
+                                <p className="leading-relaxed text-base  pt-2">Formularios y Control de Procedimientos Específicos</p>
+                            <Link href="/sys/dashboard/procedimientosespec">
+                                <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
+                                    Ir a Procedimientos Específicos</button>
+                            </Link>
                         </div>
                     </div>
                     <div className="xl:w-1/4 md:w-1/2 p-4">
-                        <div className="bg-gray-100 p-6 rounded-lg">
+                        <div className="bg-rose-100 p-6 rounded-lg">
                             <img className="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/723x403" alt="content"/>
                                 <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
                                 <h2 className="text-lg text-gray-900 font-medium title-font mb-4">San Francisco</h2>

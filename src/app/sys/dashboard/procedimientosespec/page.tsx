@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from 'react'
-import {TipoProd1, TipoProd2, services2, services8, services1, colposcopia, papanicolaou, postoperacion} from "@/styles/imports";
+import {TipoProd1, TipoProd2, services2, services8, services1, consultaexterna, clinicadelamujer, controlprenatal} from "@/styles/imports";
 import Link from "next/link";
 
 const Procedimientos = () => {
@@ -8,7 +8,7 @@ const Procedimientos = () => {
         <section className="text-gray-600 body-font">
             <div className="container px-5 py-5 mx-auto">
                 <div className="flex flex-col text-center w-full mb-20">
-                    <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">PROCEDIMIENTOS</h1>
+                    <h1 className="text-2xl font-medium title-font mb-4 text-gray-900">PROCEDIMIENTOS ESPECÍFICOS</h1>
                     <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Accede a los Diversos Procedimientos que ofrece la Clínica.</p>
                     <Link href="/sys/dashboard">
                         <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
@@ -16,11 +16,11 @@ const Procedimientos = () => {
                     </Link>
                 </div>
 
-                <div className="flex flex-wrap -m-4">
-                    <div className="p-4 lg:w-1/4 md:w-1/2">
+                <div className="flex flex-wrap -m-3">
+                    <div className="p-4 lg:w-1/3 md:w-1/2">
                         <div className="h-full flex flex-col items-center text-center">
                             <Image className="tracking-widest align-middle flex-auto "
-                                   src={TipoProd1}
+                                   src={clinicadelamujer}
                                    alt="Tratamientos Clínica"
 
                                    blurDataURL="data:..."
@@ -28,19 +28,19 @@ const Procedimientos = () => {
                                    style={{ maxWidth: '100%', maxHeight: '100%' }}
                             />
                                 <div className="w-full">
-                                    <h2 className="title-font font-medium text-lg text-gray-900">Crioterapia</h2>
-                                    <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Registros de Crioterapia</h3>
-                                    <Link href="/sys/dashboard/procedimientos/crioterapia">
+                                    <h2 className="title-font font-medium text-lg text-gray-900">Clínica de la Mujer</h2>
+                                    <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Registros de Clínica de la Mujer</h3>
+                                    <Link href="/sys/dashboard/procedimientosespec/clinicadelamujer">
                                         <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
-                                            Ir a Crioterapia</button>
+                                            Ir a Clínica de la Mujer</button>
                                     </Link>
                                 </div>
                         </div>
                     </div>
-                    <div className="p-4 lg:w-1/4 md:w-1/2">
+                    <div className="p-4 lg:w-1/3 md:w-1/2">
                         <div className="h-full flex flex-col items-center text-center">
                             <Image className="tracking-widest align-middle flex-auto "
-                                   src={colposcopia}
+                                   src={controlprenatal}
                                    alt="Tratamientos Clínica"
 
                                    blurDataURL="data:..."
@@ -48,19 +48,19 @@ const Procedimientos = () => {
                                    style={{ maxWidth: '100%', maxHeight: '100%' }}
                             />
                                 <div className="w-full">
-                                    <h2 className="title-font font-medium text-lg text-gray-900">Colposcopia</h2>
-                                    <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Registros de Colposcopia</h3>
+                                    <h2 className="title-font font-medium text-lg text-gray-900">Control Prenatal</h2>
+                                    <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Registros de Control Prenatal</h3>
                                     <Link href="/sys/dashboard/procedimientos/colposcopia">
                                         <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
-                                            Ir a Colposcopia</button>
+                                            Ir a Control Prenatal</button>
                                     </Link>
                                 </div>
                         </div>
                     </div>
-                    <div className="p-4 lg:w-1/4 md:w-1/2">
+                    <div className="p-4 lg:w-1/3 md:w-1/2">
                         <div className="h-full flex flex-col items-center text-center">
                             <Image className="tracking-widest align-middle flex-auto "
-                                   src={papanicolaou}
+                                   src={consultaexterna}
                                    alt="Tratamientos Clínica"
 
                                    blurDataURL="data:..."
@@ -68,35 +68,16 @@ const Procedimientos = () => {
                                    style={{ maxWidth: '100%', maxHeight: '100%' }}
                             />
                             <div className="w-full">
-                                <h2 className="title-font font-medium text-lg text-gray-900">Papanicolaous</h2>
-                                <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Registros de Papanicolaous</h3>
+                                <h2 className="title-font font-medium text-lg text-gray-900">Consulta Externa</h2>
+                                <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Registros de Consulta Externa</h3>
                                 <Link href="/sys/dashboard/procedimientos/papanicolaou">
                                     <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
-                                        Ir a Papanicolaous</button>
+                                        Ir a Consulta Externa</button>
                                 </Link>
                             </div>
                         </div>
                     </div>
-                    <div className="p-4 lg:w-1/4 md:w-1/2">
-                        <div className="h-full flex flex-col items-center text-center">
-                            <Image className="tracking-widest align-middle flex-auto "
-                                   src={postoperacion}
-                                   alt="Tratamientos Clínica"
-
-                                   blurDataURL="data:..."
-                                   placeholder="blur"
-                                   style={{ maxWidth: '100%', maxHeight: '100%' }}
-                            />
-                            <div className="w-full">
-                                <h2 className="title-font font-medium text-lg text-gray-900">Pacientes Post Operación</h2>
-                                <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Registros de Pacientes Post Operación</h3>
-                                <Link href="/sys/dashboard/procedimientos/postoperacion">
-                                    <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
-                                        Ir a Pacientes Post Operación</button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
+     
                 </div>
             </div>
         </section>
