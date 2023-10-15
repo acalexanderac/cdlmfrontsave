@@ -6,8 +6,6 @@ import axios from 'axios';
 import { Toaster, toast } from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
 import PatientListSearch from '../../../pacientes/pacientes.components/search';
-import { Logo, crioterapiaimg, proced3 } from '@/styles/imports';
-import Image from 'next/image';
 interface FormData {
  fechaClinicadelamujer: string;
   antefamiliar: string;
@@ -20,7 +18,7 @@ interface FormData {
   regularidad: string;
   anticonceptivo: boolean;
   tipoanticonceptivo: string;
-  fechaanticonceptivo: string;
+  fechaanticonceptivo?: string | null ;
   medicina: boolean;
   medicinadescripcion: string;
   menarg: string;
@@ -42,7 +40,7 @@ interface FormData {
   p3: string;
   dpi: string;
   procedimiento: string;
-  fechaprocedimiento: string;
+  fechaprocedimiento?: string | null;
   horaprocedimiento: string;
   observaciones: string;
   anestesia: boolean;
@@ -59,45 +57,45 @@ function ClinicaFormPage() {
     const { register, handleSubmit, setValue } = useForm<FormData>();
 
     const [newProcedimiento, setNewProcedimiento] = useState<FormData>({ // Initialize with an empty FormData object
-        fechaClinicadelamujer: "",
-        antefamiliar: "",
-        antepersonal: "",
-        antequirurgico: "",
-        antetraumatico: "",
-        antealergico: "",
-        antealimenticio: "",
+        fechaClinicadelamujer: '',
+        antefamiliar: '',
+        antepersonal: '',
+        antequirurgico: '',
+        antetraumatico: '',
+        antealergico: '',
+        antealimenticio: '',
         fuma: false,
-        regularidad: "",
+        regularidad: '',
         anticonceptivo: false,
-        tipoanticonceptivo: "",
-        fechaanticonceptivo: "",
+        tipoanticonceptivo: '',
+        fechaanticonceptivo: null,
         medicina: false,
-        medicinadescripcion: "",
-        menarg: "",
-        menarhv: "",
-        menarab: "",
-        menarfc: "",
-        menarim: "",
-        menarfur: "",
-        menopausia: "",
-        expa: "",
-        exfr: "",
-        exfc: "",
-        ext: "",
-        k1: "",
-        k2: "",
-        k3: "",
-        p1: "",
-        p2: "",
-        p3: "",
-        dpi: "",
-        procedimiento: "",
-        fechaprocedimiento: "",
-        horaprocedimiento: "",
-        observaciones: "",
+        medicinadescripcion: '',
+        menarg: '',
+        menarhv: '',
+        menarab: '',
+        menarfc: '',
+        menarim: '',
+        menarfur: '',
+        menopausia: '',
+        expa: '',
+        exfr: '',
+        exfc: '',
+        ext: '',
+        k1: '',
+        k2: '',
+        k3: '',
+        p1: '',
+        p2: '',
+        p3: '',
+        dpi: '',
+        procedimiento: '',
+        fechaprocedimiento: null,
+        horaprocedimiento: '',
+        observaciones: '',
         anestesia: false,
-        tipoAnestesia: "",
-        paciente: "",
+        tipoAnestesia: '',
+        paciente: '',
     });
     const getTreatment = async () => {
         if (params.id) {
@@ -126,45 +124,45 @@ function ClinicaFormPage() {
                 // Update the local state with the extracted data
                 setNewProcedimiento((prevState) => ({
                     ...prevState || {},
-                                        fechaClinicadelamujer: String(dataUpdate.fechaClinicadelamujer || ''),
-                    antefamiliar: String(dataUpdate.antefamiliar || ''),
-                    antepersonal: String(dataUpdate.antepresonal || ''),
-                    antequirurgico: String(dataUpdate.antequirurgico || ''),
-                    antetraumatico: String(dataUpdate.antetraumatico || ''),
-                    antealergico: String(dataUpdate.antealergico || ''),
-                    antealimenticio: String(dataUpdate.antealimenticio || ''),
-                    fuma: Boolean(dataUpdate.fechaTratamiento || false || null),
-                    regularidad: String(dataUpdate.refularidad || ''),
-                    anticonceptivo: Boolean(dataUpdate.anticonceptivo || false || null),
-                    tipoanticonceptivo: String(dataUpdate.tipoanticonceptivo || ''),
-                    fechaanticonceptivo: String(dataUpdate.fechaantiiconceptivo || ''),
-                    medicina: Boolean(dataUpdate.medicina || false || null),
-                    medicinadescripcion: String(dataUpdate.medicinadescripcion || ''),
-                    menarg: String(dataUpdate.menarg || ''),
-                    menarhv: String(dataUpdate.menarhv || ''),
-                    menarab: String(dataUpdate.menarab || ''),
-                    menarfc: String(dataUpdate.menarfc || ''),
-                    menarim: String(dataUpdate.menarim || ''),
-                    menarfur:  String(dataUpdate.menarfur || ''),
-                    menopausia: String(dataUpdate.menopausia || ''),
-                    expa: String(dataUpdate.expa || ''),
-                    exfr: String(dataUpdate.exfr || ''),
-                    exfc: String(dataUpdate.exfc || ''),
-                    ext: String(dataUpdate.ext || ''),
-                    k1: String(dataUpdate.k1 || ''),
-                    k2: String(dataUpdate.k2 || ''),
-                    k3: String(dataUpdate.k3 || ''),
-                    p1: String(dataUpdate.p1 || ''),
-                    p2: String(dataUpdate.p2 || ''),
-                    p3: String(dataUpdate.p3 || ''),
-                    dpi: String(dataUpdate.dpi || ''),
-                    procedimiento: String(dataUpdate.procedimiento || ''),
-                    fechaprocedimiento: String(dataUpdate.fechaprocedimiento || ''),
-                    horaprocedimiento: String(dataUpdate.horaprocedimiento || ''),
-                    observaciones: String(dataUpdate.observaciones || ''),
-                    anestesia: Boolean(dataUpdate.anestesia || false || null),
-                    tipoAnestesia: String(dataUpdate.tipoAnestesia || ''),
-                     paciente: pacienteName || '', // Ensure it's a string
+                    fechaClinicadelamujer: String(dataUpdate.fechaClinicadelamujer || ''),
+  antefamiliar: String(dataUpdate.antefamiliar || ''),
+  antepersonal: String(dataUpdate.antepresonal || ''),
+  antequirurgico: String(dataUpdate.antequirurgico || ''),
+  antetraumatico: String(dataUpdate.antetraumatico || ''),
+  antealergico: String(dataUpdate.antealergico || ''),
+  antealimenticio: String(dataUpdate.antealimenticio || ''),
+  fuma: Boolean(dataUpdate.fechaClinicadelamujer || false || null),
+  regularidad: String(dataUpdate.refularidad || ''),
+  anticonceptivo: Boolean(dataUpdate.anticonceptivo || false || null),
+  tipoanticonceptivo: String(dataUpdate.tipoanticonceptivo || ''),
+  fechaanticonceptivo: dataUpdate.fechaanticonceptivo || null, // Remove the String() function
+  medicina: Boolean(dataUpdate.medicina || false || null),
+  medicinadescripcion: String(dataUpdate.medicinadescripcion || ''),
+  menarg: String(dataUpdate.menarg || ''),
+  menarhv: String(dataUpdate.menarhv || ''),
+  menarab: String(dataUpdate.menarab || ''),
+  menarfc: String(dataUpdate.menarfc || ''),
+  menarim: String(dataUpdate.menarim || ''),
+  menarfur: String(dataUpdate.menarfur || ''),
+  menopausia: String(dataUpdate.menopausia || ''),
+  expa: String(dataUpdate.expa || ''),
+  exfr: String(dataUpdate.exfr || ''),
+  exfc: String(dataUpdate.exfc || ''),
+  ext: String(dataUpdate.ext || ''),
+  k1: String(dataUpdate.k1 || ''),
+  k2: String(dataUpdate.k2 || ''),
+  k3: String(dataUpdate.k3 || ''),
+  p1: String(dataUpdate.p1 || ''),
+  p2: String(dataUpdate.p2 || ''),
+  p3: String(dataUpdate.p3 || ''),
+  dpi: String(dataUpdate.dpi || ''),
+  procedimiento: String(dataUpdate.procedimiento || ''),
+  fechaprocedimiento: dataUpdate.fechaprocedimiento || null,
+  horaprocedimiento: String(dataUpdate.horaprocedimiento || ''),
+  observaciones: String(dataUpdate.observaciones || ''),
+  anestesia: Boolean(dataUpdate.anestesia || false || null),
+  tipoAnestesia: String(dataUpdate.tipoAnestesia || ''),
+  paciente: pacienteName || '', // Ensure it's a string
                 }));
 
                 // Update form values using setValue
@@ -178,6 +176,8 @@ function ClinicaFormPage() {
     }
     useEffect(() => {
         getTreatment(); // Call the getTreatment function here
+        setValue('fechaprocedimiento', '2000-01-01');
+        setValue('fechaanticonceptivo', '2000-01-01');
     }, [params.id, session]);
 
     const handleDelete = async () => {
@@ -297,10 +297,10 @@ function ClinicaFormPage() {
 
                 console.log('Formulario enviado con éxito');
                 toast.success('Treatments creado', { duration: 3000 });
-                router.push('/sys/dashboard/procedimientos/crioterapia');
+                router.push('/sys/dashboard/procedimientosespec/clinicadelamujer');
             } catch (error) {
                 console.error('Error al enviar el formulario:', error);
-                toast.error("This didn't work.");
+                toast.error("Recuerda Validar DPI & Paciente");
             }
         } else {
             await updateTask(data);
@@ -329,7 +329,7 @@ function ClinicaFormPage() {
                     </svg>
 
                     <span className=" text-2xl font-serif justify-center items-center">
-          {!params.id ? 'Añadir Crioterapia' : 'Editar Crioterapia'}
+          {!params.id ? 'Añadir Clínica de la Mujer' : 'Editar Clínica de la Mujer'}
         </span>
                 </a>
 <div className='justify-center items-center'>
@@ -338,14 +338,14 @@ function ClinicaFormPage() {
                         className="text-white bg-rose-900 border-0 justify-center items-center py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg"
                         onClick={handleDelete}
                     >
-                        Eliminar Crioterapia ID. {params.id}
+                        Eliminar Clínica de la Mujer ID. {params.id}
                     </button>
                 ) : (
                     <button
                         className="text-white bg-rose-300 border-0 py-2 px-6 rounded text-lg cursor-not-allowed "
                         disabled
                     >
-                        Añadiendo Crioterapia
+                        Añadiendo Clínica de la Mujer
                     </button>
                     )}
                     </div>
@@ -355,14 +355,14 @@ function ClinicaFormPage() {
 <div className="px-5 pt-5 flex">
   <div className="flex-1 mr-5">
     <label htmlFor="fechaClinicadelamujer" className="block text-ls font-medium leading-6 text-gray-900">
-      Fecha Registro de Tratamiento
+      Fecha de Clínica de la Mujer
     </label>
     <label htmlFor="fechaClinicadelamujer" className="block text-ls font-medium leading-6 text-rose-500">
       Año-Mes-Día
     </label>
     <div className="relative mt-2 rounded-md shadow-sm">
       <input
-        type="text"
+        type="date"
         id="fechaClinicadelamujer"
         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
         placeholder="Fecha de Tratamiento"
@@ -372,7 +372,7 @@ function ClinicaFormPage() {
   </div>
 
 </div>
-
+ <div className="text-gray-400 items-center px-5 pt-5">Recuerda hacer Click sobre el campo de Paciente y DPI para ser válidos</div>
  <div className="px-5 pt-5 flex flex-wrap">
 
                                 <div className="w-full md:w-1/3 pr-4">
@@ -405,7 +405,7 @@ function ClinicaFormPage() {
                                         id="dpi"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="DPI"
-                                        {...register('dpi', { required: false })}
+                                        {...register('dpi' , { required: false })}
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -440,13 +440,13 @@ function ClinicaFormPage() {
                                 </div>
 
                             <div className="w-full md:w-1/3 pl-4">
-                                <label htmlFor="notasCrioterapia" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="notasClínica de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
                                     Antecendente Quirúrgico
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
                                         type="text"
-                                        id="notasCrioterapia"
+                                        id="notasClínica de la Mujer"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="Quirúrgico"
                                         {...register('antequirurgico', { required: false })}
@@ -488,7 +488,7 @@ function ClinicaFormPage() {
                                                 className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 placeholder="Alérgico"
                                                 {...register('antealergico', { required: false })}
-                                                value={newProcedimiento.paciente.toString()}
+                            
                                                 onChange={handleChange}
                                             />
 
@@ -497,7 +497,7 @@ function ClinicaFormPage() {
                                 </div>
 
                             <div className="w-full md:w-1/3 pl-4">
-                                <label htmlFor="notasCrioterapia" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="notasClínica de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
                                     Antecendente Alimenticio
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -597,7 +597,7 @@ Regularidad                                    </label>
                             </div>
                             
                               <div className="w-full md:w-1/3 pl-4">
-    <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-gray-900">
+    <label htmlFor="fechaanticonceptivo" className="block text-ls font-medium leading-6 text-gray-900">
                                     Fecha Anticonceptivo 
                                      <a className='text-rose-500 pl-3'>Año-Mes-Día</a>
                                 </label>
@@ -605,8 +605,8 @@ Regularidad                                    </label>
    
     <div className="relative mt-2 rounded-md shadow-sm">
       <input
-        type="text"
-        id="fechaTratamiento"
+        type="date"
+        id="fechaanticonceptivo"
         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
         placeholder="Fecha Anticonceptivo"
         {...register('fechaanticonceptivo', { required: false })}
@@ -732,16 +732,16 @@ Regularidad                                    </label>
                                 </div>
 
                             <div className="w-full md:w-1/3 pl-4">
-                                <label htmlFor="menarhv" className="block text-ls font-medium leading-6 text-gray-900">
-                                    Menarquía HV
+                                <label htmlFor="menarfur" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Menarquía FUR
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
                                         type="text"
-                                        id="menarh"
+                                        id="menarfur"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        placeholder="Menarquía HV"
-                                        {...register('menarhv', { required: false })}
+                                        placeholder="Menarquía FUR"
+                                        {...register('menarfur', { required: false })}
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -756,17 +756,16 @@ Regularidad                                    </label>
                                 <div className="w-full md:w-1/3 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
-                                           Menarquía FUR
+                                        <label htmlFor="menarim" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Menarquía IM
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
                                             <input
                                                 type="text"
-                                                id="antepersonal" 
+                                                id="menarim" 
                                                 className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                placeholder="Menarquía FUR"
-                                                {...register('menarfur', { required: false })}
-                                               
+                                                placeholder="Menarquía IM"
+                                                {...register('menarim', { required: false })}
                                                 onChange={handleChange}
                                             />
 
@@ -777,7 +776,7 @@ Regularidad                                    </label>
                         </div>  
 
                         <div className='px-5 py-5'>
-                            <label htmlFor="nombrePaciente" className="block text-ls font-medium leading-6 text-gray-900">
+                            <label htmlFor="menopausia" className="block text-ls font-medium leading-6 text-gray-900">
                                 Menopausia
                             </label>
                             <div className="relative mt-2 rounded-md shadow-sm">
@@ -785,7 +784,7 @@ Regularidad                                    </label>
                                 <input
                                     type="text"
 
-                                    id="nombrePaciente"
+                                    id="menopausia"
                                     className="block rounded-md border-0 py-1.5 pl-7
                                     pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
                                     focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"
@@ -798,11 +797,358 @@ Regularidad                                    </label>
                             </div>
 
                         </div>
+<div>
+<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+                                       EXÁMEN FÍSICO
+                                </label>
+                                </div>
+                      <div className="px-5 pt-5 flex flex-wrap">
+                            
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="examen1" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Exámen P/A
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="expa" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="P/A"
+                                                {...register('expa', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
 
-                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Exámen FR
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="exfr" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="FR"
+                                                {...register('exfr', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
 
+                                        </div>
+                                    </div>
+                                </div>
 
-</div>//fin de la primera parte
+                        </div>     
+     <div className="px-5 pt-5 flex flex-wrap">
+                            
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="examen1" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Exámen FC
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="exfc" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="FC"
+                                                {...register('exfc', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Exámen T
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="ext" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="T"
+                                                {...register('ext', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>  
+                            
+                            <div className='px-5 py-5'>
+                            <label htmlFor="Observaciones" className="block text-ls font-medium leading-6 text-gray-900">
+                                Observaciones
+                            </label>
+                            <div className="relative mt-2 rounded-md shadow-sm">
+
+                                <input
+                                    type="text"
+
+                                    id="observaciones"
+                                    className="block rounded-md border-0 py-1.5 pl-7
+                                    pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+                                    focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"
+                                    placeholder="Observaciones"
+                                    {...register("observaciones", { required: false})}
+                                    onChange={handleChange}
+                                   
+                                />
+                               
+                            </div>
+
+                        </div>
+
+                            <div>
+<label htmlFor="medic" className="block text-ls font-medium text-rose-300 px-5 pt-5">
+                                       K
+                                </label>
+                                </div>
+                                 <div className="px-5 pt-5 flex flex-wrap">
+                            
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="k1" className="block text-ls font-medium leading-6 text-gray-900">
+                                           1
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="k1" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="1"
+                                                {...register('k1', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="k2" className="block text-ls font-medium leading-6 text-gray-900">
+                                          2
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="k2" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="2"
+                                                {...register('k2', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                                   <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="k3" className="block text-ls font-medium leading-6 text-gray-900">
+                                           3
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="k3" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="3"
+                                                {...register('k3', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>  
+
+                             <div>
+<label htmlFor="medic" className="block text-ls font-medium text-rose-300 px-5 pt-5">
+                                       PLAN
+                                </label>
+                                </div>
+                                 <div className="px-5 pt-5 flex flex-wrap">
+                            
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="p1" className="block text-ls font-medium leading-6 text-gray-900">
+                                           1
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="p1" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="1"
+                                                {...register('p1', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="p2" className="block text-ls font-medium leading-6 text-gray-900">
+                                          2
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="p2" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="2"
+                                                {...register('p2', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                                   <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="p3" className="block text-ls font-medium leading-6 text-gray-900">
+                                           3
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="p3" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="3"
+                                                {...register('p3', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>  
+ <div>
+<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+                                       PROCEDIMIENTO
+                                </label>
+                                </div>
+                      <div className="px-5 pt-5 flex flex-wrap">
+                            
+             
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
+                                          Nombre Procedimiento
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="procedimiento" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="Procedimiento"
+                                                {...register('procedimiento', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                          <div className="w-full md:w-1/3 pr-1">
+    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Fecha Procedimiento
+                                     <a className='text-rose-500 pl-3'>Año-Mes-Día</a>
+                                </label>
+                               
+   
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fechaprocedimiento"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha Procedimiento"
+        {...register('fechaprocedimiento', { required: false })}
+      />
+    </div>
+  </div>
+
+    <div className="w-full md:w-1/3 pr-1">
+    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Hora Procedimiento
+                                     <a className='text-rose-500 pl-3'>Formato 24 Horas</a>
+                                </label>
+                               
+   
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="hour"
+        id="horaprocedimiento"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Hora Procedimiento"
+        {...register('horaprocedimiento', { required: false })}
+      />
+    </div>
+  </div>                             
+                        </div>   
+                            
+ <div className="px-5 pt-5 flex flex-wrap">
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="fumar" className="block text-ls font-medium text-gray-900">
+                                        Anestesia
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="anestesia"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('anestesia', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full md:w-1/3 pl-4">
+                                    <label htmlFor="tipoAnestesia" className="block text-ls font-medium text-gray-900">
+Tipo Anestesia                                   </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="text"
+                                            id="tipoAnestesia"
+                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            placeholder="Tipo Anestesia"
+                                            {...register('tipoAnestesia', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+</div>
                             
 
                         <div className="flex flex-col items-center">
@@ -812,7 +1158,7 @@ Regularidad                                    </label>
                         rounded text-lg"
                                     type="submit"
                                 >
-                                    {!params.id ? 'Guardar Crioterapia' : 'Modificar Crioterapia'}
+                                    {!params.id ? 'Guardar Registro Clínica de la Mujer' : 'Modificar Registro Clínica de la Mujer'}
                                 </button>
                               
                             </div>
