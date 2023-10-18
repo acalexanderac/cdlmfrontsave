@@ -110,7 +110,7 @@ function PacientesFormPage() {
                    Authorization: `Bearer ${session?.user?.token}`,
                },
             })
-            router.push('/sys/dashboard/patients')
+            router.push('/sys/dashboard/pacientes')
             router.refresh();
         }
     }

@@ -50,7 +50,7 @@ const Procedimientos = () => {
                                 <div className="w-full">
                                     <h2 className="title-font font-medium text-lg text-gray-900">Control Prenatal</h2>
                                     <h3 className="text-gray-500 mb-3">Añadir, Modificar y Eliminar Registros de Control Prenatal</h3>
-                                    <Link href="/sys/dashboard/procedimientos/colposcopia">
+                                    <Link href="/sys/dashboard/procedimientosespec/controlnatal">
                                         <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
                                             Ir a Control Prenatal</button>
                                     </Link>
