@@ -511,6 +511,18 @@ dpi: String(dataUpdate.dpi || '' || null),
         getTreatment(); // Call the getTreatment function here
        
         setValue('fecharegistro', '2000-01-01');
+        setValue('fechaRegla1', '2020-01-01');
+        setValue('fechaRegla2', '2020-01-01');
+        setValue('fechaanticonceptivo', '2020-01-01');
+        setValue('fechaorina', '2020-01-01');
+        setValue('fechaekg', '2020-01-01');
+        setValue('fechausg', '2020-01-01');
+        setValue('fechapapanicolaou', '2020-01-01');
+        setValue('fechacolposcopia', '2020-01-01');
+        setValue('fecharx', '2020-01-01');
+        setValue('fechaotro1', '2020-01-01');
+        setValue('fechaotro2', '2020-01-01');
+
     }, [params.id, session]);
 
     const handleDelete = async () => {
@@ -1004,22 +1016,22 @@ dpi: String(dataUpdate.dpi || '' || null),
 
                                 <div className="w-full md:w-full px-4 pt-1">
                                 
-                                <div>
-                                        <label htmlFor="otropersonal" className="block text-ls font-medium leading-6 text-gray-900">
-                                          Otros/ Especifique:
-                                        </label>
-                                        <div className="relative mt-2 rounded-md shadow-sm">
-                                            <input
-                                                type="text"
-                                                id="otropersonal" 
-                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                placeholder="Tratamiento"
-                                                {...register('otroantecedentetra', { required: false })}
-                                                onChange={handleChange}
-                                            />
+                   <div>
+  <label htmlFor="otropersonal" className="block text-ls font-medium leading-6 text-gray-900">
+    Otros/ Especifique:
+  </label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otropersonal"
+      className="block rounded-md border-0 h-24 w-11/12	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Tratamiento"
+      {...register('otroantecedentetra', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+</div>
 
-                                        </div>
-                                    </div>
                                 </div>
                         <div>
                             <label htmlFor="medic" className="block text-ls font-small text-rose-500 px-5 pt-5">
@@ -1072,10 +1084,2529 @@ dpi: String(dataUpdate.dpi || '' || null),
                             
                         </div>    
 
+ <div className="px-5 pt-5 flex flex-wrap">
 
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="duracion" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Duración 
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="duraciondias" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="Duración Días"
+                                                {...register('duraciondias', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
 
+                                        </div>
+                                         <a className='pt-3'>días</a>
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="Menopausia de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Menopausia
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="menopausiaanios"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Menopausia"
+                                        {...register('menopausiaanios', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                     <a className='pt-1'>años</a>
+                            </div>  
+                        </div>    
+ <div className="px-5 pt-5 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                 <div className="flex-1 mr-5">
+    <label htmlFor="FECHAREGAL1" className="block text-ls font-medium leading-6 text-gray-900">
+      Fecha Penúltima Regla
+    </label>
+    
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fechaRegla1"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha de Penúltima Regla"
+        {...register('fechaRegla1', { required: false })}
+      />
+    </div>
+  </div> 
+                 
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                               <div className="w-full md:w-1/2 pr-4">
+                                 <div className="flex-1 mr-5">
+    <label htmlFor="FECHAREGLA2" className="block text-ls font-medium leading-6 text-gray-900">
+      Fecha Última Regla
+    </label>
+    
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fechaRegla2"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha de última Regla"
+        {...register('fechaRegla2', { required: false })}
+      />
+    </div>
+  </div> 
+                 
+                            </div>                  
+                            </div>
+                            </div>    
+       <div className="px-5 pt-5 flex flex-wrap">
+
+                                <div className="w-full md:w-1/3 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="g" className="block text-ls font-medium leading-6 text-gray-900">
+                                           G
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="g" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="G"
+                                                {...register('g', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/3 pl-4">
+                                <label htmlFor="p de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                    P
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="p"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="P"
+                                        {...register('p', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </div>
 
                             
+                            <div className="w-full md:w-1/3 pl-4">
+                                <label htmlFor="antetra" className="block text-ls font-medium leading-6 text-gray-900">
+                                    AB
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="ab"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="AB"
+                                        {...register('ab', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                            
+       <div className="px-5 pt-5 flex flex-wrap">
+
+                                <div className="w-full md:w-1/3 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="c" className="block text-ls font-medium leading-6 text-gray-900">
+                                           C
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="c" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="C"
+                                                {...register('c', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/3 pl-4">
+                                <label htmlFor="hv de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                    HV
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="hv"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="HV"
+                                        {...register('hv', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </div>
+
+                            
+                            <div className="w-full md:w-1/3 pl-4">
+                                <label htmlFor="antetra" className="block text-ls font-medium leading-6 text-gray-900">
+                                    HM
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="hm"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="HM"
+                                        {...register('hm', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                                                     <div className="px-5 pt-5 flex flex-wrap">
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="antic" className="block text-ls font-medium text-gray-900">
+                                        ¿Anticonceptivo?
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="anticonceptivo"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('anticonceptivo', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="w-full md:w-1/3 pl-4">
+                                    <label htmlFor="motivoh" className="block text-ls font-medium text-gray-900">
+                                        Tipo Anticonceptivo
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="text"
+                                            id="tipoanticonceptivo"
+                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            placeholder="Tipo Anticonceptivo"
+                                            {...register('tipoanticonceptivo', { required: false })}
+                                        />
+                                    </div>
+                                    
+                            </div>
+                            
+                              <div className="w-full md:w-1/3 pl-4">
+    <label htmlFor="fechaHospitaliz" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Fecha Anticonceptivo
+                                     
+                                </label>
+                               
+   
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fechaanticonceptivo"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha Anti"
+        {...register('fechaanticonceptivo', { required: false })}
+      />
+    </div>
+  </div>
+                            </div>
+                            
+                                <div className="w-full md:w-full px-4 pt-1">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Motivo Consulta  </label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="motivoconsulta"
+      className="block rounded-md border-0 h-24 w-11/12	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Motivo"
+      {...register('motivoconsulta', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+<div className="w-full md:w-full px-4 pt-1">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+                                        Historia de la Enfermedad
+                                    </label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="historiaenfermedad"
+      className="block rounded-md border-0 h-24 w-11/12	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Historia"
+      {...register('historiaenfermedad', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+
+<div>
+                            <label htmlFor="medic" className="block text-ls font-small text-rose-500 px-5 pt-5">
+                                       EXÁMEN FÍSICO
+                                </label>
+                            </div>
+
+          <div className="px-5 pt-5 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="pa" className="block text-ls font-medium leading-6 text-gray-900">
+                                           PA
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="pa" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="PA mm/hg"
+                                                {...register('pa', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                         <a className='pt-3'>mm/hg</a>
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="P de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                    P 
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="pfisico"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="P"
+                                        {...register('pfisico', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                    
+                            </div>
+
+                            
+                        </div>    
+<div className="px-5 pt-5 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="ts" className="block text-ls font-medium leading-6 text-gray-900">
+                                           T
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="t" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="T"
+                                                {...register('t', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                         
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="ciclos de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                   Resp.
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="resp"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Resp."
+                                        {...register('resp', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                     
+                            </div>
+
+                            
+                        </div>    
+<div className="px-5 pt-5 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="pesos" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Peso
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="peso" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="Peso en Libras"
+                                                {...register('peso', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                         <a className='pt-3'>lbs</a>
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="talla de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Talla
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="talla"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Talla"
+                                        {...register('talla', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                     <a className='pt-1'>cm</a>
+                            </div>
+
+                            
+                        </div>    
+                                         <div>
+<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+                                       EXAMENES ESPECÍFICOS
+                                </label>
+                            </div> 
+                            <div>
+                            <div className="px-5 pt-5 flex flex-wrap">
+                                          <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="tiroid" className="block text-ls font-medium text-gray-900">
+                                        Tiroides
+                                    </label>
+                            
+                                </div>
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="tiroidnorm" className="block text-ls font-medium text-gray-900">
+                                        Tiroides Normal 
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="tiroidesnormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('tiroidesnormal', { required: false })}
+                                        />
+                                    </div>
+                                </div> 
+ 
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                        Tiroides Anormal
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="tiroidesanormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('tiroidesanormal', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Tiroides</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="tiroides"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones Tiroides"
+      {...register('tiroides', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+             
+                            
+                            <div>
+                            <div className="px-5 pt-5 flex flex-wrap">
+                                          <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="mam" className="block text-ls font-medium text-gray-900">
+                                        Mamas
+                                    </label>
+                            
+                                </div>
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="mamnorm" className="block text-ls font-medium text-gray-900">
+                                        Mamas Normal 
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="mamasnormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('mamasnormal', { required: false })}
+                                        />
+                                    </div>
+                                </div> 
+ 
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="maman" className="block text-ls font-medium text-gray-900">
+                                        Mamas Anormal
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="mamasanormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('mamasanormal', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Mamas</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="mamas"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones Mamas"
+      {...register('mamas', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>                
+
+ <div>
+                            <div className="px-5 pt-5 flex flex-wrap">
+                                          <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="cardiopulmonar" className="block text-ls font-medium text-gray-900">
+                                        Cardiopulmonar
+                                    </label>
+                            
+                                </div>
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="cardiopulmonarnorm" className="block text-ls font-medium text-gray-900">
+                                        Cardiopulmonar Normal 
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="cardiopulmonarnormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('cardiopulmonarnormal', { required: false })}
+                                        />
+                                    </div>
+                                </div> 
+ 
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                        Cardiopulmonar Anormal
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="cardiopulmonaranormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('cardiopulmonaranormal', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Cardiopulmonar</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="cardiopulmonar"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones Cardiopulmonar"
+      {...register('cardiopulmonar', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            
+ <div>
+                            <div className="px-5 pt-5 flex flex-wrap">
+                                          <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="mucosas" className="block text-ls font-medium text-gray-900">
+                                        Mucosas
+                                    </label>
+                            
+                                </div>
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="mucosasnorm" className="block text-ls font-medium text-gray-900">
+                                        Mucosas Normal 
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="mucosasnormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('mucosasnormal', { required: false })}
+                                        />
+                                    </div>
+                                </div> 
+ 
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                        Mucosas Anormal
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="mucosasanormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('mucosasanormal', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Mucosas</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="mucosas"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones Mucosas"
+      {...register('mucosas', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+
+    <div>
+                            <div className="px-5 pt-5 flex flex-wrap">
+                                          <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="flujo" className="block text-ls font-medium text-gray-900">
+                                        Flujo
+                                    </label>
+                            
+                                </div>
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="flujonorm" className="block text-ls font-medium text-gray-900">
+                                        Flujo Normal 
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="flujonormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('flujonormal', { required: false })}
+                                        />
+                                    </div>
+                                </div> 
+ 
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                        Flujo Anormal
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="flujoanormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('flujoanormal', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Flujo</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otrofamiliar"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones Flujo"
+      {...register('flujo', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+
+ <div>
+                            <div className="px-5 pt-5 flex flex-wrap">
+                                          <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="labiosmenores" className="block text-ls font-medium text-gray-900">
+                                        Labios Menores
+                                    </label>
+                            
+                                </div>
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="labiosmenoresnorm" className="block text-ls font-medium text-gray-900">
+                                        Labios Menores Normal 
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="labiosmenoresnormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('labiosmenoresnormal', { required: false })}
+                                        />
+                                    </div>
+                                </div> 
+ 
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                        Labios Menores Anormal
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="labiosmenoresanormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('labiosmenoresanormal', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Labios Menores</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="labiosmenores"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones Labios Menores"
+      {...register('labiosmenores', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+
+<div>
+                            <div className="px-5 pt-5 flex flex-wrap">
+                                          <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="labiosmayores" className="block text-ls font-medium text-gray-900">
+                                        Labios Mayores
+                                    </label>
+                            
+                                </div>
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="labiosmayoresnorm" className="block text-ls font-medium text-gray-900">
+                                        Labios Mayores Normal 
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="labiosmayoresnormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('labiosmayoresnormal', { required: false })}
+                                        />
+                                    </div>
+                                </div> 
+ 
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                        Labios Mayores Anormal
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="labiosmayoresanormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('labiosmayoresanormal', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Labios Mayores</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="labiosmayores"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones Labios Mayores"
+      {...register('labiosmayores', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+
+<div>
+                            <div className="px-5 pt-5 flex flex-wrap">
+                                          <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="aparatourinario" className="block text-ls font-medium text-gray-900">
+                                        Aparato Urinario
+                                    </label>
+                            
+                                </div>
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="aparatourinarionorm" className="block text-ls font-medium text-gray-900">
+                                        Aparato Urinario Normal 
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="aparatourinarionormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('aparatourinarionormal', { required: false })}
+                                        />
+                                    </div>
+                                </div> 
+ 
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                        Aparato Urinario Anormal
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="aparatourinarioanormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('aparatourinarioanormal', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Aparato Urinario</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otrofamiliar"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones Aparato Urinario"
+      {...register('aparatourinario', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+
+<div>
+                            <div className="px-5 pt-5 flex flex-wrap">
+                                          <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="fondodesaco" className="block text-ls font-medium text-gray-900">
+                                        Fondo de saco
+                                    </label>
+                            
+                                </div>
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="fondodesaconorm" className="block text-ls font-medium text-gray-900">
+                                        Fondo de saco Normal 
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="fondodesaconormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('fondodesaconormal', { required: false })}
+                                        />
+                                    </div>
+                                </div> 
+ 
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                        Fondo de saco Anormal
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="fondodesacoanormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('fondodesacoanormal', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Fondo de saco</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otrofamiliar"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones Fondo de saco"
+      {...register('fondodesaco', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+
+<div>
+                            <div className="px-5 pt-5 flex flex-wrap">
+                                          <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="cupulavaginal" className="block text-ls font-medium text-gray-900">
+                                        Cupulavaginal
+                                    </label>
+                            
+                                </div>
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="cupulavaginalnorm" className="block text-ls font-medium text-gray-900">
+                                        Cúpula vaginal Normal 
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="cupulavaginalnormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('cupulavaginalnormal', { required: false })}
+                                        />
+                                    </div>
+                                </div> 
+ 
+                                <div className="w-full md:w-1/3 pr-4">
+                                    <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+                                        Cúpula vaginal Anormal
+                                    </label>
+                                    <div className="relative mt-2 rounded-md shadow-sm">
+                                        <input
+                                            type="checkbox"
+                                            id="cupulavaginalanormal"
+                                            className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                                            {...register('cupulavaginalanormal', { required: false })}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivocup" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Cúpula vaginal</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otrofamiliar"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones Cúpula vaginal"
+      {...register('cupulavaginal', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+
+ 
+      <div className="px-5 pt-5 flex flex-wrap">
+   <div className="w-full md:w-1/5 pr-4 px-4 flex items-center">
+        <label htmlFor="cistocele" className="block text-ls font-medium text-gray-900">
+            Cistocele
+        </label>
+    </div>
+    <div className="w-full md:w-1/5 pr-1 flex items-center">
+        <label htmlFor="cistocelenorm" className="block text-ls font-medium text-gray-900">
+            G I
+        </label>
+        <div className="relative mt-2 rounded-md shadow-sm">
+            <input
+                type="checkbox"
+                id="cistocele1"
+                className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                {...register('cistocele1', { required: false })}
+            />
+        </div>
+    </div>
+    <div className="w-full md:w-1/5 pr-1 flex items-center">
+        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+            G II
+        </label>
+        <div className="relative mt-2 rounded-md shadow-sm">
+            <input
+                type="checkbox"
+                id="cistocele2"
+                className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                {...register('cistocele2', { required: false })}
+            />
+        </div>
+    </div>
+    <div className="w-full md:w-1/5 pr-1 flex items-center">
+        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+            G III
+        </label>
+        <div className="relative mt-2 rounded-md shadow-sm">
+            <input
+                type="checkbox"
+                id="cistocele3"
+                className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                {...register('cistocele3', { required: false })}
+            />
+        </div>
+    </div>
+    <div className="w-full md:w-1/5 pr-4 flex items-center">
+        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+            G IV
+        </label>
+        <div className="relative mt-2 rounded-md shadow-sm">
+            <input
+                type="checkbox"
+                id="cistocele4"
+                className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                {...register('cistocele4', { required: false })}
+            />
+        </div>
+    </div>
+</div>
+
+ <div className="px-5 pt-5 flex flex-wrap">
+   <div className="w-full md:w-1/5 pr-4 px-4 flex items-center">
+        <label htmlFor="rectocele" className="block text-ls font-medium text-gray-900">
+            Rectocele
+        </label>
+    </div>
+    <div className="w-full md:w-1/5 pr-1 flex items-center">
+        <label htmlFor="rectocelenorm" className="block text-ls font-medium text-gray-900">
+            G I
+        </label>
+        <div className="relative mt-2 rounded-md shadow-sm">
+            <input
+                type="checkbox"
+                id="rectocele1"
+                className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                {...register('rectocele1', { required: false })}
+            />
+        </div>
+    </div>
+    <div className="w-full md:w-1/5 pr-1 flex items-center">
+        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+            G II
+        </label>
+        <div className="relative mt-2 rounded-md shadow-sm">
+            <input
+                type="checkbox"
+                id="rectocele2"
+                className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                {...register('rectocele2', { required: false })}
+            />
+        </div>
+    </div>
+    <div className="w-full md:w-1/5 pr-1 flex items-center">
+        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+            G III
+        </label>
+        <div className="relative mt-2 rounded-md shadow-sm">
+            <input
+                type="checkbox"
+                id="rectocele3"
+                className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                {...register('rectocele3', { required: false })}
+            />
+        </div>
+    </div>
+    <div className="w-full md:w-1/5 pr-4 flex items-center">
+        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+            G IV
+        </label>
+        <div className="relative mt-2 rounded-md shadow-sm">
+            <input
+                type="checkbox"
+                id="rectocele4"
+                className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                {...register('rectocele4', { required: false })}
+            />
+        </div>
+    </div>
+</div>
+
+ <div className="px-5 pt-5 flex flex-wrap">
+   <div className="w-full md:w-1/5 pr-4 px-4 flex items-center">
+        <label htmlFor="prolapso" className="block text-ls font-medium text-gray-900">
+            Prolapso Uterino
+        </label>
+    </div>
+    <div className="w-full md:w-1/5 pr-1 flex items-center">
+        <label htmlFor="prolapsonorm" className="block text-ls font-medium text-gray-900">
+            G I
+        </label>
+        <div className="relative mt-2 rounded-md shadow-sm">
+            <input
+                type="checkbox"
+                id="prolapso1"
+                className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                {...register('prolapso1', { required: false })}
+            />
+        </div>
+    </div>
+    <div className="w-full md:w-1/5 pr-1 flex items-center">
+        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+            G II
+        </label>
+        <div className="relative mt-2 rounded-md shadow-sm">
+            <input
+                type="checkbox"
+                id="prolapso2"
+                className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                {...register('prolapso2', { required: false })}
+            />
+        </div>
+    </div>
+    <div className="w-full md:w-1/5 pr-1 flex items-center">
+        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+            G III
+        </label>
+        <div className="relative mt-2 rounded-md shadow-sm">
+            <input
+                type="checkbox"
+                id="prolapso3"
+                className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                {...register('prolapso3', { required: false })}
+            />
+        </div>
+    </div>
+    <div className="w-full md:w-1/5 pr-4 flex items-center">
+        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+            G IV
+        </label>
+        <div className="relative mt-2 rounded-md shadow-sm">
+            <input
+                type="checkbox"
+                id="prolapso4"
+                className="form-checkbox h-5 w-5 text-rose-950 transition duration-150 ease-in-out"
+                {...register('prolapso4', { required: false })}
+            />
+        </div>
+    </div>
+</div>
+
+                            <div>
+<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
+                                      CÉRVIX
+                                </label>
+                            </div>
+            
+<div className="px-5 pt-1 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="formacervix" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Forma Cérvix
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="formacervix" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="Forma Cérvix"
+                                                {...register('formacervix', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                        
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="consitencia de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Consistencia Cérvix
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="consistenciacervix"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Consistencia"
+                                        {...register('consistenciacervix', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                    
+                            </div>
+
+                            
+                        </div>                     
+<div className="px-5 pt-1 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="tumoracionescervix" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Tumoraciones Cérvix
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="tumoracionescervix" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="Tumoraciones Cérvix"
+                                                {...register('tumoracionescervix', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                        
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="ulceras de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Ulceraciones Cérvix 
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="ulveracionescervix"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Ulceraciones Cérvix"
+                                        {...register('ulceracionescervix', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                    
+                            </div> 
+                        </div>                     
+                                                                  <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivocervix" className="block text-ls font-medium leading-6 text-gray-900">
+Otros</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otroscervix"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones Cérvix"
+      {...register('otroscervix', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>
+
+           
+                            <div>
+<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
+                                      CUERPO UTERINO
+                                </label>
+                            </div>
+            
+<div className="px-5 pt-1 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="formacervix" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Tamaño Cuerpo Uterino en Cm.
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="cuerpouterinotamano" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="Tamaño"
+                                                {...register('cuerpouterinotamano', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                        
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="consitencia de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Posición Cuerpo Uterino
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="cuerpouterinoposicion"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Posición"
+                                        {...register('cuerpouterinoposicion', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                    
+                            </div>
+
+                            
+                        </div>                     
+<div className="px-5 pt-1 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="tumoracionescervix" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Consistencia Cuerpo Uterino
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="cuerpouterinoconsistencia" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="Consistencia"
+                                                {...register('cuerpouterinoconsistencia', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                        
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="ulceras de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Movilidad
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="cuerpouterinomovilidad"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Movilidad"
+                                        {...register('cuerpouterinomovilidad', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                    
+                            </div>
+
+                            
+                        </div>   
+<div className="px-5 pt-1 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="tumoracionescervix" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Forma Cuerpo Uterino
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="cuerpouterinoforma" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="Forma"
+                                                {...register('cuerpouterinoforma', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                        
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="ulceras de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Otros
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="cuerpouterinootros"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Otros"
+                                        {...register('cuerpouterinootros', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                    
+                            </div> 
+                        </div>   
+<div>
+<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
+                                      ANEXOS Y PARAMETRIOS
+                                </label>
+                            </div>
+            
+<div className="px-5 pt-1 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="formacervix" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Izquierdo
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="anexosizquierdo" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="Izquierdo"
+                                                {...register('anexosizquierdo', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                        
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="consitencia de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                   Derecho
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="anexosderecho"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="Derecho"
+                                        {...register('anexosderecho', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                    
+                            </div>
+
+                            
+                        </div>                     
+                                                                         <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivocervix" className="block text-ls font-medium leading-6 text-gray-900">
+Comentarios</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="anexosotros"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones"
+      {...register('anexosotros', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>                   
+
+                            <div>
+<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
+                                      LABORATORIOS
+                                </label>
+                            </div>
+                            
+          <div className="px-5 pt-5 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="hb" className="block text-ls font-medium leading-6 text-gray-900">
+                                           HB
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="hb" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="HB"
+                                                {...register('hb', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                         <a className='pt-3'>gm</a>
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="ht1" className="block text-ls font-medium leading-6 text-gray-900">
+                                    HT
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="ht"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="HT"
+                                        {...register('ht', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                     <a className='pt-1'>%</a>
+                            </div>
+
+                            
+                        </div>    
+          <div className="px-5 pt-5 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="tp" className="block text-ls font-medium leading-6 text-gray-900">
+                                           TP
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="tp" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="TP"
+                                                {...register('tp', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                         <a className='pt-3'>seg.</a>
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="tpt1" className="block text-ls font-medium leading-6 text-gray-900">
+                                    TPT
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="tpt"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="TPT"
+                                        {...register('tpt', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                     <a className='pt-1'>seg.</a>
+                            </div>
+
+                            
+                        </div>   
+
+          <div className="px-5 pt-5 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="glicemia" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Glicemia
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="glicemia" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="Glicemia"
+                                                {...register('glicemia', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                         <a className='pt-3'>gms/dl</a>
+                                       
+                                    </div>
+                                </div>
+
+                            <div className="w-full md:w-1/2 pl-4">
+                                <label htmlFor="ht1" className="block text-ls font-medium leading-6 text-gray-900">
+                                    INR
+                                </label>
+                                <div className="relative mt-2 rounded-md shadow-sm">
+                                    <input
+                                        type="text"
+                                        id="inr"
+                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        placeholder="INR"
+                                        {...register('inr', { required: false })}
+                                        onChange={handleChange}
+                                    />
+                                    </div>
+                                     <a className='pt-1'>%</a>
+                            </div>
+
+                            
+                        </div>   
+
+          <div className="px-5 pt-1 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="vdlr" className="block text-ls font-medium leading-6 text-gray-900">
+                                           VDRL + -
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="vdlr" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="VDLR"
+                                                {...register('vdrl', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                        
+                                       
+                                    </div>
+                                </div>
+                        </div>   
+          <div className="px-5 pt-1 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="hiv" className="block text-ls font-medium leading-6 text-gray-900">
+                                           HIV + -
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="hiv" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="HIV"
+                                                {...register('hiv', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                        
+                                       
+                                    </div>
+                                </div>
+                        </div>  
+          <div className="px-5 pt-1 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                                
+                                <div>
+                                        <label htmlFor="grupo" className="block text-ls font-medium leading-6 text-gray-900">
+                                           Grupo
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="grupo" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="Grupo"
+                                                {...register('grupo', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                         
+                                       
+                                    </div>
+                                </div>
+                        </div>  
+
+          <div className="px-5 pt-1 flex flex-wrap">
+
+                                <div className="w-full md:w-1/2 pr-4">
+                               <hr
+  className="my-1 h-0.5 border-t-0 bg-black opacity-100 dark:opacity-50" /> 
+                                <div>
+                                        <label htmlFor="rh" className="block text-ls font-medium leading-6 text-gray-900">
+                                           RH + -
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="rh" 
+                                                className="block rounded-md border-0 py-1.5 pl- pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="RH"
+                                                {...register('rh', { required: false })}
+                                                
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                         <a className='pt-3'>+ -</a>
+                                       
+                                    </div>
+                                </div>
+                        </div>  
+
+<div>
+<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
+                                      EXÁMENES
+                                </label>
+                            </div>
+                      <div className="px-5 pt-5 flex flex-wrap">
+                            
+             <div>
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-2xl font-medium leading-6 text-gray-900">
+                                          ORINA
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                          <div className="w-full md:w-1/3 pr-1">
+    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Fecha Procedimiento
+                                     
+                                </label>
+                               
+   
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fechaorina"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha Procedimiento"
+        {...register('fechaorina', { required: false })}
+      />
+    </div>
+                                </div>  
+                                
+                        </div>                              
+                                                                         <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="ResultOrina" className="block text-ls font-medium leading-6 text-gray-900">
+Resultado</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="orinaresultado"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Resultado"
+      {...register('orinaresultado', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+  <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="TratOrina" className="block text-ls font-medium leading-6 text-gray-900">
+Tratamiento</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="orinatratamiento"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Tratamiento"
+      {...register('orinatratamiento', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+</div>
+ <div className="px-5 pt-5 flex flex-wrap">
+                            
+             <div>
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-2xl font-medium leading-6 text-gray-900">
+                                          EKG
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                          <div className="w-full md:w-1/3 pr-1">
+    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Fecha Procedimiento
+                                     
+                                </label>
+                               
+   
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fechaekg"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha Procedimiento"
+        {...register('fechaekg', { required: false })}
+      />
+    </div>
+                                </div>  
+                                
+                        </div>                              
+                                                                         <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="ResultEkg" className="block text-ls font-medium leading-6 text-gray-900">
+Resultado</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="ekgresultado"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Resultado"
+      {...register('ekgresultado', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+  <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="TratEkg" className="block text-ls font-medium leading-6 text-gray-900">
+Tratamiento</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="ekgtratamiento"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Tratamiento"
+      {...register('ekgtratamiento', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+                            </div>
+
+<div className="px-5 pt-5 flex flex-wrap">
+                            
+             <div>
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-2xl font-medium leading-6 text-gray-900">
+                                          USG
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                          <div className="w-full md:w-1/3 pr-1">
+    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Fecha Procedimiento
+                                     
+                                </label>
+                               
+   
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fechausg"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha Procedimiento"
+        {...register('fechausg', { required: false })}
+      />
+    </div>
+                                </div>  
+                                
+                        </div>                              
+                                                                         <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="ResultUsg" className="block text-ls font-medium leading-6 text-gray-900">
+Resultado</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="usgresultado"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Resultado"
+      {...register('usgresultado', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+  <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="TratUsg" className="block text-ls font-medium leading-6 text-gray-900">
+Tratamiento</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="usgtratamiento"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Tratamiento"
+      {...register('usgtratamiento', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+</div>
+ <div className="px-5 pt-5 flex flex-wrap">
+                            
+             <div>
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-2xl font-medium leading-6 text-gray-900">
+                                          PAPANICOLAOU
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                          <div className="w-full md:w-1/3 pr-1">
+    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Fecha Procedimiento
+                                     
+                                </label>
+                               
+   
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fechapapanicolaou"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha Procedimiento"
+        {...register('fechapapanicolaou', { required: false })}
+      />
+    </div>
+                                </div>  
+                                
+                        </div>                              
+                                                                         <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="ResultPapanicolaou" className="block text-ls font-medium leading-6 text-gray-900">
+Resultado</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="papanicolaouresultado"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Resultado"
+      {...register('papanicolaouresultado', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+  <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="TratPapanicolaou" className="block text-ls font-medium leading-6 text-gray-900">
+Tratamiento</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="papanicolaoutratamiento"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Tratamiento"
+      {...register('papanicolaoutratamiento', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+</div>
+<div className="px-5 pt-5 flex flex-wrap">
+                            
+             <div>
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-2xl font-medium leading-6 text-gray-900">
+                                          COLPOSCOPIA
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                          <div className="w-full md:w-1/3 pr-1">
+    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Fecha Procedimiento
+                                     
+                                </label>
+                               
+   
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fechacolposcopia"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha Procedimiento"
+        {...register('fechacolposcopia', { required: false })}
+      />
+    </div>
+                                </div>  
+                                
+                        </div>                              
+                                                                         <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="ResultColposcopia" className="block text-ls font-medium leading-6 text-gray-900">
+Resultado</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="colposcopiaresultado"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Resultado"
+      {...register('colposcopiaresultado', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+  <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="TratColposcopia" className="block text-ls font-medium leading-6 text-gray-900">
+Tratamiento</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="colposcopiatratamiento"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Tratamiento"
+      {...register('colposcopiatratamiento', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+</div>
+
+<div className="px-5 pt-5 flex flex-wrap">
+                            
+             <div>
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-2xl font-medium leading-6 text-gray-900">
+                                          RX
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                          <div className="w-full md:w-1/3 pr-1">
+    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Fecha Procedimiento
+                                     
+                                </label>
+                               
+   
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fecharx"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha Procedimiento"
+        {...register('fecharx', { required: false })}
+      />
+    </div>
+                                </div>  
+                                
+                        </div>                              
+                                                                         <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="ResultRx" className="block text-ls font-medium leading-6 text-gray-900">
+Resultado</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="rxresultado"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Resultado"
+      {...register('rxresultado', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+  <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="TratRx" className="block text-ls font-medium leading-6 text-gray-900">
+Tratamiento</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="rxtratamiento"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Tratamiento"
+      {...register('rxtratamiento', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+</div>
+ <div className="px-5 pt-5 flex flex-wrap">
+                            
+             <div>
+                                <div className="w-full md:w-1/2 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-2xs font-medium leading-6 text-gray-900">
+                                          Nombre Examen
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                              <input
+      type="text"
+      id="stringotro1"
+      className="block rounded-md border-0 h-10  w-11/2	 py-1 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Examen"
+      {...register('stringotro1', { required: false })}
+      onChange={handleChange}
+    />  
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                          <div className="w-full md:w-1/3 pr-1">
+    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Fecha Procedimiento
+                                     
+                                </label>
+                               
+   
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fechaotro1"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha Procedimiento"
+        {...register('fechaotro1', { required: false })}
+      />
+    </div>
+                                </div>  
+                                
+                        </div>                              
+                                                                         <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="ResultOtro1" className="block text-ls font-medium leading-6 text-gray-900">
+Resultado</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otroresultado1"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Resultado"
+      {...register('otroresultado1', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+  <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="TratOtro1" className="block text-ls font-medium leading-6 text-gray-900">
+Tratamiento</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otrotratamiento1"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Tratamiento"
+      {...register('otrotratamiento1', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+</div>
+
+ <div className="px-5 pt-5 flex flex-wrap">
+                            
+             <div>
+                                <div className="w-full md:w-1/2 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-2xs font-medium leading-6 text-gray-900">
+                                          Nombre Examen
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                              <input
+      type="text"
+      id="stringotro2"
+      className="block rounded-md border-0 h-10  w-11/2	 py-1 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Examen"
+      {...register('stringotro2', { required: false })}
+      onChange={handleChange}
+    />  
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                          <div className="w-full md:w-1/3 pr-1">
+    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+                                    Fecha Procedimiento
+                                     
+                                </label>
+                               
+   
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fechaotro2"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha Procedimiento"
+        {...register('fechaotro2', { required: false })}
+      />
+    </div>
+                                </div>  
+                                
+                        </div>                              
+                                                                         <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="ResultOtro2" className="block text-ls font-medium leading-6 text-gray-900">
+Resultado</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otroresultado2"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Resultado"
+      {...register('otroresultado2', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+  <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="TratOtro2" className="block text-ls font-medium leading-6 text-gray-900">
+Tratamiento</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otrotratamiento2"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Tratamiento"
+      {...register('otrotratamiento2', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                                </div>  
+                                
+                            </div> 
+</div>                           
+
+<div>
+<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+                                       C
+                                </label>
+                                </div>
+                      <div className="px-5 pt-5 flex flex-wrap">
+                            
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="examen1" className="block text-ls font-medium leading-6 text-gray-900">
+                                           1
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="c1" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="1"
+                                                {...register('c1', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
+                                           2
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="c2" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="2"
+                                                {...register('c2', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>     
+     <div className="px-5 pt-5 flex flex-wrap">
+                            
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="examen1" className="block text-ls font-medium leading-6 text-gray-900">
+                                           3
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="c3" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="3"
+                                                {...register('c3', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="w-full md:w-1/3 pr-1">
+                                
+                                <div>
+                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
+                                           4
+                                        </label>
+                                        <div className="relative mt-2 rounded-md shadow-sm">
+                                            <input
+                                                type="text"
+                                                id="c4" 
+                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                placeholder="4"
+                                                {...register('c4', { required: false })}
+                                               
+                                                onChange={handleChange}
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>  
+
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-4">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Plan Terapéutico</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="planterapeutico"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Plan Terapéutico"
+      {...register('planterapeutico', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                            </div>
                             <div>
 <label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-5">
                                        OTROS REGISTROS
@@ -1098,11 +3629,7 @@ dpi: String(dataUpdate.dpi || '' || null),
         {...register('fecharegistro', { required: false })}
       />
     </div>
-  </div>
-
-  
-
-                        
+                            </div>                       
           <div className="px-5 pt-5 flex flex-wrap">
 
                                 <div className="w-full md:w-1/2 pr-4">

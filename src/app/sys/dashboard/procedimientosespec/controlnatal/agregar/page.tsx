@@ -604,31 +604,29 @@ function ControlNatalFormPage() {
                                         />
                                     </div>
                                 </div>
+ 
+                          
+                            </div>  
                                                                        <div className=" pt-5 flex flex-wrap">
                             
-                                <div className="w-full md:w-full pr-4">
+<div className="w-full md:w-full  pt-1">
                                 
-                                <div>
-                                        <label htmlFor="otropersonal" className="block text-ls font-medium leading-6 text-gray-900">
-                                          Tratamiento
-                                        </label>
-                                        <div className="relative mt-2 rounded-md shadow-sm">
-                                            <input
-                                                type="text"
-                                                id="otropersonal" 
-                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                placeholder="Tratamiento"
-                                                {...register('otropersonal', { required: false })}
-                                                onChange={handleChange}
-                                            />
-
-                                        </div>
-                                    </div>
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Antecedentes Personales  </label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otropersonal"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones"
+      {...register('otropersonal', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
                                 </div>
-
-                        </div>  
-                          
-                            </div>       
                             
                                         <div>
 <label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
@@ -697,28 +695,27 @@ function ControlNatalFormPage() {
                                         />
                                     </div>
                                 </div>
+
+                            </div>
                                                                        <div className=" pt-5 flex flex-wrap">
                             
-                                <div className="w-full md:w-full pr-4">
+<div className="w-full md:w-full  pt-1">
                                 
-                                <div>
-                                        <label htmlFor="otropersonal" className="block text-ls font-medium leading-6 text-gray-900">
-                                          Tratamiento
-                                        </label>
-                                        <div className="relative mt-2 rounded-md shadow-sm">
-                                            <input
-                                                type="text"
-                                                id="otrofamiliar" 
-                                                className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                placeholder="Tratamiento"
-                                                {...register('otrofamiliar', { required: false })}
-                                                onChange={handleChange}
-                                            />
-
-                                </div>
-                                </div>
-                                </div>
-                                </div>
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Antecedentes Familiares  / Tratamientos Realizados</label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otrofamiliar"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones"
+      {...register('otrofamiliar', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
                                 </div>
                             <div>
 <label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
@@ -740,19 +737,23 @@ function ControlNatalFormPage() {
                                     </div>
                                 </div>
 
-                                <div className="w-full md:w-1/3 pl-4">
-                                    <label htmlFor="otrosquirurgicos" className="block text-ls font-medium text-gray-900">
-Antecedentes Quirúrgicos                                    </label>
-                                    <div className="relative mt-2 rounded-md shadow-sm">
-                                        <input
-                                            type="text"
-                                            id="otrostraumaticos"
-                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder="Quirúrgicos"
-                                            {...register('otrosquirurgicos', { required: false })}
-                                        />
-                                    </div>
-                                </div>
+<div className="w-full md:w-full  pt-1">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Antecedentes Quirúrgicos  </label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otrosquirurgicos"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicación"
+      {...register('otrosquirurgicos', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
                             </div>
 <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/3 pr-4">
@@ -769,19 +770,23 @@ Antecedentes Quirúrgicos                                    </label>
                                     </div>
                                 </div>
 
-                                <div className="w-full md:w-1/3 pl-4">
-                                    <label htmlFor="otrosquirurgicos" className="block text-ls font-medium text-gray-900">
-Antecedentes Traumáticos                                    </label>
-                                    <div className="relative mt-2 rounded-md shadow-sm">
-                                        <input
-                                            type="text"
-                                            id="otrostraumaticos"
-                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder="Traumáticos"
-                                            {...register('otrostraumaticos', { required: false })}
-                                        />
-                                    </div>
-                                </div>
+  <div className="w-full md:w-full  pt-1">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Explicación Antecedentes Traumáticos  </label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otrostraumaticos"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones"
+      {...register('otrostraumaticos', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
                             </div>
 <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/3 pr-4">
@@ -798,19 +803,23 @@ Antecedentes Traumáticos                                    </label>
                                     </div>
                                 </div>
 
-                                <div className="w-full md:w-1/3 pl-4">
-                                    <label htmlFor="otrosalergic" className="block text-ls font-medium text-gray-900">
-Antecedentes Alérgicos                                   </label>
-                                    <div className="relative mt-2 rounded-md shadow-sm">
-                                        <input
-                                            type="text"
-                                            id="otrosalergicos"
-                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder="Alérgicos"
-                                            {...register('otrosalergicos', { required: false })}
-                                        />
-                                    </div>
-                                </div>
+<div className="w-full md:w-full  pt-1">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Antecedentes Alérgicos  </label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="otrosalergicos"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Explicaciones"
+      {...register('otrosalergicos', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
                             </div>
 <div>
 <label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
@@ -1210,20 +1219,7 @@ RN Peso Menor 5 lb.                                    </label>
                                     </div>
                                 </div>
 
-                                <div className="w-full md:w-1/3 pl-4">
-                                    <label htmlFor="motivoh" className="block text-ls font-medium text-gray-900">
-                                        Motivo
-                                    </label>
-                                    <div className="relative mt-2 rounded-md shadow-sm">
-                                        <input
-                                            type="text"
-                                            id="motivoHospitalizacion"
-                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder="Motivo"
-                                            {...register('motivoHospitalizacion', { required: false })}
-                                        />
-                                    </div>
-                            </div>
+  
                             
                               <div className="w-full md:w-1/3 pl-4">
     <label htmlFor="fechaHospitaliz" className="block text-ls font-medium leading-6 text-gray-900">
@@ -1243,7 +1239,26 @@ RN Peso Menor 5 lb.                                    </label>
     </div>
   </div>
                             </div>
-
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1">
+                                
+                   <div>
+  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+Motivo de la Hospitalización  </label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="motivoHospitalizacion"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Motivo de Hospitalización"
+      {...register('motivoHospitalizacion', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                                </div>
 
   <div>
 <label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
