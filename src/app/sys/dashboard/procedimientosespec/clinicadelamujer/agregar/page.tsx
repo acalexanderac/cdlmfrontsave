@@ -309,7 +309,7 @@ function ClinicaFormPage() {
 
 
     return (
-              <div className="flex justify-center items-center w-full ">
+              <div className="flex justify-center items-start w-full ">
   <div className="flex flex-col justify-center items-center">
                 <Toaster />
 
@@ -412,7 +412,7 @@ function ClinicaFormPage() {
                             </div>
                         </div>
                           <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+<label  className="block text-ls font-medium text-rose-500 px-5 pt-5">
                                        ANTECEDENTES
                                 </label>
                                 </div>   
@@ -440,13 +440,13 @@ function ClinicaFormPage() {
                                 </div>
 
                             <div className="w-full md:w-1/3 pl-4">
-                                <label htmlFor="notasClínica de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="antequirurgico" className="block text-ls font-medium leading-6 text-gray-900">
                                     Antecendente Quirúrgico
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
                                         type="text"
-                                        id="notasClínica de la Mujer"
+                                        id="antequirurgico"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="Quirúrgico"
                                         {...register('antequirurgico', { required: false })}
@@ -457,13 +457,13 @@ function ClinicaFormPage() {
 
                             
                             <div className="w-full md:w-1/3 pl-4">
-                                <label htmlFor="antetra" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="antetraumatico" className="block text-ls font-medium leading-6 text-gray-900">
                                     Antecendente Traumático
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
                                         type="text"
-                                        id="antetrauma"
+                                        id="antetraumatico"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="Traumático"
                                         {...register('antetraumatico', { required: false })}
@@ -497,13 +497,13 @@ function ClinicaFormPage() {
                                 </div>
 
                             <div className="w-full md:w-1/3 pl-4">
-                                <label htmlFor="notasClínica de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="antealimenticio" className="block text-ls font-medium leading-6 text-gray-900">
                                     Antecendente Alimenticio
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
                                         type="text"
-                                        id="atealimenticio"
+                                        id="antealimenticio"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="Alimenticio"
                                         {...register('antealimenticio', { required: false })}
@@ -514,13 +514,13 @@ function ClinicaFormPage() {
 
                             
                             <div className="w-full md:w-1/3 pl-4">
-                                <label htmlFor="antef" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="antefamiliar" className="block text-ls font-medium leading-6 text-gray-900">
                                     Antecendente Familiar
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
                                         type="text"
-                                        id="antefam"
+                                        id="antefamiliar"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="Familiar"
                                         {...register('antefamiliar', { required: false })}
@@ -531,13 +531,13 @@ function ClinicaFormPage() {
                         </div>   
                         
                         <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5">
                                        HÁBITOS
                                 </label>
                                 </div>
  <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="fumar" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="fuma" className="block text-ls font-medium text-gray-900">
                                         Fuma
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -551,12 +551,12 @@ function ClinicaFormPage() {
                                 </div>
 
                                 <div className="w-full md:w-1/3 pl-4">
-                                    <label htmlFor="notascuadrantesuperiorizq" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="regularidad" className="block text-ls font-medium text-gray-900">
 Regularidad                                    </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
                                         <input
                                             type="text"
-                                            id="notascuadrantesuperiorizq"
+                                            id="regularidad"
                                             className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             placeholder="Regularidad Fumar"
                                             {...register('regularidad', { required: false })}
@@ -568,7 +568,7 @@ Regularidad                                    </label>
 
                          <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="antic" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="anticonceptivo" className="block text-ls font-medium text-gray-900">
                                         Anticonceptivo
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -582,13 +582,13 @@ Regularidad                                    </label>
                                 </div>
 
                                 <div className="w-full md:w-1/3 pl-4">
-                                    <label htmlFor="tipoantico" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="tipoanticonceptivo" className="block text-ls font-medium text-gray-900">
                                         Tipo Anticonceptivo
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
                                         <input
                                             type="text"
-                                            id="tipoantic"
+                                            id="tipoanticonceptivo"
                                             className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             placeholder="Tipo Anticonceptivo"
                                             {...register('tipoanticonceptivo', { required: false })}
@@ -619,7 +619,7 @@ Regularidad                                    </label>
                         <div className="px-5 pt-5 flex flex-wrap">
                             
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="medic" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="medicina" className="block text-ls font-medium text-gray-900">
                                         Medicina Prescrita/Reciente
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -634,7 +634,7 @@ Regularidad                                    </label>
 
                                <div className="w-full md:w-1/3 pl-4">
 
-                                    <label htmlFor="medicdes" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="medicinadesc" className="block text-ls font-medium text-gray-900">
 ¿Cuáles?                                    </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
                                         <input
@@ -648,7 +648,7 @@ Regularidad                                    </label>
                                 </div>
                         </div>
 <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+<label  className="block text-ls font-medium text-rose-500 px-5 pt-5">
                                        MENARQUÍA
                                 </label>
                                 </div>
@@ -657,13 +657,13 @@ Regularidad                                    </label>
                                 <div className="w-full md:w-1/3 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="menarg" className="block text-ls font-medium leading-6 text-gray-900">
                                             Menarquía G
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
                                             <input
                                                 type="text"
-                                                id="antepersonal" 
+                                                id="menarg" 
                                                 className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 placeholder="Menarquía G"
                                                 {...register('menarg', { required: false })}
@@ -682,7 +682,7 @@ Regularidad                                    </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
                                         type="text"
-                                        id="menarh"
+                                        id="menarhv"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="Menarquía HV"
                                         {...register('menarhv', { required: false })}
@@ -693,13 +693,13 @@ Regularidad                                    </label>
 
                             
                             <div className="w-full md:w-1/3 pl-4">
-                                <label htmlFor="antetra" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="menarab" className="block text-ls font-medium leading-6 text-gray-900">
                                     Menarquía AB
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
                                     <input
                                         type="text"
-                                        id="antetrauma"
+                                        id="menarab"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         placeholder="Menarquía AB"
                                         {...register('menarab', { required: false })}
@@ -713,13 +713,13 @@ Regularidad                                    </label>
                                 <div className="w-full md:w-1/3 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="menarfc" className="block text-ls font-medium leading-6 text-gray-900">
                                            Menarquía FC
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
                                             <input
                                                 type="text"
-                                                id="antepersonal" 
+                                                id="menarfc" 
                                                 className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 placeholder="Menarquía FC"
                                                 {...register('menarfc', { required: false })}
@@ -798,7 +798,7 @@ Regularidad                                    </label>
 
                         </div>
 <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5">
                                        EXÁMEN FÍSICO
                                 </label>
                                 </div>
@@ -807,7 +807,7 @@ Regularidad                                    </label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="examen1" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="expa" className="block text-ls font-medium leading-6 text-gray-900">
                                            Exámen P/A
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -827,7 +827,7 @@ Regularidad                                    </label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="exfr" className="block text-ls font-medium leading-6 text-gray-900">
                                            Exámen FR
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -851,7 +851,7 @@ Regularidad                                    </label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="examen1" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="exfc" className="block text-ls font-medium leading-6 text-gray-900">
                                            Exámen FC
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -871,7 +871,7 @@ Regularidad                                    </label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="ext" className="block text-ls font-medium leading-6 text-gray-900">
                                            Exámen T
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -892,7 +892,7 @@ Regularidad                                    </label>
                             </div>  
                             
                             <div className='px-5 py-5'>
-                            <label htmlFor="Observaciones" className="block text-ls font-medium leading-6 text-gray-900">
+                            <label htmlFor="observaciones" className="block text-ls font-medium leading-6 text-gray-900">
                                 Observaciones
                             </label>
                             <div className="relative mt-2 rounded-md shadow-sm">
@@ -915,7 +915,7 @@ Regularidad                                    </label>
                         </div>
 
                             <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-300 px-5 pt-5">
+<label  className="block text-ls font-medium text-rose-300 px-5 pt-5">
                                        K
                                 </label>
                                 </div>
@@ -985,7 +985,7 @@ Regularidad                                    </label>
                             </div>  
 
                              <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-300 px-5 pt-5">
+<label  className="block text-ls font-medium text-rose-300 px-5 pt-5">
                                        PLAN
                                 </label>
                                 </div>
@@ -1054,7 +1054,7 @@ Regularidad                                    </label>
 
                             </div>  
  <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+<label htmlFor="procedimiento" className="block text-ls font-medium text-rose-500 px-5 pt-5">
                                        PROCEDIMIENTO
                                 </label>
                                 </div>
@@ -1064,7 +1064,7 @@ Regularidad                                    </label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="procedimiento" className="block text-ls font-medium leading-6 text-gray-900">
                                           Nombre Procedimiento
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -1101,7 +1101,7 @@ Regularidad                                    </label>
   </div>
 
     <div className="w-full md:w-1/3 pr-1">
-    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+    <label htmlFor="horaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
                                     Hora Procedimiento
                                      <a className='text-rose-500 pl-3'>Formato 24 Horas</a>
                                 </label>
@@ -1121,7 +1121,7 @@ Regularidad                                    </label>
                             
  <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="fumar" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="anestesia" className="block text-ls font-medium text-gray-900">
                                         Anestesia
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">

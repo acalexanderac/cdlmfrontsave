@@ -359,11 +359,11 @@ histerectomia: Boolean(dataUpdate.histerectomia || false || null),
 otroantecedentequir: String(dataUpdate.otroantecedentequir || '' || null),
 fracturas: Boolean(dataUpdate.fracturas || false || null),
 accidentesrelevantes: Boolean(dataUpdate.accidentesrelevantes || false || null),
-                    otroantecedentetra: String(dataUpdate.otroantecedentetra || '' || null),
-                    añosmenarquia: String(dataUpdate.añosmenarquia || '' || null),
-                    ciclos: String(dataUpdate.ciclos || '' || null),
-                    duraciondias: String(dataUpdate.duraciondias || '' || null),
-                    menopausiaanios: String(dataUpdate.menopausiaanios || '' || null),
+otroantecedentetra: String(dataUpdate.otroantecedentetra || '' || null),
+añosmenarquia: String(dataUpdate.añosmenarquia || '' || null),
+ciclos: String(dataUpdate.ciclos || '' || null),
+duraciondias: String(dataUpdate.duraciondias || '' || null),
+menopausiaanios: String(dataUpdate.menopausiaanios || '' || null),
 fechaRegla1: String(dataUpdate.fechaRegla1 || '' || null),
 fechaRegla2: String(dataUpdate.fechaRegla2 || '' || null),
 g: Boolean(dataUpdate.g || false || null),
@@ -554,6 +554,10 @@ dpi: String(dataUpdate.dpi || '' || null),
             const updateData = {
                 fechaConsultaexterna: data.fechaConsultaexterna,
                 diabetes: data.diabetes,
+                añosmenarquia: data.añosmenarquia,
+                ciclos: data.ciclos,
+                duraciondias: data.duraciondias,
+                menopausiaanios: data.menopausiaanios,
                 hipertension: data.hipertension,
                 cardiopatia: data.cardiopatia,
                 otroantecedentemed: data.otroantecedentemed,
@@ -761,7 +765,7 @@ dpi: String(dataUpdate.dpi || '' || null),
 
 
     return (
-              <div className="flex justify-center items-center w-full ">
+              <div className="flex justify-center items-start w-full ">
   <div className="flex flex-col justify-center items-center">
                 <Toaster />
 
@@ -868,7 +872,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                             
                             <div className="text-gray-400 items-center px-5 pt-5">Recuerda hacer Click sobre el campo de Paciente y DPI para ser válidos</div>
    <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5">
                                        ANTECEDENTES MÉDICOS
                                 </label>
                             </div>     
@@ -918,13 +922,13 @@ dpi: String(dataUpdate.dpi || '' || null),
 
                             </div>                           
            <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5">
                                        ANTECEDENTES QUIRÚRGICOS
                                 </label>
                             </div>     
   <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/4 pr-4">
-                                    <label htmlFor="diabetes" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="apendicectomia" className="block text-ls font-medium text-gray-900">
                                         Apendicectomía 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -938,7 +942,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                                 </div>
  
                                 <div className="w-full md:w-1/4 pr-4">
-                                    <label htmlFor="hernio" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="hernioplastia" className="block text-ls font-medium text-gray-900">
                                         Hernioplastía
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -951,7 +955,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                                     </div>
                                 </div>
 <div className="w-full md:w-1/4 pr-4">
-                                    <label htmlFor="coles" className="block text-ls font-medium text-gray-900">
+                                    <label className="block text-ls font-medium text-gray-900">
                                       Colesistectomía
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -964,7 +968,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                                     </div>
                                 </div>
    <div className="w-full md:w-1/4 pr-4">
-                                    <label htmlFor="histerectom" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                        Histerectomía
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -979,13 +983,13 @@ dpi: String(dataUpdate.dpi || '' || null),
                             </div>                    
 
                              <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5">
                                        ANTECEDENTES TRAUMÁTICOS
                                 </label>
                             </div>     
   <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/2 pr-4">
-                                    <label htmlFor="fract" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="fracturas" className="block text-ls font-medium text-gray-900">
                                         Fracturas
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -999,7 +1003,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                                 </div>
  
                                 <div className="w-full md:w-1/2 pr-4">
-                                    <label htmlFor="hernio" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                         Accidentes Relevantes
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1017,13 +1021,13 @@ dpi: String(dataUpdate.dpi || '' || null),
                                 <div className="w-full md:w-full px-4 pt-1">
                                 
                    <div>
-  <label htmlFor="otropersonal" className="block text-ls font-medium leading-6 text-gray-900">
+  <label htmlFor="otroantecedentetra" className="block text-ls font-medium leading-6 text-gray-900">
     Otros/ Especifique:
   </label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
       type="text"
-      id="otropersonal"
+      id="otroantecedentetra"
       className="block rounded-md border-0 h-24 w-11/12	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
       placeholder="Tratamiento"
       {...register('otroantecedentetra', { required: false })}
@@ -1034,7 +1038,7 @@ dpi: String(dataUpdate.dpi || '' || null),
 
                                 </div>
                         <div>
-                            <label htmlFor="medic" className="block text-ls font-small text-rose-500 px-5 pt-5">
+                            <label className="block text-ls font-small text-rose-500 px-5 pt-5">
                                        ANTECEDENTES GINECOLÓGICOS
                                 </label>
                             </div>
@@ -1065,7 +1069,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="ciclos de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="ciclos" className="block text-ls font-medium leading-6 text-gray-900">
                                     Ciclos cada
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -1089,7 +1093,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                                 <div className="w-full md:w-1/2 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="duracion" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="duraciondias" className="block text-ls font-medium leading-6 text-gray-900">
                                            Duración 
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -1110,7 +1114,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="Menopausia de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="menopausiaanios" className="block text-ls font-medium leading-6 text-gray-900">
                                     Menopausia
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -1130,7 +1134,7 @@ dpi: String(dataUpdate.dpi || '' || null),
 
                                 <div className="w-full md:w-1/2 pr-4">
                                  <div className="flex-1 mr-5">
-    <label htmlFor="FECHAREGAL1" className="block text-ls font-medium leading-6 text-gray-900">
+    <label  className="block text-ls font-medium leading-6 text-gray-900">
       Fecha Penúltima Regla
     </label>
     
@@ -1150,7 +1154,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                             <div className="w-full md:w-1/2 pl-4">
                                                <div className="w-full md:w-1/2 pr-4">
                                  <div className="flex-1 mr-5">
-    <label htmlFor="FECHAREGLA2" className="block text-ls font-medium leading-6 text-gray-900">
+    <label  className="block text-ls font-medium leading-6 text-gray-900">
       Fecha Última Regla
     </label>
     
@@ -1192,7 +1196,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                                 </div>
 
                             <div className="w-full md:w-1/3 pl-4">
-                                <label htmlFor="p de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="p" className="block text-ls font-medium leading-6 text-gray-900">
                                     P
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -1209,7 +1213,7 @@ dpi: String(dataUpdate.dpi || '' || null),
 
                             
                             <div className="w-full md:w-1/3 pl-4">
-                                <label htmlFor="antetra" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="ab" className="block text-ls font-medium leading-6 text-gray-900">
                                     AB
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -1249,7 +1253,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                                 </div>
 
                             <div className="w-full md:w-1/3 pl-4">
-                                <label htmlFor="hv de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="hv" className="block text-ls font-medium leading-6 text-gray-900">
                                     HV
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -1266,7 +1270,7 @@ dpi: String(dataUpdate.dpi || '' || null),
 
                             
                             <div className="w-full md:w-1/3 pl-4">
-                                <label htmlFor="antetra" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="hm" className="block text-ls font-medium leading-6 text-gray-900">
                                     HM
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -1283,7 +1287,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                         </div>
                                                      <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="antic" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="anticonceptivo" className="block text-ls font-medium text-gray-900">
                                         ¿Anticonceptivo?
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1297,7 +1301,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                                 </div>
 
                                 <div className="w-full md:w-1/3 pl-4">
-                                    <label htmlFor="motivoh" className="block text-ls font-medium text-gray-900">
+                                    <label className="block text-ls font-medium text-gray-900">
                                         Tipo Anticonceptivo
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1313,7 +1317,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                             </div>
                             
                               <div className="w-full md:w-1/3 pl-4">
-    <label htmlFor="fechaHospitaliz" className="block text-ls font-medium leading-6 text-gray-900">
+    <label className="block text-ls font-medium leading-6 text-gray-900">
                                     Fecha Anticonceptivo
                                      
                                 </label>
@@ -1334,7 +1338,7 @@ dpi: String(dataUpdate.dpi || '' || null),
                                 <div className="w-full md:w-full px-4 pt-1">
                                 
                    <div>
-  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+  <label htmlFor="motivoconsulta" className="block text-ls font-medium leading-6 text-gray-900">
 Motivo Consulta  </label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -1351,7 +1355,7 @@ Motivo Consulta  </label>
 <div className="w-full md:w-full px-4 pt-1">
                                 
                    <div>
-  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
                                         Historia de la Enfermedad
                                     </label>
   <div className="relative mt-2 rounded-md shadow-sm">
@@ -1368,7 +1372,7 @@ Motivo Consulta  </label>
                             </div>
 
 <div>
-                            <label htmlFor="medic" className="block text-ls font-small text-rose-500 px-5 pt-5">
+                            <label className="block text-ls font-small text-rose-500 px-5 pt-5">
                                        EXÁMEN FÍSICO
                                 </label>
                             </div>
@@ -1399,7 +1403,7 @@ Motivo Consulta  </label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="P de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="pfisico" className="block text-ls font-medium leading-6 text-gray-900">
                                     P 
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -1422,7 +1426,7 @@ Motivo Consulta  </label>
                                 <div className="w-full md:w-1/2 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="ts" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="t" className="block text-ls font-medium leading-6 text-gray-900">
                                            T
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -1443,7 +1447,7 @@ Motivo Consulta  </label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="ciclos de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="resp" className="block text-ls font-medium leading-6 text-gray-900">
                                    Resp.
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -1466,7 +1470,7 @@ Motivo Consulta  </label>
                                 <div className="w-full md:w-1/2 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="pesos" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="peso" className="block text-ls font-medium leading-6 text-gray-900">
                                            Peso
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -1487,7 +1491,7 @@ Motivo Consulta  </label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="talla de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="talla" className="block text-ls font-medium leading-6 text-gray-900">
                                     Talla
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -1506,20 +1510,20 @@ Motivo Consulta  </label>
                             
                         </div>    
                                          <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5">
                                        EXAMENES ESPECÍFICOS
                                 </label>
                             </div> 
                             <div>
                             <div className="px-5 pt-5 flex flex-wrap">
                                           <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="tiroid" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                         Tiroides
                                     </label>
                             
                                 </div>
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="tiroidnorm" className="block text-ls font-medium text-gray-900">
+                                    <label className="block text-ls font-medium text-gray-900">
                                         Tiroides Normal 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1533,7 +1537,7 @@ Motivo Consulta  </label>
                                 </div> 
  
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                         Tiroides Anormal
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1552,7 +1556,7 @@ Motivo Consulta  </label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Explicación Tiroides</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -1573,14 +1577,14 @@ Explicación Tiroides</label>
                             <div>
                             <div className="px-5 pt-5 flex flex-wrap">
                                           <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="mam" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                         Mamas
                                     </label>
                             
                                 </div>
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="mamnorm" className="block text-ls font-medium text-gray-900">
-                                        Mamas Normal 
+                                    <label  className="block text-ls font-medium text-gray-900">
+                                        Mamas Normal
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
                                         <input
@@ -1593,7 +1597,7 @@ Explicación Tiroides</label>
                                 </div> 
  
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="maman" className="block text-ls font-medium text-gray-900">
+                                    <label className="block text-ls font-medium text-gray-900">
                                         Mamas Anormal
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1612,7 +1616,7 @@ Explicación Tiroides</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+  <label className="block text-ls font-medium leading-6 text-gray-900">
 Explicación Mamas</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -1638,7 +1642,7 @@ Explicación Mamas</label>
                             
                                 </div>
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="cardiopulmonarnorm" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="cardiopulmonarnormal" className="block text-ls font-medium text-gray-900">
                                         Cardiopulmonar Normal 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1652,7 +1656,7 @@ Explicación Mamas</label>
                                 </div> 
  
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                    <label className="block text-ls font-medium text-gray-900">
                                         Cardiopulmonar Anormal
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1671,7 +1675,7 @@ Explicación Mamas</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+  <label className="block text-ls font-medium leading-6 text-gray-900">
 Explicación Cardiopulmonar</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -1697,7 +1701,7 @@ Explicación Cardiopulmonar</label>
                             
                                 </div>
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="mucosasnorm" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="mucosasnormal" className="block text-ls font-medium text-gray-900">
                                         Mucosas Normal 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1711,7 +1715,7 @@ Explicación Cardiopulmonar</label>
                                 </div> 
  
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                    <label className="block text-ls font-medium text-gray-900">
                                         Mucosas Anormal
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1730,7 +1734,7 @@ Explicación Cardiopulmonar</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+  <label className="block text-ls font-medium leading-6 text-gray-900">
 Explicación Mucosas</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -1756,7 +1760,7 @@ Explicación Mucosas</label>
                             
                                 </div>
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="flujonorm" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="flujonormal" className="block text-ls font-medium text-gray-900">
                                         Flujo Normal 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1770,7 +1774,7 @@ Explicación Mucosas</label>
                                 </div> 
  
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="flujoanormal" className="block text-ls font-medium text-gray-900">
                                         Flujo Anormal
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1789,12 +1793,12 @@ Explicación Mucosas</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+  <label className="block text-ls font-medium leading-6 text-gray-900">
 Explicación Flujo</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
       type="text"
-      id="otrofamiliar"
+      id="flujo"
       className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
       placeholder="Explicaciones Flujo"
       {...register('flujo', { required: false })}
@@ -1815,7 +1819,7 @@ Explicación Flujo</label>
                             
                                 </div>
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="labiosmenoresnorm" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="labiosmenoresnormal" className="block text-ls font-medium text-gray-900">
                                         Labios Menores Normal 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1829,7 +1833,7 @@ Explicación Flujo</label>
                                 </div> 
  
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                         Labios Menores Anormal
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1848,7 +1852,7 @@ Explicación Flujo</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+  <label className="block text-ls font-medium leading-6 text-gray-900">
 Explicación Labios Menores</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -1874,7 +1878,7 @@ Explicación Labios Menores</label>
                             
                                 </div>
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="labiosmayoresnorm" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="labiosmayoresnormal" className="block text-ls font-medium text-gray-900">
                                         Labios Mayores Normal 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1888,7 +1892,7 @@ Explicación Labios Menores</label>
                                 </div> 
  
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                    <label className="block text-ls font-medium text-gray-900">
                                         Labios Mayores Anormal
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1907,7 +1911,7 @@ Explicación Labios Menores</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+  <label className="block text-ls font-medium leading-6 text-gray-900">
 Explicación Labios Mayores</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -1927,13 +1931,13 @@ Explicación Labios Mayores</label>
 <div>
                             <div className="px-5 pt-5 flex flex-wrap">
                                           <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="aparatourinario" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                         Aparato Urinario
                                     </label>
                             
                                 </div>
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="aparatourinarionorm" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="aparatourinarionormal" className="block text-ls font-medium text-gray-900">
                                         Aparato Urinario Normal 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1947,7 +1951,7 @@ Explicación Labios Mayores</label>
                                 </div> 
  
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                    <label className="block text-ls font-medium text-gray-900">
                                         Aparato Urinario Anormal
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -1966,7 +1970,7 @@ Explicación Labios Mayores</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+  <label className="block text-ls font-medium leading-6 text-gray-900">
 Explicación Aparato Urinario</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -1992,7 +1996,7 @@ Explicación Aparato Urinario</label>
                             
                                 </div>
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="fondodesaconorm" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="fondodesaconormal" className="block text-ls font-medium text-gray-900">
                                         Fondo de saco Normal 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -2006,7 +2010,7 @@ Explicación Aparato Urinario</label>
                                 </div> 
  
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="tiroidan" className="block text-ls font-medium text-gray-900">
+                                    <label className="block text-ls font-medium text-gray-900">
                                         Fondo de saco Anormal
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -2025,12 +2029,12 @@ Explicación Aparato Urinario</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+  <label className="block text-ls font-medium leading-6 text-gray-900">
 Explicación Fondo de saco</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
       type="text"
-      id="otrofamiliar"
+      id="fondodesaco"
       className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
       placeholder="Explicaciones Fondo de saco"
       {...register('fondodesaco', { required: false })}
@@ -2051,7 +2055,7 @@ Explicación Fondo de saco</label>
                             
                                 </div>
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="cupulavaginalnorm" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="cupulavaginalnormal" className="block text-ls font-medium text-gray-900">
                                         Cúpula vaginal Normal 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -2065,7 +2069,7 @@ Explicación Fondo de saco</label>
                                 </div> 
  
                                 <div className="w-full md:w-1/3 pr-4">
-                                    <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+                                    <label className="block text-ls font-medium text-gray-900">
                                         Cúpula vaginal Anormal
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -2084,12 +2088,12 @@ Explicación Fondo de saco</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivocup" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Explicación Cúpula vaginal</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
       type="text"
-      id="otrofamiliar"
+      id="cupulavaginal"
       className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
       placeholder="Explicaciones Cúpula vaginal"
       {...register('cupulavaginal', { required: false })}
@@ -2104,12 +2108,12 @@ Explicación Cúpula vaginal</label>
  
       <div className="px-5 pt-5 flex flex-wrap">
    <div className="w-full md:w-1/5 pr-4 px-4 flex items-center">
-        <label htmlFor="cistocele" className="block text-ls font-medium text-gray-900">
+        <label  className="block text-ls font-medium text-gray-900">
             Cistocele
         </label>
     </div>
     <div className="w-full md:w-1/5 pr-1 flex items-center">
-        <label htmlFor="cistocelenorm" className="block text-ls font-medium text-gray-900">
+        <label  className="block text-ls font-medium text-gray-900">
             G I
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2122,7 +2126,7 @@ Explicación Cúpula vaginal</label>
         </div>
     </div>
     <div className="w-full md:w-1/5 pr-1 flex items-center">
-        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+        <label className="block text-ls font-medium text-gray-900">
             G II
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2135,7 +2139,7 @@ Explicación Cúpula vaginal</label>
         </div>
     </div>
     <div className="w-full md:w-1/5 pr-1 flex items-center">
-        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+        <label className="block text-ls font-medium text-gray-900">
             G III
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2148,7 +2152,7 @@ Explicación Cúpula vaginal</label>
         </div>
     </div>
     <div className="w-full md:w-1/5 pr-4 flex items-center">
-        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+        <label className="block text-ls font-medium text-gray-900">
             G IV
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2164,12 +2168,12 @@ Explicación Cúpula vaginal</label>
 
  <div className="px-5 pt-5 flex flex-wrap">
    <div className="w-full md:w-1/5 pr-4 px-4 flex items-center">
-        <label htmlFor="rectocele" className="block text-ls font-medium text-gray-900">
+        <label  className="block text-ls font-medium text-gray-900">
             Rectocele
         </label>
     </div>
     <div className="w-full md:w-1/5 pr-1 flex items-center">
-        <label htmlFor="rectocelenorm" className="block text-ls font-medium text-gray-900">
+        <label  className="block text-ls font-medium text-gray-900">
             G I
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2182,7 +2186,7 @@ Explicación Cúpula vaginal</label>
         </div>
     </div>
     <div className="w-full md:w-1/5 pr-1 flex items-center">
-        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+        <label className="block text-ls font-medium text-gray-900">
             G II
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2195,7 +2199,7 @@ Explicación Cúpula vaginal</label>
         </div>
     </div>
     <div className="w-full md:w-1/5 pr-1 flex items-center">
-        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+        <label className="block text-ls font-medium text-gray-900">
             G III
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2208,7 +2212,7 @@ Explicación Cúpula vaginal</label>
         </div>
     </div>
     <div className="w-full md:w-1/5 pr-4 flex items-center">
-        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+        <label className="block text-ls font-medium text-gray-900">
             G IV
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2224,12 +2228,12 @@ Explicación Cúpula vaginal</label>
 
  <div className="px-5 pt-5 flex flex-wrap">
    <div className="w-full md:w-1/5 pr-4 px-4 flex items-center">
-        <label htmlFor="prolapso" className="block text-ls font-medium text-gray-900">
+        <label  className="block text-ls font-medium text-gray-900">
             Prolapso Uterino
         </label>
     </div>
     <div className="w-full md:w-1/5 pr-1 flex items-center">
-        <label htmlFor="prolapsonorm" className="block text-ls font-medium text-gray-900">
+        <label htmlFor="prolapso1" className="block text-ls font-medium text-gray-900">
             G I
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2242,7 +2246,7 @@ Explicación Cúpula vaginal</label>
         </div>
     </div>
     <div className="w-full md:w-1/5 pr-1 flex items-center">
-        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+        <label className="block text-ls font-medium text-gray-900">
             G II
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2255,7 +2259,7 @@ Explicación Cúpula vaginal</label>
         </div>
     </div>
     <div className="w-full md:w-1/5 pr-1 flex items-center">
-        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+        <label className="block text-ls font-medium text-gray-900">
             G III
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2268,7 +2272,7 @@ Explicación Cúpula vaginal</label>
         </div>
     </div>
     <div className="w-full md:w-1/5 pr-4 flex items-center">
-        <label htmlFor="cupva" className="block text-ls font-medium text-gray-900">
+        <label className="block text-ls font-medium text-gray-900">
             G IV
         </label>
         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2283,7 +2287,7 @@ Explicación Cúpula vaginal</label>
 </div>
 
                             <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
                                       CÉRVIX
                                 </label>
                             </div>
@@ -2314,7 +2318,7 @@ Explicación Cúpula vaginal</label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="consitencia de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="consistenciacervix" className="block text-ls font-medium leading-6 text-gray-900">
                                     Consistencia Cérvix
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -2358,7 +2362,7 @@ Explicación Cúpula vaginal</label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="ulceras de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label className="block text-ls font-medium leading-6 text-gray-900">
                                     Ulceraciones Cérvix 
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -2379,7 +2383,7 @@ Explicación Cúpula vaginal</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivocervix" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Otros</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -2397,7 +2401,7 @@ Otros</label>
 
            
                             <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
                                       CUERPO UTERINO
                                 </label>
                             </div>
@@ -2407,7 +2411,7 @@ Otros</label>
                                 <div className="w-full md:w-1/2 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="formacervix" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label className="block text-ls font-medium leading-6 text-gray-900">
                                            Tamaño Cuerpo Uterino en Cm.
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2428,7 +2432,7 @@ Otros</label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="consitencia de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label className="block text-ls font-medium leading-6 text-gray-900">
                                     Posición Cuerpo Uterino
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -2451,7 +2455,7 @@ Otros</label>
                                 <div className="w-full md:w-1/2 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="tumoracionescervix" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label  className="block text-ls font-medium leading-6 text-gray-900">
                                            Consistencia Cuerpo Uterino
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2472,7 +2476,7 @@ Otros</label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="ulceras de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label  className="block text-ls font-medium leading-6 text-gray-900">
                                     Movilidad
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -2495,7 +2499,7 @@ Otros</label>
                                 <div className="w-full md:w-1/2 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="tumoracionescervix" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label  className="block text-ls font-medium leading-6 text-gray-900">
                                            Forma Cuerpo Uterino
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2516,7 +2520,7 @@ Otros</label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="ulceras de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label className="block text-ls font-medium leading-6 text-gray-900">
                                     Otros
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -2533,7 +2537,7 @@ Otros</label>
                             </div> 
                         </div>   
 <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
                                       ANEXOS Y PARAMETRIOS
                                 </label>
                             </div>
@@ -2543,7 +2547,7 @@ Otros</label>
                                 <div className="w-full md:w-1/2 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="formacervix" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label  className="block text-ls font-medium leading-6 text-gray-900">
                                            Izquierdo
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2564,7 +2568,7 @@ Otros</label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="consitencia de la Mujer" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label className="block text-ls font-medium leading-6 text-gray-900">
                                    Derecho
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -2587,7 +2591,7 @@ Otros</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivocervix" className="block text-ls font-medium leading-6 text-gray-900">
+  <label className="block text-ls font-medium leading-6 text-gray-900">
 Comentarios</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -2604,7 +2608,7 @@ Comentarios</label>
                             </div>                   
 
                             <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
                                       LABORATORIOS
                                 </label>
                             </div>
@@ -2635,7 +2639,7 @@ Comentarios</label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="ht1" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="ht" className="block text-ls font-medium leading-6 text-gray-900">
                                     HT
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -2679,7 +2683,7 @@ Comentarios</label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="tpt1" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="tpt" className="block text-ls font-medium leading-6 text-gray-900">
                                     TPT
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -2724,7 +2728,7 @@ Comentarios</label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="ht1" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="inr" className="block text-ls font-medium leading-6 text-gray-900">
                                     INR
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -2847,7 +2851,7 @@ Comentarios</label>
                         </div>  
 
 <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-1">
                                       EXÁMENES
                                 </label>
                             </div>
@@ -2857,7 +2861,7 @@ Comentarios</label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-2xl font-medium leading-6 text-gray-900">
+                                        <label className="block text-2xl font-medium leading-6 text-gray-900">
                                           ORINA
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2868,7 +2872,7 @@ Comentarios</label>
                                 </div>
 
                                                           <div className="w-full md:w-1/3 pr-1">
-    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+    <label htmlFor="fechaorina" className="block text-ls font-medium leading-6 text-gray-900">
                                     Fecha Procedimiento
                                      
                                 </label>
@@ -2891,7 +2895,7 @@ Comentarios</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="ResultOrina" className="block text-ls font-medium leading-6 text-gray-900">
+  <label htmlFor="orinaresultado" className="block text-ls font-medium leading-6 text-gray-900">
 Resultado</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -2912,7 +2916,7 @@ Resultado</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="TratOrina" className="block text-ls font-medium leading-6 text-gray-900">
+  <label htmlFor="orinatratamiento" className="block text-ls font-medium leading-6 text-gray-900">
 Tratamiento</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -2935,7 +2939,7 @@ Tratamiento</label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-2xl font-medium leading-6 text-gray-900">
+                                        <label className="block text-2xl font-medium leading-6 text-gray-900">
                                           EKG
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -2946,7 +2950,7 @@ Tratamiento</label>
                                 </div>
 
                                                           <div className="w-full md:w-1/3 pr-1">
-    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+    <label className="block text-ls font-medium leading-6 text-gray-900">
                                     Fecha Procedimiento
                                      
                                 </label>
@@ -2969,7 +2973,7 @@ Tratamiento</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="ResultEkg" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Resultado</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -2990,7 +2994,7 @@ Resultado</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="TratEkg" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Tratamiento</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3014,7 +3018,7 @@ Tratamiento</label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-2xl font-medium leading-6 text-gray-900">
+                                        <label className="block text-2xl font-medium leading-6 text-gray-900">
                                           USG
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -3025,7 +3029,7 @@ Tratamiento</label>
                                 </div>
 
                                                           <div className="w-full md:w-1/3 pr-1">
-    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+    <label className="block text-ls font-medium leading-6 text-gray-900">
                                     Fecha Procedimiento
                                      
                                 </label>
@@ -3048,7 +3052,7 @@ Tratamiento</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="ResultUsg" className="block text-ls font-medium leading-6 text-gray-900">
+  <label htmlFor="usgresultado" className="block text-ls font-medium leading-6 text-gray-900">
 Resultado</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3069,7 +3073,7 @@ Resultado</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="TratUsg" className="block text-ls font-medium leading-6 text-gray-900">
+  <label htmlFor="usgtratamiento" className="block text-ls font-medium leading-6 text-gray-900">
 Tratamiento</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3092,7 +3096,7 @@ Tratamiento</label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-2xl font-medium leading-6 text-gray-900">
+                                        <label className="block text-2xl font-medium leading-6 text-gray-900">
                                           PAPANICOLAOU
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -3103,7 +3107,7 @@ Tratamiento</label>
                                 </div>
 
                                                           <div className="w-full md:w-1/3 pr-1">
-    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+    <label className="block text-ls font-medium leading-6 text-gray-900">
                                     Fecha Procedimiento
                                      
                                 </label>
@@ -3126,7 +3130,7 @@ Tratamiento</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="ResultPapanicolaou" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Resultado</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3147,7 +3151,7 @@ Resultado</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="TratPapanicolaou" className="block text-ls font-medium leading-6 text-gray-900">
+  <label className="block text-ls font-medium leading-6 text-gray-900">
 Tratamiento</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3170,7 +3174,7 @@ Tratamiento</label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-2xl font-medium leading-6 text-gray-900">
+                                        <label className="block text-2xl font-medium leading-6 text-gray-900">
                                           COLPOSCOPIA
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -3181,7 +3185,7 @@ Tratamiento</label>
                                 </div>
 
                                                           <div className="w-full md:w-1/3 pr-1">
-    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+    <label className="block text-ls font-medium leading-6 text-gray-900">
                                     Fecha Procedimiento
                                      
                                 </label>
@@ -3204,7 +3208,7 @@ Tratamiento</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="ResultColposcopia" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Resultado</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3225,7 +3229,7 @@ Resultado</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="TratColposcopia" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Tratamiento</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3249,7 +3253,7 @@ Tratamiento</label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-2xl font-medium leading-6 text-gray-900">
+                                        <label className="block text-2xl font-medium leading-6 text-gray-900">
                                           RX
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -3260,7 +3264,7 @@ Tratamiento</label>
                                 </div>
 
                                                           <div className="w-full md:w-1/3 pr-1">
-    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+    <label className="block text-ls font-medium leading-6 text-gray-900">
                                     Fecha Procedimiento
                                      
                                 </label>
@@ -3283,7 +3287,7 @@ Tratamiento</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="ResultRx" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Resultado</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3304,7 +3308,7 @@ Resultado</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="TratRx" className="block text-ls font-medium leading-6 text-gray-900">
+  <label className="block text-ls font-medium leading-6 text-gray-900">
 Tratamiento</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3327,7 +3331,7 @@ Tratamiento</label>
                                 <div className="w-full md:w-1/2 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-2xs font-medium leading-6 text-gray-900">
+                                        <label className="block text-2xs font-medium leading-6 text-gray-900">
                                           Nombre Examen
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -3345,7 +3349,7 @@ Tratamiento</label>
                                 </div>
 
                                                           <div className="w-full md:w-1/3 pr-1">
-    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+    <label className="block text-ls font-medium leading-6 text-gray-900">
                                     Fecha Procedimiento
                                      
                                 </label>
@@ -3368,7 +3372,7 @@ Tratamiento</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="ResultOtro1" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Resultado</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3389,7 +3393,7 @@ Resultado</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="TratOtro1" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Tratamiento</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3413,7 +3417,7 @@ Tratamiento</label>
                                 <div className="w-full md:w-1/2 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-2xs font-medium leading-6 text-gray-900">
+                                        <label className="block text-2xs font-medium leading-6 text-gray-900">
                                           Nombre Examen
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -3431,7 +3435,7 @@ Tratamiento</label>
                                 </div>
 
                                                           <div className="w-full md:w-1/3 pr-1">
-    <label htmlFor="fechaprocedimiento" className="block text-ls font-medium leading-6 text-gray-900">
+    <label className="block text-ls font-medium leading-6 text-gray-900">
                                     Fecha Procedimiento
                                      
                                 </label>
@@ -3454,7 +3458,7 @@ Tratamiento</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="ResultOtro2" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Resultado</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3475,7 +3479,7 @@ Resultado</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="TratOtro2" className="block text-ls font-medium leading-6 text-gray-900">
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
 Tratamiento</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3494,7 +3498,7 @@ Tratamiento</label>
 </div>                           
 
 <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5">
                                        C
                                 </label>
                                 </div>
@@ -3503,7 +3507,7 @@ Tratamiento</label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="examen1" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="c1" className="block text-ls font-medium leading-6 text-gray-900">
                                            1
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -3523,7 +3527,7 @@ Tratamiento</label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label className="block text-ls font-medium leading-6 text-gray-900">
                                            2
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -3547,7 +3551,7 @@ Tratamiento</label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="examen1" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="c3" className="block text-ls font-medium leading-6 text-gray-900">
                                            3
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -3567,7 +3571,7 @@ Tratamiento</label>
                                 <div className="w-full md:w-1/3 pr-1">
                                 
                                 <div>
-                                        <label htmlFor="antepersonal" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label className="block text-ls font-medium leading-6 text-gray-900">
                                            4
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -3592,7 +3596,7 @@ Tratamiento</label>
 <div className="w-full md:w-full  pt-1 px-4">
                                 
                    <div>
-  <label htmlFor="motivo" className="block text-ls font-medium leading-6 text-gray-900">
+  <label className="block text-ls font-medium leading-6 text-gray-900">
 Plan Terapéutico</label>
   <div className="relative mt-2 rounded-md shadow-sm">
     <input
@@ -3608,13 +3612,13 @@ Plan Terapéutico</label>
                             </div>
                             </div>
                             <div>
-<label htmlFor="medic" className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-5">
+<label className="block text-ls font-medium text-rose-500 px-5 pt-5 pb-5">
                                        OTROS REGISTROS
                                 </label>
                             </div>
 
                               <div className="w-full md:w-1/3 pl-4">
-    <label htmlFor="fechareg" className="block text-ls font-medium leading-6 text-gray-900">
+    <label htmlFor="fecharegistro" className="block text-ls font-medium leading-6 text-gray-900">
                                     Fecha Registro
                                      <a className='text-rose-500 pl-3'>Año-Mes-Día</a>
                                 </label>
@@ -3635,7 +3639,7 @@ Plan Terapéutico</label>
                                 <div className="w-full md:w-1/2 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="valsegs" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label htmlFor="valseg" className="block text-ls font-medium leading-6 text-gray-900">
                                             ¿Val.seg?
                                         </label>
                                         <div className="relative mt-2 rounded-md shadow-sm">
@@ -3654,7 +3658,7 @@ Plan Terapéutico</label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label htmlFor="rii" className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="ri" className="block text-ls font-medium leading-6 text-gray-900">
                                     RI
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -3670,7 +3674,7 @@ Plan Terapéutico</label>
                             </div>
                             </div>
 
-            <label htmlFor="ayuda?" className=" block text-ls font-medium leading-6 text-gray-900  pt-5 pb-5">
+            <label className=" block text-ls font-medium leading-6 text-gray-900  pt-5 pb-5">
                                     Acepto Ayuda?
                                 </label>                 
 
@@ -3679,7 +3683,7 @@ Plan Terapéutico</label>
                                 <div className="w-full md:w-1/4 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="valsegs" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label className="block text-ls font-medium leading-6 text-gray-900">
                                             P S
                                         </label>
                                         
@@ -3689,7 +3693,7 @@ Plan Terapéutico</label>
                             <div className="w-full md:w-1/2 pl-4 ">
   <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/3 pr-4 border border-gray-300 rounded-lg p-4">
-                                    <label htmlFor="psal" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="psalgunavez" className="block text-ls font-medium text-gray-900">
                                         Alguna vez 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -3703,7 +3707,7 @@ Plan Terapéutico</label>
                                 </div>
  
                                 <div className="w-full md:w-1/3 pr-4 border border-gray-300 rounded-lg p-4">
-                                    <label htmlFor="psult12" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                         ¿Últimos 12 Meses?
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -3716,7 +3720,7 @@ Plan Terapéutico</label>
                                     </div>
                                 </div>
 <div className="w-full md:w-1/3 pr-4 border border-gray-300 rounded-lg p-4">
-                                    <label htmlFor="psparej" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                        Pareja= SÍ
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -3740,7 +3744,7 @@ Plan Terapéutico</label>
                                 <div className="w-full md:w-1/4 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="valsegs" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label className="block text-ls font-medium leading-6 text-gray-900">
                                             F I
                                         </label>
                                         
@@ -3750,7 +3754,7 @@ Plan Terapéutico</label>
                             <div className="w-full md:w-1/2 pl-4 ">
   <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/3 pr-4 border border-gray-300 rounded-lg p-4">
-                                    <label htmlFor="fial" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                         Alguna vez 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -3764,7 +3768,7 @@ Plan Terapéutico</label>
                                 </div>
  
                                 <div className="w-full md:w-1/3 pr-4 border border-gray-300 rounded-lg p-4">
-                                    <label htmlFor="fiult12" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                         ¿Últimos 12 Meses?
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -3777,7 +3781,7 @@ Plan Terapéutico</label>
                                     </div>
                                 </div>
 <div className="w-full md:w-1/3 pr-4 border border-gray-300 rounded-lg p-4">
-                                    <label htmlFor="fiparej" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="fipareja" className="block text-ls font-medium text-gray-900">
                                        Pareja= SÍ
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -3798,7 +3802,7 @@ Plan Terapéutico</label>
                                 <div className="w-full md:w-1/4 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="valsegs" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label className="block text-ls font-medium leading-6 text-gray-900">
                                             S X
                                         </label>
                                         
@@ -3808,7 +3812,7 @@ Plan Terapéutico</label>
                             <div className="w-full md:w-1/2 pl-4 ">
   <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/3 pr-4 border border-gray-300 rounded-lg p-4">
-                                    <label htmlFor="sxal" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                         Alguna vez 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -3822,7 +3826,7 @@ Plan Terapéutico</label>
                                 </div>
  
                                 <div className="w-full md:w-1/3 pr-4 border border-gray-300 rounded-lg p-4">
-                                    <label htmlFor="sxult12" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                         ¿Últimos 12 Meses?
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -3835,7 +3839,7 @@ Plan Terapéutico</label>
                                     </div>
                                 </div>
 <div className="w-full md:w-1/3 pr-4 border border-gray-300 rounded-lg p-4">
-                                    <label htmlFor="sxparej" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="sxpareja" className="block text-ls font-medium text-gray-900">
                                        Pareja= SÍ
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -3856,7 +3860,7 @@ Plan Terapéutico</label>
                                 <div className="w-full md:w-1/4 pr-4">
                                 
                                 <div>
-                                        <label htmlFor="valsegs" className="block text-ls font-medium leading-6 text-gray-900">
+                                        <label  className="block text-ls font-medium leading-6 text-gray-900">
                                             A N
                                         </label>
                                         
@@ -3866,7 +3870,7 @@ Plan Terapéutico</label>
                             <div className="w-full md:w-1/2 pl-4 ">
   <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/3 pr-4 border border-gray-300 rounded-lg p-4">
-                                    <label htmlFor="an_al" className="block text-ls font-medium text-gray-900">
+                                    <label className="block text-ls font-medium text-gray-900">
                                         Alguna vez 
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -3880,7 +3884,7 @@ Plan Terapéutico</label>
                                 </div>
  
                                 <div className="w-full md:w-1/3 pr-4 border border-gray-300 rounded-lg p-4">
-                                    <label htmlFor="an_ult12" className="block text-ls font-medium text-gray-900">
+                                    <label  className="block text-ls font-medium text-gray-900">
                                         ¿Últimos 12 Meses?
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -3893,7 +3897,7 @@ Plan Terapéutico</label>
                                     </div>
                                 </div>
 <div className="w-full md:w-1/3 pr-4 border border-gray-300 rounded-lg p-4">
-                                    <label htmlFor="an_parej" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="an_pareja" className="block text-ls font-medium text-gray-900">
                                        Pareja= SÍ
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -3930,7 +3934,7 @@ Plan Terapéutico</label>
                 </div>
             </div>
        
-            <div className="">
+             <div className="">
                 <PatientListSearch/>
             </div>
         </div>

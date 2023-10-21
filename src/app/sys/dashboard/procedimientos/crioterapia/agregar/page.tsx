@@ -205,7 +205,7 @@ function CrioterapiaFormPage() {
 
 
     return (
-       <div className="flex justify-center items-center w-full ">
+       <div className="flex justify-center items-start w-full ">
   <div className="flex flex-col justify-center items-center">
                 <Toaster />
 
@@ -271,7 +271,7 @@ function CrioterapiaFormPage() {
     <label htmlFor="numeroCrioterapia" className="block text-ls font-medium text-gray-900">
       Número de Crioterapia
                                     </label>
-                                    <label htmlFor="noCriot" className="block text-ls font-medium leading-6 text-rose-500">
+                                    <label  className="block text-ls font-medium leading-6 text-rose-500">
       No. 1,2,3 o 4
     </label>
     <div className="relative mt-2 rounded-md shadow-sm ">
@@ -288,24 +288,28 @@ function CrioterapiaFormPage() {
     </div>
   </div>
 </div>
-
-                            <div className="px-5 pt-5 flex">
-  <div className="flex-1 mr-5">
-  
-                                    <label htmlFor="observaciones" className="block text-ls font-medium text-gray-900">
-                                        Observaciones Generales
-                                    </label>
-                                    <div className="relative mt-2 rounded-md shadow-sm">
-                                        <input
-                                            type="text"
-                                            id="observaciones"
-                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder="Observaciones Generales"
-                                            {...register('observaciones', { required: false })}
-                                        />
-                                    </div>
+                                                                       <div className=" pt-5 flex flex-wrap">
                             
+<div className="w-full md:w-full  pt-1 pr-5 pl-5">
+                                
+                   <div>
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
+Observaciones Generales  </label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="observaciones"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Observaciones"
+      {...register('observaciones', { required: false })}
+      onChange={handleChange}
+    />
   </div>
+                            </div>
+                            </div>
+                        </div>
+                            <div className="px-5 pt-5 flex">
+
 
  <div className="flex-1">
   <div>
@@ -314,8 +318,8 @@ function CrioterapiaFormPage() {
     <Image className=" align-middle flex-auto mx-auto"
                            src={crioterapiaimg}
                            alt="Pacientes Clínica"
-                           width={120}
-                           height={120}
+                           width={180}
+                           
                            blurDataURL="data:..."
                            placeholder="blur"
                     />
@@ -331,7 +335,7 @@ function CrioterapiaFormPage() {
                             
  <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/2 pr-4">
-                                    <label htmlFor="anestesia" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="cuadrantesuperiorizq" className="block text-ls font-medium text-gray-900">
                                         Cuadrante Superior Izquierdo
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -377,13 +381,13 @@ function CrioterapiaFormPage() {
                                 </div>
 
                                 <div className="w-full md:w-1/2 pl-4">
-                                    <label htmlFor="notascuadrantesuperiorizq" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="notascuadrantesuperiorder" className="block text-ls font-medium text-gray-900">
                                         Notas Cuadrante Superior Derecho
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
                                         <input
                                             type="text"
-                                            id="notascuadrantesuperiorizq"
+                                            id="notascuadrantesuperiorder"
                                             className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             placeholder="Cuadrante Superior Izq."
                                             {...register('notascuadrantesuperiorder', { required: false })}
@@ -426,7 +430,7 @@ function CrioterapiaFormPage() {
 
                             <div className="px-5 pt-5 flex flex-wrap">
                                 <div className="w-full md:w-1/2 pr-4">
-                                    <label htmlFor="anestesia" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="cuadranteinferiorizq" className="block text-ls font-medium text-gray-900">
                                         Cuadrante Inferior Izquierdo
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
@@ -440,13 +444,13 @@ function CrioterapiaFormPage() {
                                 </div>
 
                                 <div className="w-full md:w-1/2 pl-4">
-                                    <label htmlFor="notascuadranteinferiorder" className="block text-ls font-medium text-gray-900">
+                                    <label htmlFor="notascuadranteinferiorizq" className="block text-ls font-medium text-gray-900">
                                         Notas Cuadrante Inferior Izquierdo
                                     </label>
                                     <div className="relative mt-2 rounded-md shadow-sm">
                                         <input
                                             type="text"
-                                            id="notascuadranteinferiorder"
+                                            id="notascuadranteinferiorizq"
                                             className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             placeholder="Cuadrante Inferior Izq."
                                             {...register('notascuadranteinferiorizq', { required: false })}
@@ -519,7 +523,7 @@ function CrioterapiaFormPage() {
                 </div>
             </div>
        
-            <div className="">
+            <div className="h-full items-start">
                 <PatientListSearch/>
             </div>
         </div>

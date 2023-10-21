@@ -5,16 +5,19 @@ import { useParams, useRouter } from 'next/navigation'; // Updated import
 import axios from 'axios';
 import { Toaster, toast } from 'react-hot-toast';
 import { useSession } from 'next-auth/react';
-import PatientListSearch from '../../../pacientes/pacientes.components/search';
+import PatientListSearch from '../../pacientes/pacientes.components/search';
+import { Logo, crioterapiaimg, proced3 } from '@/styles/imports';
+import Image from 'next/image';
 interface FormData {
-    fechaPapanicolaous: string;
-    resultadoPapanicolaous: string;
+    fechaAgendado: string;
+    motivo: string;
     observaciones: string;
     paciente: string;
     dpi: string;
+    horaAgendado: string;
 }
 
-function PapanicolaouFormPage() {
+function CitasFormPage() {
     const params = useParams();
     const { data: session } = useSession();
 
@@ -23,22 +26,23 @@ function PapanicolaouFormPage() {
     const { register, handleSubmit, setValue } = useForm<FormData>();
 
     const [newProcedimiento, setNewProcedimiento] = useState<FormData>({ // Initialize with an empty FormData object
-        fechaPapanicolaous: '',
+        fechaAgendado: '',
+        motivo: '',
         observaciones: '',
         paciente: '',
         dpi: '',
-        resultadoPapanicolaous: '',
+        horaAgendado: '',
     });
     const getTreatment = async () => {
         if (params.id) {
             try {
-                const res = await axios.get(`http://localhost:3001/api/v1/papanicolaous/${params.id}`, {
+                const res = await axios.get(`http://localhost:3001/api/v1/citas/${params.id}`, {
                     // headers...
                 });
 
                 if (!res.data) {
-                    toast.error("This didn't work.");
-                    throw new Error('No data found');
+                    toast.error("Error.");
+                    throw new Error('Sin datos');
                 }
 
                 const dataUpdate = res.data;
@@ -56,11 +60,12 @@ function PapanicolaouFormPage() {
                 // Update the local state with the extracted data
                 setNewProcedimiento((prevState) => ({
                     ...prevState || {},
-                    fechaPapanicolaous: String(dataUpdate.fechaTratamiento || ''),
-                    resultadoPapanicolaous: String(dataUpdate.resultadoPapanicolaous || ''),
+                    fechaAgendado: String(dataUpdate.fechaTratamiento || ''),
+                    motivo: String(dataUpdate.motivo || ''),
                     observaciones: String(dataUpdate.observaciones || ''),
                     paciente: pacienteName || '', // Ensure it's a string
                     dpi: String(dataUpdate.dpi || ''),
+                    horaAgendado: String(dataUpdate.horaAgendado || ''),
                 }));
 
                 // Update form values using setValue
@@ -79,19 +84,19 @@ function PapanicolaouFormPage() {
     const handleDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             try {
-                await axios.delete(`http://localhost:3001/api/v1/papanicolaous/${params.id}`, {
+                await axios.delete(`http://localhost:3001/api/v1/citas/${params.id}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${session?.user?.token}`,
                     },
                 });
-                router.push('/sys/dashboard/procedimientos/papanicolaou');
+                router.push('/sys/dashboard/citas');
                 router.refresh(); // Use reload instead of refresh
             } catch (error) {
                 console.error(error);
-                toast.error("This didn't work.");
+                toast.error("Oops.");
                 console.error(error);
-                toast.error('Hubo un error al eliminar el procedimiento');
+                toast.error('Hubo un error al eliminar esta Cita');
             }
         }
     };
@@ -99,30 +104,31 @@ function PapanicolaouFormPage() {
     const updateTask = async (data: FormData) => {
         try {
             router.refresh();
-            console.log('Datos que se envían al actualizar paciente:', { ...data });
+           
 
             // Convert patient and treatmentype objects to strings
             const updateData = {
-                fechaPapanicolaous: data.fechaPapanicolaous,
-                resultadoPapanicolaous: data.resultadoPapanicolaous,
+                fechaAgendado: data.fechaAgendado,
+                motivo: data.motivo,
                 observaciones: data.observaciones,
                 paciente: data.paciente.toString(), // Convert patient object to string
                 dpi: data.dpi,
+                horaAgendado: data.horaAgendado,
             };
 
-            await axios.patch(`http://localhost:3001/api/v1/papanicolaous/${params.id}`, { ...updateData }, {
+            await axios.patch(`http://localhost:3001/api/v1/citas/${params.id}`, { ...updateData }, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${session?.user?.token}`,
                 },
             });
-            router.push('/sys/dashboard/procedimientos/papanicolaou');
+            router.push('/sys/dashboard/citas');
             router.refresh();
         } catch (error) {
             console.error(error);
-            toast.error("This didn't work.");
+            toast.error("Oops.");
             console.error(error);
-            toast.error('Hubo un error al actualizar el procedimiento');
+            toast.error('Revisa si no hay citas en ese Horario o Verifica Paciente/DPI.');
         }
     };
 
@@ -143,7 +149,7 @@ function PapanicolaouFormPage() {
         if (!params.id) {
             try {
                 const response = await axios.post(
-                    'http://localhost:3001/api/v1/papanicolaous',
+                    'http://localhost:3001/api/v1/citas',
                     { ...data }, // Use "paciente" for the field name
                     {
                         headers: {
@@ -159,10 +165,10 @@ function PapanicolaouFormPage() {
 
                 console.log('Formulario enviado con éxito');
                 toast.success('Treatments creado', { duration: 3000 });
-                router.push('/sys/dashboard/procedimientos/papanicolaou');
+                router.push('/sys/dashboard/citas');
             } catch (error) {
-                console.error('Error al enviar el formulario:', error);
-                toast.error("This didn't work.");
+                console.error('Revisa si no hay citas en ese Horario', error);
+                toast.error("Recuerda Validar DPI & Paciente.");
             }
         } else {
             await updateTask(data);
@@ -172,7 +178,7 @@ function PapanicolaouFormPage() {
 
     return (
        <div className="flex justify-center items-start w-full ">
-  <div className="flex flex-col gap-5 justify-center items-center">
+  <div className="flex flex-col justify-center items-center">
                 <Toaster />
 
                 <a className="flex title-font font-medium justify-center items-center text-gray-900 pb-5">
@@ -191,7 +197,7 @@ function PapanicolaouFormPage() {
                     </svg>
 
                     <span className=" text-2xl font-serif justify-center items-center">
-          {!params.id ? 'Añadir Papanicolaous' : 'Editar Papanicolaous'}
+          {!params.id ? 'Añadir Cita' : 'Editar Cita'}
         </span>
                 </a>
 <div className='justify-center items-center'>
@@ -200,64 +206,65 @@ function PapanicolaouFormPage() {
                         className="text-white bg-rose-900 border-0 justify-center items-center py-2 px-6 focus:outline-none pl-5 hover:bg-rose-500 rounded text-lg"
                         onClick={handleDelete}
                     >
-                        Eliminar Papanicolaous ID. {params.id}
+                        Eliminar Cita ID. {params.id}
                     </button>
                 ) : (
                     <button
                         className="text-white bg-rose-300 border-0 py-2 px-6 rounded text-lg cursor-not-allowed "
                         disabled
                     >
-                        Añadiendo Papanicolaous
+                        Añadiendo Cita
                     </button>
                     )}
                     </div>
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div>
-                            <div className="px-5 pt-5">
-                                <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-gray-900">
-                                    Fecha de Colposcopia
-                                </label>
-                                <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-rose-500">
-                                    Año-Mes-Día
-                                </label>
-                                <div className="relative mt-2 rounded-md shadow-sm">
-                                    <input
-                                        type="date"
-                                        id="fechaTratamiento"
-                                        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        placeholder="Fecha de Tratamiento"
-                                        {...register('fechaPapanicolaous', { required: false })}
-                                    />
-                                </div>
-                            </div>
-                        </div>
+<div className="px-5 pt-5 flex">
+  <div className="flex-1 mr-5">
+    <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-gray-900">
+      Fecha de Cita
+    </label>
+    <label htmlFor="fechaTratamiento" className="block text-ls font-medium leading-6 text-rose-500">
+      Año-Mes-Día
+    </label>
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="date"
+        id="fechaTratamiento"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Fecha de Tratamiento"
+        {...register('fechaAgendado', { required: false })}
+      />
+    </div>
+  </div>
 
+
+                            </div>
+                            
+                            <div className="px-5 pt-5 flex">
+  <div className="flex-1 mr-5">
+    <label htmlFor="horaAgendado" className="block text-ls font-medium leading-6 text-gray-900">
+      Hora Agendado
+    </label>
+    
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <input
+        type="time"
+        id="horaAgendado"
+        className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        placeholder="Hora de la Cita"
+                                            {...register('horaAgendado', { required: false })}
+                                             step="3600"
+      />
+    </div>
+  </div>
+
+
+</div>
                                                                        <div className=" pt-5 flex flex-wrap">
                             
-<div className="w-full md:w-full  pt-1 pr-5">
-                                
-                   <div>
-  <label  className="block text-ls font-medium leading-6 text-gray-900">
-Resultado Papanicolaous  </label>
-  <div className="relative mt-2 rounded-md shadow-sm">
-    <input
-      type="text"
-      id="resultadoPapanicolaous"
-      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-      placeholder="Resultado Papanicolaous"
-      {...register('resultadoPapanicolaous', { required: false })}
-      onChange={handleChange}
-    />
-  </div>
-                            </div>
-                            </div>
-                        </div>
-
-
-                                                                                               <div className=" pt-5 flex flex-wrap">
-                            
-<div className="w-full md:w-full  pt-1 pr-5">
+<div className="w-full md:w-full  pt-1 pr-5 pl-5">
                                 
                    <div>
   <label  className="block text-ls font-medium leading-6 text-gray-900">
@@ -274,6 +281,42 @@ Observaciones Generales  </label>
   </div>
                             </div>
                             </div>
+                            </div>
+                            
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 pr-5 pl-5">
+                                
+                   <div>
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
+Motivo de la cita  </label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="motivo"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Motivo de la Cita"
+      {...register('motivo', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                        </div>
+                            <div className="px-5 pt-5 flex">
+
+
+
+
+
+</div>
+                            
+         
+   
+
+                                                     
+
+
                         </div>
 
                         <div className="px-5 pt-5 flex flex-wrap">
@@ -299,7 +342,7 @@ Observaciones Generales  </label>
                                 </div>
 
                             <div className="w-full md:w-1/2 pl-4">
-                                <label className="block text-ls font-medium leading-6 text-gray-900">
+                                <label htmlFor="dpi" className="block text-ls font-medium leading-6 text-gray-900">
                                     DPI
                                 </label>
                                 <div className="relative mt-2 rounded-md shadow-sm">
@@ -307,7 +350,7 @@ Observaciones Generales  </label>
                                         type="text"
                                         id="dpi"
                                         className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                        placeholder="DPI"
+                                        placeholder="Notas Cita"
                                         {...register('dpi', { required: false })}
                                         onChange={handleChange}
                                     />
@@ -322,7 +365,7 @@ Observaciones Generales  </label>
                         rounded text-lg"
                                     type="submit"
                                 >
-                                    {!params.id ? 'Guardar Papanicolaous' : 'Modificar Papanicolaous'}
+                                    {!params.id ? 'Guardar Cita' : 'Modificar Cita'}
                                 </button>
                               
                             </div>
@@ -335,7 +378,7 @@ Observaciones Generales  </label>
                 </div>
             </div>
        
-            <div className="">
+            <div className="h-full items-start">
                 <PatientListSearch/>
             </div>
         </div>
@@ -343,4 +386,4 @@ Observaciones Generales  </label>
     );
 }
 
-export default PapanicolaouFormPage;
+export default CitasFormPage;

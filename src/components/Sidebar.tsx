@@ -59,11 +59,18 @@ export default function Sidebar() {
                       transition-all duration-200 hover:bg-rose-300 group cursor-pointer" >
 
                                                         <span> Procedimientos Específicos </span>
+                                                        </a>
+                                                 
+
+
+                                                    </div>
+                                                    <a className="px-4 font-semibold text-xs  text-gray uppercase ">
+                                                        Citas</a>       
+                                                  <a href="/sys/dashboard/citas" className="font-medium text-sm items-center rounded-lg text-rose-900 px-4 py-2.5 block
+                      transition-all duration-200 hover:bg-rose-300 group cursor-pointer" >
+
+                                                        <span> Agendado de Citas </span>
                                                     </a>
-
-
-
-                                            </div>
                                         </div>
                                     </div>
 

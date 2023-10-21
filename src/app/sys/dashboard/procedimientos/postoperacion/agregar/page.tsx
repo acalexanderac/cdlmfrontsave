@@ -175,7 +175,7 @@ function PostoperacionFormPage() {
 
 
     return (
-       <div className="flex justify-center items-center w-full ">
+       <div className="flex justify-center items-start w-full ">
   <div className="flex flex-col gap-5 justify-center items-center">
                 <Toaster />
 
@@ -249,36 +249,48 @@ function PostoperacionFormPage() {
                                         {...register('tipoCirugia', { required: false })}
                                     />
                                 </div>
+                            </div>
+                        </div>
 
-                                <div className="w-full md:w-1/2 pl-4">
-                                    <label htmlFor="observaciones" className="block text-ls font-medium text-gray-900">
-                                        Observaciones
-                                    </label>
-                                    <div className="relative mt-2 rounded-md shadow-sm">
-                                        <input
-                                            type="text"
-                                            id="observaciones"
-                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder="Observaciones"
-                                            {...register('observaciones', { required: false })}
-                                        />
-                                    </div>
-                                </div>
+                                                                       <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-5">
+                                
+                   <div>
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
+Observaciones Generales  </label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="observaciones"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Observaciones"
+      {...register('observaciones', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
+                            </div>
+                        </div>
 
-                                 <div className="w-full md:w-1/2 pl-4">
-                                    <label htmlFor="anotacionesCirugia" className="block text-ls font-medium text-gray-900">
-                                        Anotaciones Extra
-                                    </label>
-                                    <div className="relative mt-2 rounded-md shadow-sm">
-                                        <input
-                                            type="text"
-                                            id="anotacionesCirugia"
-                                            className="block rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            placeholder="Anotaciones"
-                                            {...register('anotacionesCirugia', { required: false })}
-                                        />
-                                    </div>
-                                </div>
+                                                                                               <div className=" pt-5 flex flex-wrap">
+                            
+<div className="w-full md:w-full  pt-1 px-5">
+                                
+                   <div>
+  <label  className="block text-ls font-medium leading-6 text-gray-900">
+Anotaciones Post Cirugía  </label>
+  <div className="relative mt-2 rounded-md shadow-sm">
+    <input
+      type="text"
+      id="anotacionesCirugia"
+      className="block rounded-md border-0 h-24 w-full	 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+      placeholder="Anotaciones Extra"
+      {...register('anotacionesCirugia', { required: false })}
+      onChange={handleChange}
+    />
+  </div>
+                            </div>
                             </div>
                         </div>
 

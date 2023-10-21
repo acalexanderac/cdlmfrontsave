@@ -63,7 +63,7 @@ function PacientesFormPage() {
       });
 
       if (!res.ok) {
-          toast.error("This didn't work.")
+          toast.error("No hay Información de Pacientes, revise el Backend.")
           throw new Error(`Failed to fetch data, status: ${res.status}`);
 
       }
@@ -102,7 +102,7 @@ function PacientesFormPage() {
 
     const handleDelete = async () => {
 
-        if (window.confirm('Are you sure you want to delete?')) {
+        if (window.confirm('Deseas Borrar?')) {
            await fetch(`http://localhost:3001/api/v1/pacientes/${params['id']}`, {
                 method: 'DELETE',
                headers: {
@@ -132,7 +132,7 @@ const updateTask = async () => {
     router.refresh();
   } catch (error) {
     console.error(error);
-      toast.error("This didn't work.")
+      toast.error("Revisa tus datos, revisa si DPI no existe ya dentro del Sistema.")
       console.error(error);
       toast.error("Hubo un error al actualizar el paciente ");
 
@@ -171,7 +171,7 @@ const updateTask = async () => {
                 router.push('/sys/dashboard/pacientes');
             } catch (error) {
                 console.error('Error al enviar el formulario:', error);
-                toast.error("This didn't work.")
+                toast.error("Revisa si el DPI no existe dentro del Sistema.")
 
 
             }

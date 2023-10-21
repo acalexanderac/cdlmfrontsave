@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import Image from 'next/image';
-import {Logo, paciente, patients, proced1, proced2, proced3, TipoTratamiento} from "@/styles/imports";
+import {citas, Logo, paciente, patients, proced1, proced2, proced3, TipoTratamiento} from "@/styles/imports";
 import Link from "next/link";
 const Dashboard = () => {
     const { data: session, status } = useSession();
@@ -100,12 +100,23 @@ const Dashboard = () => {
                             </Link>
                         </div>
                     </div>
-                    <div className="xl:w-1/4 md:w-1/2 p-4">
-                        <div className="bg-rose-100 p-6 rounded-lg">
-                            <img className="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/723x403" alt="content"/>
-                                <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-                                <h2 className="text-lg text-gray-900 font-medium title-font mb-4">San Francisco</h2>
-                                <p className="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+              <div className="xl:w-1/4 md:w-1/2 p-4">
+                        <div className="bg-rose-100 p-6 rounded-lg ">
+                            <Image className="tracking-widest align-middle flex-auto "
+                                   src={citas}
+                                   alt="Tratamientos"
+
+                                   blurDataURL="data:..."
+                                   placeholder="blur"
+                                   style={{ maxWidth: '100%', maxHeight: '100%' }}
+                            />
+                                <h3 className="tracking-widest text-rose-500 text-xs font-medium title-font ">Citas</h3>
+                                <h2 className="text-lg text-gray-900 font-medium title-font ">Apartado de Citas</h2>
+                                <p className="leading-relaxed text-base">Formularios y Control de Citas</p>
+                            <Link href="/sys/dashboard/citas">
+                                <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
+                                    Ir a Citas</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

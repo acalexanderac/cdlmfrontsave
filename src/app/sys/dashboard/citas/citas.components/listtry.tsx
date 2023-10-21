@@ -2,69 +2,67 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-import PatientListSearch from '../../../pacientes/pacientes.components/search';
+import PatientListSearch from '../../pacientes/pacientes.components/search';
+
 interface Treatment {
 
     id: number;
-    fechaPostop: string;
-    tipoCirugia: string;
+    fechaAgendado: string;
+    horaAgendado: string;
     dpi: string;
-    paciente: {
-        id: number;
-        docIdentificacion: string;
-        nombrePaciente: string;
-    };
+    
 
 }
-const Postoperacionlists: React.FC = () => {
+
+const Cdlmlists: React.FC = () => {
     const { data: session } = useSession();
     const [patients, setPatients] = useState([]);
     const [sortOrder, setSortOrder] = useState<'ASC' | 'DESC'>('ASC'); // Estado para el ordenamiento
-    const [currentPage, setCurrentPage] = useState(1);
+const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const handleSearchTermChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(event.target.value);
-    };
+const handleSearchTermChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+};
 
-    useEffect(() => {
-        if (session?.user?.token) {
-            fetchPacientes(currentPage);
-        }
-    }, [session, currentPage, sortOrder]);
+  useEffect(() => {
+    if (session?.user?.token) {
+        fetchPacientes(currentPage);
+    }
+}, [session, currentPage, sortOrder]);
 
-    const fetchPacientes = async (page: number) => {
-        try {
-            const response = await fetch(
-                `${process.env.NEXT_PUBLIC_BACKEND_URL}/postoperaciones/sort?s=${searchTerm}&sort=${sortOrder}&page=${page}`,
-                {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${session?.user?.token}`,
-                    },
-                }
-            );
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+  const fetchPacientes = async (page: number) => {
+       try {
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/citas/sort?s=${searchTerm}&sort=${sortOrder}&page=${page}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${session?.user?.token}`,
+                },
             }
+        );
 
-            const data = await response.json();
-            setPatients(data.data);
-            setTotalPages(data.last_page);
-        } catch (error) {
-            console.error('Error fetching patients:', error);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-    };
 
-    const handlePageChange = (newPage: number) => {
-        if (newPage >= 1 && newPage <= totalPages) {
-            setCurrentPage(newPage);
-            fetchPacientes(newPage);
-        }
-    };
+        const data = await response.json();
+        setPatients(data.data);
+        setTotalPages(data.last_page);
+    } catch (error) {
+        console.error('Error fetching patients:', error);
+    }
+};
+
+const handlePageChange = (newPage: number) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+        setCurrentPage(newPage);
+        fetchPacientes(newPage);
+    }
+};
 
     // Función para cambiar el ordenamiento cuando el usuario hace clic en un botón
     const handleSortOrderChange = (newOrder: 'ASC' | 'DESC') => {
@@ -72,13 +70,13 @@ const Postoperacionlists: React.FC = () => {
     };
 
     const handleSearch = () => {
-        // Reiniciar la página a la primera página al realizar una nueva búsqueda
-        setCurrentPage(1);
-        fetchPacientes(1); // Inicia la búsqueda en la primera página
-    };
+    // Reiniciar la página a la primera página al realizar una nueva búsqueda
+    setCurrentPage(1);
+    fetchPacientes(1); // Inicia la búsqueda en la primera página
+};
 
     return (
-     <div className="flex justify-center items-start w-full">
+           <div className="flex justify-center items-center w-full">
   <div className="flex flex-col gap-5">
 
 
@@ -130,8 +128,8 @@ const Postoperacionlists: React.FC = () => {
                     <thead className="bg-rose-300 border-b-2 border-gray-200 rounded-full pt-5 pb-10">
                     <tr className='rounded-full pb-5'>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">No ID.</th>
-                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Fecha PostOperacion</th>
-                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Tipo Cirugía</th>
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left">Fecha Cita </th>
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left">HoraAgendado</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Paciente</th>
                         <th className="p-3 text-sm font-semibold tracking-wide text-left">Acciones</th>
                     </tr>
@@ -145,11 +143,11 @@ const Postoperacionlists: React.FC = () => {
                                 </div>
                             </td>
                             <td className="p-1 whitespace-nowrap">
-                                <div className="text-left text-black">{paciente['fechaPostop']}</div>
+                                <div className="text-left text-black">{paciente['fechaAgendado']}</div>
                             </td>
 
                             <td className="p-1 whitespace-nowrap">
-                                <div className="text-left text-rose-900">{paciente['tipoCirugia']}</div>
+                                <div className="text-left text-rose-900">{paciente['horaAgendado']}</div>
                             </td>
 
                             <td className="p-1 whitespace-nowrap">
@@ -157,7 +155,7 @@ const Postoperacionlists: React.FC = () => {
                             </td>
                             <td className="p-1 whitespace-nowrap">
                                 <div className='pr-5 pl-5'>
-                                    <Link href={`/sys/dashboard/procedimientos/postoperacion/${paciente['id']}`}>
+                                    <Link href={`/sys/dashboard/citas/${paciente['id']}`}>
                                         <button
                                             className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none pl-5 hover:bg-rose-300  hover:text-black rounded text-lg">
                                             Editar
@@ -216,9 +214,7 @@ const Postoperacionlists: React.FC = () => {
                 <PatientListSearch/>
     </div>
 </div>
-        
-       
     );
 };
 
-export default Postoperacionlists;
+export default Cdlmlists;

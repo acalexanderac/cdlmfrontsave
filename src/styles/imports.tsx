@@ -24,5 +24,6 @@ export { default as proced3 } from 'public/proced3.svg'
 export { default as paciente } from 'public/patient.svg'
 export { default as crioterapiaimg } from 'public/Crioterapia.png'
 export { default as colposcopiadiag } from 'public/Colposcopia Diag.png'
+export {default as citas} from 'public/agendado.svg'
 
 
