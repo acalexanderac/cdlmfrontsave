@@ -34,7 +34,7 @@ function PostoperacionFormPage() {
     const getTreatment = async () => {
         if (params.id) {
             try {
-                const res = await axios.get(`http://localhost:3001/api/v1/postoperaciones/${params.id}`, {
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/postoperaciones/${params.id}`, {
                     // headers...
                 });
 
@@ -82,7 +82,7 @@ function PostoperacionFormPage() {
     const handleDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             try {
-                await axios.delete(`http://localhost:3001/api/v1/postoperaciones/${params.id}`, {
+                await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/postoperaciones/${params.id}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${session?.user?.token}`,
@@ -114,7 +114,7 @@ function PostoperacionFormPage() {
                 dpi: data.dpi,
             };
 
-            await axios.patch(`http://localhost:3001/api/v1/postoperaciones/${params.id}`, { ...updateData }, {
+            await axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/postoperaciones/${params.id}`, { ...updateData }, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${session?.user?.token}`,
@@ -147,7 +147,7 @@ function PostoperacionFormPage() {
         if (!params.id) {
             try {
                 const response = await axios.post(
-                    'http://localhost:3001/api/v1/postoperaciones',
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/postoperaciones`,
                     { ...data }, // Use "paciente" for the field name
                     {
                         headers: {

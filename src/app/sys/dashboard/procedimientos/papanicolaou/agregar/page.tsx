@@ -32,7 +32,7 @@ function PapanicolaouFormPage() {
     const getTreatment = async () => {
         if (params.id) {
             try {
-                const res = await axios.get(`http://localhost:3001/api/v1/papanicolaous/${params.id}`, {
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/papanicolaous/${params.id}`, {
                     // headers...
                 });
 
@@ -79,7 +79,7 @@ function PapanicolaouFormPage() {
     const handleDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             try {
-                await axios.delete(`http://localhost:3001/api/v1/papanicolaous/${params.id}`, {
+                await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}papanicolaous/${params.id}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${session?.user?.token}`,
@@ -110,7 +110,7 @@ function PapanicolaouFormPage() {
                 dpi: data.dpi,
             };
 
-            await axios.patch(`http://localhost:3001/api/v1/papanicolaous/${params.id}`, { ...updateData }, {
+            await axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/papanicolaous/${params.id}`, { ...updateData }, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${session?.user?.token}`,
@@ -143,7 +143,7 @@ function PapanicolaouFormPage() {
         if (!params.id) {
             try {
                 const response = await axios.post(
-                    'http://localhost:3001/api/v1/papanicolaous',
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/papanicolaous`,
                     { ...data }, // Use "paciente" for the field name
                     {
                         headers: {

@@ -54,7 +54,7 @@ function PacientesFormPage() {
   // Check if params['id'] is defined
   if (params['id']) {
     try {
-      const res = await fetch(`http://localhost:3001/api/v1/pacientes/${params['id']}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/pacientes/${params['id']}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ function PacientesFormPage() {
     const handleDelete = async () => {
 
         if (window.confirm('Deseas Borrar?')) {
-           await fetch(`http://localhost:3001/api/v1/pacientes/${params['id']}`, {
+           await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/pacientes/${params['id']}`, {
                 method: 'DELETE',
                headers: {
                    'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ const updateTask = async () => {
   try {
       const edadPac: number = parseInt(newPaciente.edadPaciente, 10);
 
-    await fetch(`http://localhost:3001/api/v1/pacientes/${params['id']}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/pacientes/${params['id']}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -155,7 +155,7 @@ const updateTask = async () => {
                 // Convierte el valor del teléfono a número aquí
 
  await axios.post(
-        'http://localhost:3001/api/v1/pacientes',
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/pacientes`,
         { ...data},
         {
           headers: {

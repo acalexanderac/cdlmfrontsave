@@ -150,7 +150,7 @@ function ControlNatalFormPage() {
     const getTreatment = async () => {
         if (params.id) {
             try {
-                const res = await axios.get(`http://localhost:3001/api/v1/controlnatal/${params.id}`, {
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/controlnatal/${params.id}`, {
                     // headers...
                 });
 
@@ -258,7 +258,7 @@ function ControlNatalFormPage() {
     const handleDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             try {
-                await axios.delete(`http://localhost:3001/api/v1/controlnatal/${params.id}`, {
+                await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/controlnatal/${params.id}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${session?.user?.token}`,
@@ -348,7 +348,7 @@ function ControlNatalFormPage() {
                 dpi: data.dpi,
             };
 
-            await axios.patch(`http://localhost:3001/api/v1/controlnatal/${params.id}`, { ...updateData }, {
+            await axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/controlnatal/${params.id}`, { ...updateData }, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${session?.user?.token}`,
@@ -381,7 +381,7 @@ function ControlNatalFormPage() {
         if (!params.id) {
             try {
                 const response = await axios.post(
-                    'http://localhost:3001/api/v1/controlnatal',
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/controlnatal`,
                     { ...data }, // Use "paciente" for the field name
                     {
                         headers: {

@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import Image from 'next/image';
-import {citas, Logo, paciente, patients, proced1, proced2, proced3, TipoTratamiento} from "@/styles/imports";
+import {citas, citas1, especificos1, Logo, medical1, paciente, pacientesv2, patients, proced1, proced2, proced3, TipoTratamiento} from "@/styles/imports";
 import Link from "next/link";
 const Dashboard = () => {
     const { data: session, status } = useSession();
@@ -42,30 +42,30 @@ const Dashboard = () => {
                         Normales y Específicos.</p>
 
                 </div>
-                <div className="flex flex-wrap -m-4">
+                <div className="flex h-full  -m-4">
                     <div className="xl:w-1/4 md:w-1/2 p-4">
-                        <div className="bg-rose-100 p-6 rounded-lg " >
+                        <div className="bg-white p-6 rounded-lg " >
                             <Image className="tracking-widest align-middle flex-auto "
-                                   src={paciente}
+                                   src={pacientesv2}
                                    alt="Pacientes"
 
                                    blurDataURL="data:..."
                                    placeholder="blur"
-                                   style={{ maxWidth: '100%', maxHeight: '100%' }}
+                                   style={{ maxWidth: '110%', maxHeight: '150%' }}
                             />
                                 <h3 className="tracking-widest text-rose-500 text-xs font-medium title-font">PACIENTES</h3>
                                 <h2 className="text-lg text-gray-900 font-medium title-font mb-4">Pacientes</h2>
                                 <p className="leading-relaxed text-base">Formularios de Control de Pacientes</p>
                             <Link href="/sys/dashboard/pacientes">
-                                <button className="flex mx-auto mt-6 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
+                                <button className="flex mx-auto mt-12 text-white bg-rose-900 border-0 py-2 px-5 focus:outline-none hover:bg-rose-300 rounded">
                                    Ir a Mantenimientos de Pacientes</button>
                             </Link>
                         </div>
                     </div>
                     <div className="xl:w-1/4 md:w-1/2 p-4">
-                        <div className="bg-rose-100 p-6 rounded-lg ">
+                        <div className="bg-white p-6 rounded-lg ">
                             <Image className="tracking-widest align-middle flex-auto "
-                                   src={proced2}
+                                   src={medical1}
                                    alt="Tratamientos"
 
                                    blurDataURL="data:..."
@@ -82,9 +82,9 @@ const Dashboard = () => {
                         </div>
                     </div>
                                       <div className="xl:w-1/4 md:w-1/2 p-4">
-                        <div className="bg-rose-100 p-6 rounded-lg ">
+                        <div className="bg-white p-6 rounded-lg ">
                             <Image className="tracking-widest align-middle flex-auto "
-                                   src={proced3}
+                                   src={especificos1}
                                    alt="Tratamientos"
 
                                    blurDataURL="data:..."
@@ -101,9 +101,9 @@ const Dashboard = () => {
                         </div>
                     </div>
               <div className="xl:w-1/4 md:w-1/2 p-4">
-                        <div className="bg-rose-100 p-6 rounded-lg ">
+                        <div className="bg-white p-6 rounded-lg ">
                             <Image className="tracking-widest align-middle flex-auto "
-                                   src={citas}
+                                   src={citas1}
                                    alt="Tratamientos"
 
                                    blurDataURL="data:..."

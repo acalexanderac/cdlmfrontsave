@@ -100,7 +100,7 @@ function ClinicaFormPage() {
     const getTreatment = async () => {
         if (params.id) {
             try {
-                const res = await axios.get(`http://localhost:3001/api/v1/clinicadelamujer/${params.id}`, {
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/clinicadelamujer/${params.id}`, {
                     // headers...
                 });
 
@@ -183,7 +183,7 @@ function ClinicaFormPage() {
     const handleDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             try {
-                await axios.delete(`http://localhost:3001/api/v1/clinicadelamujer/${params.id}`, {
+                await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/clinicadelamujer/${params.id}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${session?.user?.token}`,
@@ -248,7 +248,7 @@ function ClinicaFormPage() {
                 dpi: data.dpi,
             };
 
-            await axios.patch(`http://localhost:3001/api/v1/clinicadelamujer/${params.id}`, { ...updateData }, {
+            await axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/clinicadelamujer/${params.id}`, { ...updateData }, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${session?.user?.token}`,
@@ -281,7 +281,7 @@ function ClinicaFormPage() {
         if (!params.id) {
             try {
                 const response = await axios.post(
-                    'http://localhost:3001/api/v1/clinicadelamujer',
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/clinicadelamujer`,
                     { ...data }, // Use "paciente" for the field name
                     {
                         headers: {

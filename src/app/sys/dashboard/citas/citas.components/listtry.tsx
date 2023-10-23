@@ -75,29 +75,7 @@ const handlePageChange = (newPage: number) => {
     fetchPacientes(1); // Inicia la búsqueda en la primera página
 };
 
-    // Define una función para eliminar citas pasadas
-async function deletePastAppointments() {
-  try {
-    // Realiza una solicitud a través de 'fetch' a la ruta correspondiente en tu servidor
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/citas/delete-past-appointments`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        // Añade cualquier cabecera necesaria, como la autorización si es necesario
-        Authorization: `Bearer ${session?.user?.token}`,
-      },
-    });
 
-    if (response.ok) {
-      const result = await response.json();
-      console.log(result); // Muestra la respuesta del servidor en la consola
-    } else {
-      console.error('Error al eliminar citas pasadas');
-    }
-  } catch (error) {
-    console.error('Error en la solicitud:', error);
-  }
-}
 
 
     

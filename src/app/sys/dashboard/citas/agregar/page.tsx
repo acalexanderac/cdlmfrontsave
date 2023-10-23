@@ -36,7 +36,7 @@ function CitasFormPage() {
     const getTreatment = async () => {
         if (params.id) {
             try {
-                const res = await axios.get(`http://localhost:3001/api/v1/citas/${params.id}`, {
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/citas/${params.id}`, {
                     // headers...
                 });
 
@@ -84,7 +84,7 @@ function CitasFormPage() {
     const handleDelete = async () => {
         if (window.confirm('Are you sure you want to delete?')) {
             try {
-                await axios.delete(`http://localhost:3001/api/v1/citas/${params.id}`, {
+                await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/citas/${params.id}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${session?.user?.token}`,
@@ -116,7 +116,7 @@ function CitasFormPage() {
                 horaAgendado: data.horaAgendado,
             };
 
-            await axios.patch(`http://localhost:3001/api/v1/citas/${params.id}`, { ...updateData }, {
+            await axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/citas/${params.id}`, { ...updateData }, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${session?.user?.token}`,
@@ -149,7 +149,7 @@ function CitasFormPage() {
         if (!params.id) {
             try {
                 const response = await axios.post(
-                    'http://localhost:3001/api/v1/citas',
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/citas`,
                     { ...data }, // Use "paciente" for the field name
                     {
                         headers: {

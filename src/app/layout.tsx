@@ -24,7 +24,7 @@ export default function RootLayout({
         <SessionAuthProvider>
             <Header />
             <div className="flex">
-                <Sidebar />
+                
                 <main className="flex-grow">{children}</main>
             </div>
             <Footer />

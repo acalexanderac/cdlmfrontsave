@@ -71,6 +71,16 @@ export default function Sidebar() {
 
                                                         <span> Agendado de Citas </span>
                                                     </a>
+
+
+
+                                                                                                        <a className="px-4 font-semibold text-xs  text-gray uppercase ">
+                                                        Reportes</a>       
+                                                  <a href="/sys/dashboard/reportes" className="font-medium text-sm items-center rounded-lg text-rose-900 px-4 py-2.5 block
+                      transition-all duration-200 hover:bg-rose-300 group cursor-pointer" >
+
+                                                        <span> Generación de Reportes</span>
+                                                    </a>
                                         </div>
                                     </div>
 
