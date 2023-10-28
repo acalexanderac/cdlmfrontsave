@@ -11,7 +11,7 @@ const Procedimientos = () => {
     // Fetch the token when the component mounts
     const fetchToken = async () => {
       try {
-        const response = await fetch("/your-auth-endpoint"); // Replace with your actual auth endpoint
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}`); // Replace with your actual auth endpoint
         if (response.ok) {
           const data = await response.json();
           setToken(data.token);
