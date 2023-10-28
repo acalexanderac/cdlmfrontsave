@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from 'react'
 import Link from "next/link";
-import { papanicolaou } from "@/styles/imports";
+import { consultaexterna, papanicolaou } from "@/styles/imports";
 
 const Procedimientos = () => {
     return (
@@ -47,7 +47,7 @@ const Procedimientos = () => {
 
       </div>
       <Image className="tracking-widest align-middle flex-auto "
-                                   src={papanicolaou}
+                                   src={consultaexterna}
                                    alt="Consultaexterna"
 
                                    blurDataURL="data:..."
