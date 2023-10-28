@@ -19,30 +19,27 @@ export default function Contact() {
                     </div>
                 </div>
                 <div className="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-2 mt-8 md:mt-0">
-                    <div className="flex flex-col text-center w-full ">
-                        <h2 className="text-rose-900 tracking-widest font-medium title-font">Contacto</h2>
-                        <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">Contáctanos o Envía tus Sugerencias</h1>
+    <form action="https://formspree.io/maygvkgy" method="POST">
+  <div className="relative mb-4">
+    <label htmlFor="name" className="leading-7 text-sm text-gray-600">Nombre</label>
+    <input type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+  </div>
 
-                    </div>
-                    <p className="leading-relaxed mb-5 text-gray-600"></p>
-                    <div className="relative mb-4">
-                        <label htmlFor="name" className="leading-7 text-sm text-gray-600">Nombre</label>
-                        <input type="text" id="name" name="name" className="w-full bg-white rounded border
-                        border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700
-                        py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
-                    </div>
-                    <div className="relative mb-4">
-                        <label htmlFor="email" className="leading-7 text-sm text-gray-600">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300
-                        focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3
-                        leading-8 transition-colors duration-200 ease-in-out"/>
-                    </div>
-                    <div className="relative mb-4">
-                        <label htmlFor="message" className="leading-7 text-sm text-gray-600">Mensaje</label>
-                        <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
-                    </div>
-                    <button className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none hover:bg-rose-500 rounded text-lg">Enviar</button>
-                    <p className="text-xs text-gray-500 mt-3">Déjanos tus Dudas o Sugerencias por acá.</p>
+  <div className="relative mb-4">
+    <label htmlFor="email" className="leading-7 text-sm text-gray-600">Correo Electrónico</label>
+    <input type="email" id="email" name="_replyto" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+  </div>
+
+  <input type="hidden" name="_subject" value="Contact Form Submission" />
+
+  <div className="relative mb-4">
+    <label htmlFor="message" className="leading-7 text-sm text-gray-600">Mensaje</label>
+    <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+  </div>
+
+  <button className="text-white bg-rose-900 border-0 py-2 px-6 focus:outline-none hover:bg-rose-500 rounded text-lg">Enviar</button>
+  <p className="text-xs text-gray-500 mt-3">Déjanos tus Dudas o Sugerencias por acá.</p>
+</form>
                 </div>
             </div>
         </section>

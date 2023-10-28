@@ -1,33 +1,9 @@
-"use client"
 import Image from "next/image";
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {TipoProd1, TipoProd2, services2, services8, services1, colposcopia, papanicolaou, postoperacion, paciente, pacientesmenu, pacientesv2} from "@/styles/imports";
 import Link from "next/link";
 
 const Procedimientos = () => {
-    const [token, setToken] = useState(""); // State to store the token
-
-  useEffect(() => {
-    // Fetch the token when the component mounts
-    const fetchToken = async () => {
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}`); // Replace with your actual auth endpoint
-        if (response.ok) {
-          const data = await response.json();
-          setToken(data.token);
-        }
-      } catch (error) {
-        console.error("Error fetching token:", error);
-      }
-    };
-
-    fetchToken();
-  }, []);
-
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-  };
     return (
      <section className="text-gray-600 body-font overflow-hidden">
   <div className="container px-5 py-24 mx-auto">
