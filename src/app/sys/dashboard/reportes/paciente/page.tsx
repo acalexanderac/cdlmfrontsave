@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import React, { useEffect, useState } from 'react'
 import {TipoProd1, TipoProd2, services2, services8, services1, colposcopia, papanicolaou, postoperacion, paciente, pacientesmenu, pacientesv2} from "@/styles/imports";
