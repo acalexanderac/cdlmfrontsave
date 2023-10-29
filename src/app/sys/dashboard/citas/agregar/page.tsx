@@ -37,7 +37,11 @@ function CitasFormPage() {
         if (params.id) {
             try {
                 const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/citas/${params.id}`, {
-                    // headers...
+                     method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${session?.user?.token}`,
+        },
                 });
 
                 if (!res.data) {
