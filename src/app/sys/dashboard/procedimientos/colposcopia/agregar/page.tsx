@@ -52,8 +52,10 @@ function ColposcopiaFormPage() {
         if (params.id) {
             try {
                 const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/colposcopias/${params.id}`, {
-                    // headers...
-                });
+headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${session?.user?.token}`,
+                },                });
 
                 if (!res.data) {
                     toast.error("This didn't work.");
